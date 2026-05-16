@@ -48,9 +48,22 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 .nav-links a:hover,.nav-links a.active{color:var(--black)}
 .nav-tab{background:none;border:none;cursor:pointer;font-family:inherit;padding:0;line-height:inherit}
 .nav-name.nav-tab{font-family:var(--serif)}
-.nav-links .nav-tab{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);transition:color .2s}
-.nav-links .nav-tab:hover,.nav-links .nav-tab.active{color:var(--black)}
+.nav-links .nav-tab{
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);
+  padding-bottom:3px;
+  border-bottom:2px solid transparent;
+  transition:color .2s,border-color .28s var(--ease);
+}
+.nav-links .nav-tab:hover{color:var(--black)}
+.nav-links .nav-tab.active{color:var(--black);border-bottom-color:var(--black)}
 .page-hidden{display:none!important}
+
+/*─ Page transition ─*/
+@keyframes pageIn{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:none}
+}
+.page-in{animation:pageIn .42s var(--ease) both}
 
 /*─ Hero ─*/
 .hero{
@@ -249,21 +262,31 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
 /*─ Page navigation ─*/
 .page-nav{
-  display:flex;justify-content:space-between;align-items:center;
-  margin-top:56px;padding-top:24px;border-top:1px solid var(--g4);
+  display:grid;grid-template-columns:1fr 1fr;
+  margin-top:80px;border-top:1px solid var(--g4);
 }
-.footer-inner .page-nav{margin-top:32px}
+.footer-inner .page-nav{margin-top:48px}
 .page-nav-btn{
   background:none;border:none;cursor:pointer;font-family:var(--sans);
-  font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--g2);transition:color .2s;padding:10px 0;
-  display:flex;align-items:center;gap:10px;
+  color:var(--g1);transition:color .28s var(--ease);
+  display:flex;flex-direction:column;gap:10px;padding:30px 0;
 }
+.page-nav-prev{align-items:flex-start;padding-right:32px;border-right:1px solid var(--g4)}
+.page-nav-next{align-items:flex-end;padding-left:32px}
 .page-nav-btn:hover{color:var(--black)}
-.page-nav-prev .arrow{display:inline-block;transition:transform .2s}
-.page-nav-prev:hover .arrow{transform:translateX(-4px)}
-.page-nav-next .arrow{display:inline-block;transition:transform .2s}
-.page-nav-next:hover .arrow{transform:translateX(4px)}
+.page-nav-dir{
+  font-size:9px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--g3);transition:color .28s;display:flex;align-items:center;gap:7px;
+}
+.page-nav-btn:hover .page-nav-dir{color:var(--g2)}
+.page-nav-name{
+  font-family:var(--serif);
+  font-size:clamp(18px,2.2vw,26px);
+  font-weight:600;letter-spacing:-.02em;line-height:1;
+  transition:transform .28s var(--ease);
+}
+.page-nav-prev:hover .page-nav-name{transform:translateX(-4px)}
+.page-nav-next:hover .page-nav-name{transform:translateX(4px)}
 
 /*─ Reveal ─*/
 .r{opacity:0;transform:translateY(24px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
@@ -307,6 +330,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 @media print{
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .nav,.hero-scroll,.proj-bg,.page-nav{display:none}
+  .page-in{animation:none}
   .r{opacity:1;transform:none}
   /* 显示所有标签页 */
   .page-hidden{display:block!important}
@@ -1707,17 +1731,16 @@ function showPage(page, push) {
     const el = document.getElementById(id)
     if (el) el.classList.toggle('page-hidden', !ids.includes(id))
   })
+  // Animate sections into view
+  ids.forEach(id => {
+    const el = document.getElementById(id)
+    if (el) { el.classList.remove('page-in'); void el.offsetWidth; el.classList.add('page-in') }
+  })
   window.scrollTo({ top: 0, behavior: 'instant' })
   if (push !== false) history.pushState({ page }, '', '#' + page)
-  // Update active tab
   document.querySelectorAll('.nav-tab').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.page === page)
   })
-  // Trigger reveal for newly visible elements
-  document.querySelectorAll('#' + ids.join(' .r, #') + ' .r, ' + ids.map(id => '#' + id + '.r').join(', ')).forEach(el => {
-    if (!el.classList.contains('v')) io.observe(el)
-  })
-  // Simpler: observe all unvisited .r elements in shown sections
   ids.forEach(id => {
     const sec = document.getElementById(id)
     if (sec) sec.querySelectorAll('.r:not(.v)').forEach(el => io.observe(el))
@@ -1775,7 +1798,7 @@ PAGE_ORDER.forEach((page, i) => {
     const btn = document.createElement('button')
     btn.className = 'page-nav-btn page-nav-prev'
     btn.dataset.page = prevPage
-    btn.innerHTML = `<span class="arrow">←</span><span>${PAGE_LABELS[prevPage]}</span>`
+    btn.innerHTML = `<span class="page-nav-dir">← 上一个</span><span class="page-nav-name">${PAGE_LABELS[prevPage]}</span>`
     nav.appendChild(btn)
   } else {
     nav.appendChild(document.createElement('span'))
@@ -1784,7 +1807,7 @@ PAGE_ORDER.forEach((page, i) => {
     const btn = document.createElement('button')
     btn.className = 'page-nav-btn page-nav-next'
     btn.dataset.page = nextPage
-    btn.innerHTML = `<span>${PAGE_LABELS[nextPage]}</span><span class="arrow">→</span>`
+    btn.innerHTML = `<span class="page-nav-dir">下一个 →</span><span class="page-nav-name">${PAGE_LABELS[nextPage]}</span>`
     nav.appendChild(btn)
   }
   const target = document.querySelector(PAGE_NAV_TARGET[page])
