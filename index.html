@@ -281,9 +281,60 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   .card-grid{grid-template-columns:1fr 1fr}
 }
 @media print{
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .nav,.hero-scroll,.proj-bg{display:none}
   .r{opacity:1;transform:none}
-  .proj{page-break-inside:avoid}
+
+  /* 每个大章节强制新页开始 */
+  .overview,#about,.proj{break-before:page}
+  /* hero 不分页 */
+  .hero{break-before:auto;min-height:auto;padding-bottom:60px}
+
+  /* 禁止在这些组件内部断页 */
+  .challenge,
+  .process,
+  .process-steps,
+  .insight-row,
+  .insight,
+  .decision-box,
+  .note-box,
+  .outcomes,
+  .out-grid,
+  .feat-grid,
+  .feat,
+  .tech-row,
+  .tech-block,
+  .swatches,
+  .phones,
+  .phone,
+  .phone-bare,
+  .jtbd-table,
+  .card{break-inside:avoid}
+
+  /* 图片和紧跟的说明文字不分开 */
+  .img-poster{break-inside:avoid;max-width:100%}
+  .gcap{break-before:avoid}
+
+  /* 网格子项不断页 */
+  .g2>div,.g3>div,.g4>div,.g5-col>div,.g-65>div{break-inside:avoid}
+
+  /* 标题后面跟着内容，不在标题后断 */
+  .proj-title,.proj-sub,.proj-meta,.label{break-after:avoid}
+
+  /* 段落孤行控制 */
+  p{orphans:3;widows:3}
+
+  /* 卡片网格在 print 下两列 */
+  .card-grid{grid-template-columns:1fr 1fr}
+
+  /* 隐藏 overview 背景色，让打印更干净 */
+  .overview{background:var(--white)}
+
+  /* 技能条完整显示 */
+  .skills-panel{break-inside:avoid}
+
+  /* 过程时间轴不断 */
+  .process-steps{grid-template-columns:repeat(5,1fr)}
 }
 </style>
 </head>
