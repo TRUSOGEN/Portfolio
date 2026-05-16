@@ -46,6 +46,11 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 .nav-links{display:flex;gap:22px}
 .nav-links a{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:var(--black)}
+.nav-tab{background:none;border:none;cursor:pointer;font-family:inherit;padding:0;line-height:inherit}
+.nav-name.nav-tab{font-family:var(--serif)}
+.nav-links .nav-tab{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);transition:color .2s}
+.nav-links .nav-tab:hover,.nav-links .nav-tab.active{color:var(--black)}
+.page-hidden{display:none!important}
 
 /*─ Hero ─*/
 .hero{
@@ -269,7 +274,8 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   .feat-grid{grid-template-columns:1fr}
   .tech-row{grid-template-columns:1fr}
   .footer-cols{grid-template-columns:1fr 1fr}
-  .nav-links{display:none}
+  .nav-links{display:flex;overflow-x:auto;gap:16px;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-right:12px}
+  .nav-links::-webkit-scrollbar{display:none}
   .card-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
 }
 @media(max-width:640px){
@@ -284,11 +290,27 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .nav,.hero-scroll,.proj-bg{display:none}
   .r{opacity:1;transform:none}
+  /* 显示所有标签页 */
+  .page-hidden{display:block!important}
+
+  /* 紧凑 Hero — 打印版个人简介精简 */
+  .hero{break-before:auto;min-height:auto;padding:48px var(--pad) 32px}
+  .hero-avatar{width:56px;height:56px;margin-bottom:16px}
+  .hero-eyebrow{margin-bottom:12px}
+  .hero-name{font-size:clamp(40px,7vw,72px);margin-bottom:8px}
+  .hero-name-en{font-size:clamp(18px,2.5vw,28px)}
+  .hero-rule{margin:20px 0}
+  .hero-desc{font-size:13px;line-height:1.6}
+  .hero-index{display:none}
+  .hero-bottom{grid-template-columns:1fr}
 
   /* 每个大章节强制新页开始 */
   .overview,#about,.proj{break-before:page}
-  /* hero 不分页 */
-  .hero{break-before:auto;min-height:auto;padding-bottom:60px}
+
+  /* 图片限高，控制 PDF 文件大小 */
+  .img-poster{max-height:380px;object-fit:cover}
+  .phones{grid-template-columns:repeat(4,1fr)}
+  .phone-bare img{border-radius:6px}
 
   /* 禁止在这些组件内部断页 */
   .challenge,
@@ -342,18 +364,19 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="#hero" class="nav-name">吴业亘</a>
+  <button class="nav-name nav-tab" data-page="home">吴业亘</button>
   <div class="nav-links">
-    <a href="#about">关于</a>
-    <a href="#ccm">CCM</a>
-    <a href="#greenloop">Greenloop</a>
-    <a href="#skysoar">SKY SOAR</a>
-    <a href="#medguard">MedGuard</a>
-    <a href="#turboresq">TurboResQ</a>
-    <a href="#more">装置 / 游戏</a>
-    <a href="#car">Lance</a>
-    <a href="#scoping">Scoping</a>
-    <a href="#contact">联系</a>
+    <button class="nav-tab" data-page="home">首页</button>
+    <button class="nav-tab" data-page="about">关于</button>
+    <button class="nav-tab" data-page="ccm">CCM</button>
+    <button class="nav-tab" data-page="greenloop">Greenloop</button>
+    <button class="nav-tab" data-page="skysoar">SKY SOAR</button>
+    <button class="nav-tab" data-page="medguard">MedGuard</button>
+    <button class="nav-tab" data-page="turboresq">TurboResQ</button>
+    <button class="nav-tab" data-page="more">装置/游戏</button>
+    <button class="nav-tab" data-page="car">Lance</button>
+    <button class="nav-tab" data-page="scoping">Scoping</button>
+    <button class="nav-tab" data-page="contact">联系</button>
   </div>
 </nav>
 
@@ -386,7 +409,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 </section>
 
 <!-- ═══════════════════════ PROJECT CARDS ═══════════════════════ -->
-<section class="overview">
+<section class="overview" id="overview">
   <div class="overview-inner">
     <p class="label r">所有项目 / All Work</p>
     <div class="card-grid r d2">
@@ -523,7 +546,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
 
 <!-- ═══════════════════════ ABOUT ═══════════════════════ -->
-<hr class="sec-rule">
+<hr class="sec-rule" id="about-rule">
 <section id="about" class="sec">
   <div class="sec-inner">
     <div class="about-grid">
@@ -1330,7 +1353,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
         </div>
         <div style="background:var(--white);padding:22px">
           <p class="label" style="margin-bottom:12px">视频记录</p>
-          <p style="font-size:13px;color:var(--g1)">youtu.be/PuXZ34HF0gI</p>
+          <a href="https://www.youtube.com/watch?v=PuXZ34HF0gI" target="_blank" style="font-size:13px;color:var(--g1);border-bottom:1px solid var(--g4);transition:border-color .2s" onmouseover="this.style.borderColor='#0D0D0D'" onmouseout="this.style.borderColor='var(--g4)'">youtube.com/watch?v=PuXZ34HF0gI</a>
           <p style="font-size:12px;color:var(--g2);margin-top:8px;line-height:1.6">完整演出记录，包含装置互动过程与实时视觉效果</p>
         </div>
       </div>
@@ -1622,6 +1645,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
       <div class="footer-col">
         <p class="label">联系方式</p>
         <p>邮件 &nbsp;<a href="mailto:trusowyg@163.com">trusowyg@163.com</a></p>
+        <p>微信 &nbsp;<span style="user-select:all;letter-spacing:.02em">TRUSOGEN</span></p>
         <p>GitHub &nbsp;<a href="https://github.com/TRUSOGEN" target="_blank">TRUSOGEN</a></p>
       </div>
       <div class="footer-col">
@@ -1638,23 +1662,76 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 </footer>
 
 <script>
-// Scroll reveal
+// ── Scroll reveal ────────────────────────────────────────────
 const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('v') })
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('v') })
 }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' })
+
+// ── Tab pages ────────────────────────────────────────────────
+const PAGES = {
+  home:      ['hero', 'overview'],
+  about:     ['about-rule', 'about'],
+  ccm:       ['ccm'],
+  greenloop: ['greenloop'],
+  skysoar:   ['skysoar'],
+  medguard:  ['medguard'],
+  turboresq: ['turboresq'],
+  more:      ['more'],
+  car:       ['car'],
+  scoping:   ['scoping'],
+  contact:   ['contact'],
+}
+const ALL_IDS = [...new Set(Object.values(PAGES).flat())]
+
+function showPage(page, push) {
+  const ids = PAGES[page] || PAGES.home
+  ALL_IDS.forEach(id => {
+    const el = document.getElementById(id)
+    if (el) el.classList.toggle('page-hidden', !ids.includes(id))
+  })
+  window.scrollTo({ top: 0, behavior: 'instant' })
+  if (push !== false) history.pushState({ page }, '', '#' + page)
+  // Update active tab
+  document.querySelectorAll('.nav-tab').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.page === page)
+  })
+  // Trigger reveal for newly visible elements
+  document.querySelectorAll('#' + ids.join(' .r, #') + ' .r, ' + ids.map(id => '#' + id + '.r').join(', ')).forEach(el => {
+    if (!el.classList.contains('v')) io.observe(el)
+  })
+  // Simpler: observe all unvisited .r elements in shown sections
+  ids.forEach(id => {
+    const sec = document.getElementById(id)
+    if (sec) sec.querySelectorAll('.r:not(.v)').forEach(el => io.observe(el))
+  })
+}
+
+// ── Boot ─────────────────────────────────────────────────────
+const initPage = Object.keys(PAGES).find(p => '#' + p === location.hash) || 'home'
+showPage(initPage, false)
+// Initial reveal for visible page
 document.querySelectorAll('.r').forEach(el => io.observe(el))
 
-// Nav active
-const secs = [...document.querySelectorAll('[id]')]
-const links = [...document.querySelectorAll('.nav-links a')]
-window.addEventListener('scroll', () => {
-  let cur = ''
-  secs.forEach(s => { if(scrollY >= s.offsetTop - 80) cur = s.id })
-  links.forEach(a => {
-    const match = a.getAttribute('href') === '#' + cur
-    a.classList.toggle('active', match)
-  })
-}, { passive: true })
+// ── Tab button clicks ─────────────────────────────────────────
+document.querySelectorAll('.nav-tab').forEach(btn => {
+  btn.addEventListener('click', () => showPage(btn.dataset.page))
+})
+
+// ── Intercept in-page anchor links ───────────────────────────
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]')
+  if (!a) return
+  const target = a.getAttribute('href').slice(1)
+  if (target in PAGES) {
+    e.preventDefault()
+    showPage(target)
+  }
+})
+
+// ── Browser back/forward ─────────────────────────────────────
+window.addEventListener('popstate', e => {
+  showPage((e.state && e.state.page) || 'home', false)
+})
 </script>
 </body>
 </html>
