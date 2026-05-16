@@ -429,7 +429,6 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   <button class="nav-name nav-tab" data-page="home">吴业亘</button>
   <div class="nav-links">
     <button class="nav-tab" data-page="home">首页</button>
-    <button class="nav-tab" data-page="about">关于</button>
     <button class="nav-tab" data-page="ccm">CCM</button>
     <button class="nav-tab" data-page="greenloop">Greenloop</button>
     <button class="nav-tab" data-page="skysoar">SKY SOAR</button>
@@ -1731,8 +1730,7 @@ const io = new IntersectionObserver(entries => {
 
 // ── Tab pages ────────────────────────────────────────────────
 const PAGES = {
-  home:      ['hero', 'overview'],
-  about:     ['about-rule', 'about'],
+  home:      ['hero', 'overview', 'about-rule', 'about'],
   ccm:       ['ccm'],
   greenloop: ['greenloop'],
   skysoar:   ['skysoar'],
@@ -1765,7 +1763,7 @@ function showPage(page, push) {
     const sec = document.getElementById(id)
     if (sec) sec.querySelectorAll('.r:not(.v)').forEach(el => io.observe(el))
   })
-  if (page === 'about') runBars()
+  if (page === 'home' || page === 'about') runBars()
 }
 
 // ── Boot ─────────────────────────────────────────────────────
@@ -1796,14 +1794,14 @@ window.addEventListener('popstate', e => {
 })
 
 // ── Bottom page navigation ────────────────────────────────────
-const PAGE_ORDER = ['home','about','ccm','greenloop','skysoar','medguard','turboresq','more','car','scoping','contact']
+const PAGE_ORDER = ['home','ccm','greenloop','skysoar','medguard','turboresq','more','car','scoping','contact']
 const PAGE_LABELS = {
-  home:'首页', about:'关于', ccm:'CCM', greenloop:'Greenloop',
+  home:'首页', ccm:'CCM', greenloop:'Greenloop',
   skysoar:'Sky Soar', medguard:'MedGuard', turboresq:'TurboResQ',
   more:'装置 / 游戏', car:'Lance', scoping:'Scoping', contact:'联系'
 }
 const PAGE_NAV_TARGET = {
-  home:'.overview-inner', about:'#about .sec-inner',
+  home:'#about .sec-inner',
   ccm:'#ccm .proj-inner', greenloop:'#greenloop .proj-inner',
   skysoar:'#skysoar .proj-inner', medguard:'#medguard .proj-inner',
   turboresq:'#turboresq .proj-inner', more:'#more .proj-inner',
