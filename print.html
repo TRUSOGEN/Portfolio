@@ -59,7 +59,7 @@ html,body{font-family:var(--sans);background:var(--white);color:var(--black);lin
 .sg li{list-style:none;font-size:10.5px;color:var(--g1);padding:3px 0;border-bottom:1px solid var(--g6)}
 
 /* ── Project ── */
-.proj{break-before:page;padding-top:6mm}
+.proj{break-before:page;padding-top:10mm;border-top:4px solid var(--black)}
 .proj-meta{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
 .proj-seq{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--g2)}
 .tags{display:flex;gap:5px;flex-wrap:wrap}
@@ -90,12 +90,12 @@ html,body{font-family:var(--sans);background:var(--white);color:var(--black);lin
 .ps-text{font-size:8.5px;color:var(--g1);line-height:1.5}
 
 /* Images */
-.img-full{width:100%;max-height:300px;object-fit:cover;display:block;margin-bottom:4px}
+.img-full{width:100%;height:auto;display:block;margin-bottom:4px}
 .img-cap{font-size:9px;color:var(--g2);letter-spacing:.05em;text-transform:uppercase;margin-bottom:16px}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:4px}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:4px}
 .g5{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:4px}
-.g2 img,.g3 img,.g5 img{width:100%;object-fit:cover;display:block}
+.g2 img,.g3 img,.g5 img{width:100%;height:auto;display:block}
 
 /* Insights */
 .insight-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0;break-inside:avoid}
@@ -151,6 +151,8 @@ html,body{font-family:var(--sans);background:var(--white);color:var(--black);lin
 
 /* Exp side-by-side */
 .exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.exp-grid .exp-main-img{width:100%;height:auto;display:block;margin-bottom:8px}
+.exp-grid .g2 img{width:100%;height:auto;display:block}
 .exp-title{font-family:var(--serif);font-size:26px;font-weight:600;line-height:1;margin-bottom:4px}
 .exp-sub{font-size:11px;color:var(--g1);font-weight:300;margin-bottom:12px}
 
@@ -266,18 +268,17 @@ html,body{font-family:var(--sans);background:var(--white);color:var(--black);lin
   <p class="label" style="margin-top:16px;margin-bottom:10px">核心设计决策</p>
   <div class="insight-row">
     <div class="insight"><div class="insight-label">搜索即决策</div><div class="insight-text">B2B 用户目标明确——搜索框设计为全局最高优先级，支持标题 + 内容双维度检索，首屏即可完成意图输入</div></div>
-    <div class="insight"><div class="insight-label">权限分层 UX</div><div class="insight-text">试用 / 订阅 / 单次购买用户信息访问权限不同——将「权限边界」转化为「激励转化触点」</div></div>
-    <div class="insight"><div class="insight-label">筛选 × 分类双轨</div><div class="insight-text">左侧行业树形导航 + 顶部 Tab 内容分类，双轨并行满足不同专业背景买家的浏览习惯</div></div>
-    <div class="insight"><div class="insight-label">全链路一致性</div><div class="insight-text">从注册到支付，设计语言与状态反馈保持一致，确保用户始终知道「我在哪 / 下一步是什么」</div></div>
+    <div class="insight"><div class="insight-label">权限分层</div><div class="insight-text">试用 / 订阅 / 单次购买三种权限的边界，被设计成自然的升级提示，而不是阻断</div></div>
+    <div class="insight"><div class="insight-label">双轨导航</div><div class="insight-text">左侧行业树形导航 + 顶部 Tab 分类并行，两类买家各走各的路径，互不干扰</div></div>
+    <div class="insight"><div class="insight-label">流程一致性</div><div class="insight-text">从注册到支付，状态反馈和跳转逻辑保持一套语言，减少用户在付费关键节点的迷失</div></div>
   </div>
 
   <div class="outcomes">
     <p class="label">设计成果</p>
     <div class="out-grid">
-      <div class="out-item"><div class="out-num">全</div><div class="out-text">注册 → 浏览 → 决策 → 支付完整链路，已正式对外发布运营</div></div>
-      <div class="out-item"><div class="out-num">15K+</div><div class="out-text">行业情报条目可被高效检索，三套系统协同覆盖</div></div>
-      <div class="out-item"><div class="out-num">B2B</div><div class="out-text">化工 / 农业 / 食品 / 医药四大垂直行业，全球专业买家</div></div>
-      <div class="out-item"><div class="out-num">真实</div><div class="out-text">商业产品全职工作，设计决策在真实业务压力下完成验证</div></div>
+      <div class="out-item"><div class="out-num">15K+</div><div class="out-text">行业情报条目，涵盖化工 / 农业 / 食品 / 医药四个垂直行业</div></div>
+      <div class="out-item"><div class="out-num">4</div><div class="out-text">核心链路全部重设计：注册、浏览搜索、产品决策、购物车支付</div></div>
+      <div class="out-item"><div class="out-num">线上</div><div class="out-text">cnchemicals.com 已正式对外运营，全职商业产品</div></div>
     </div>
   </div>
 </div>
@@ -312,8 +313,8 @@ html,body{font-family:var(--sans);background:var(--white);color:var(--black);lin
   </div>
 
   <div class="g2" style="margin-top:12px">
-    <div><img src="assets/greenloop-02.jpg" alt="田野调研" style="height:200px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">田野调研 — 桃李村实地勘探 · 农户访谈</p></div>
-    <div><img src="assets/greenloop-03.jpg" alt="用户研究产出" style="height:200px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">用户画像 · 旅程图 · 利益相关者地图</p></div>
+    <div><img src="assets/greenloop-02.jpg" alt="田野调研"><p class="img-cap" style="margin-bottom:0">田野调研 — 桃李村实地勘探 · 农户访谈</p></div>
+    <div><img src="assets/greenloop-03.jpg" alt="用户研究产出"><p class="img-cap" style="margin-bottom:0">用户画像 · 旅程图 · 利益相关者地图</p></div>
   </div>
 
   <div class="insight-row">
@@ -344,11 +345,11 @@ html,body{font-family:var(--sans);background:var(--white);color:var(--black);lin
 
   <p class="label" style="margin-bottom:8px">一体化回收收购装置 — 五面渲染</p>
   <div class="g5">
-    <img src="assets/nongya-product-front.png" alt="正面" style="height:150px">
-    <img src="assets/nongya-product-left.png" alt="左侧" style="height:150px">
-    <img src="assets/nongya-product-right.png" alt="右侧" style="height:150px">
-    <img src="assets/nongya-product-back.png" alt="后侧" style="height:150px">
-    <img src="assets/nongya-product-top.png" alt="顶视" style="height:150px">
+    <img src="assets/nongya-product-front.png" alt="正面">
+    <img src="assets/nongya-product-left.png" alt="左侧">
+    <img src="assets/nongya-product-right.png" alt="右侧">
+    <img src="assets/nongya-product-back.png" alt="后侧">
+    <img src="assets/nongya-product-top.png" alt="顶视">
   </div>
   <p class="img-cap">正面 · 左侧 · 右侧 · 后侧 · 顶视 — 将回收行为嵌入购药场景</p>
 
@@ -397,21 +398,20 @@ html,body{font-family:var(--sans);background:var(--white);color:var(--black);lin
     </tbody>
   </table>
 
-  <div class="role-bar">
+  <div class="role-bar" style="grid-template-columns:1fr 1fr">
     <div class="role-cell"><p class="label">我的角色</p><p><strong>VR 模块界面设计</strong><br>Apple Vision Pro 全部界面</p></div>
     <div class="role-cell"><p class="label">系统三端</p><p>iPhone — 音频引导 · 航班追踪<br>Apple Watch — HRV 监测 · 冥想<br>VR — 沉浸式体验（我负责）</p></div>
-    <div class="role-cell"><p class="label">课程背景</p><p>悉尼大学界面设计课程<br>A3 最终提案</p></div>
   </div>
 
   <img class="img-full" src="assets/vr-overview.png" alt="VR 高保真原型总览">
   <p class="img-cap">高保真原型全览 — 8 个核心页面 · 设计迭代记录 · 启发式评估文档</p>
 
   <img class="img-full" src="assets/vr-mockup.png" alt="VR 情境 Mockup">
-  <p class="img-cap">情境 Mock-up — 以人为中心的情感设计策略</p>
+  <p class="img-cap">情境 Mock-up — 飞行焦虑干预场景</p>
 
   <div class="g2" style="margin-top:10px">
-    <div><img src="assets/vr-wireflow.png" alt="Wireflow" style="height:170px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">完整 Wireflow</p></div>
-    <div><img src="assets/vr-design-system.png" alt="Design System" style="height:170px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">设计系统 — 蓝色渐变体系</p></div>
+    <div><img src="assets/vr-wireflow.png" alt="Wireflow"><p class="img-cap" style="margin-bottom:0">完整 Wireflow</p></div>
+    <div><img src="assets/vr-design-system.png" alt="Design System"><p class="img-cap" style="margin-bottom:0">设计系统 — 蓝色渐变体系</p></div>
   </div>
 
   <p class="label" style="margin-top:16px;margin-bottom:10px">VR 八大核心界面</p>
@@ -429,10 +429,9 @@ html,body{font-family:var(--sans);background:var(--white);color:var(--black);lin
   <div class="outcomes">
     <p class="label">设计成果</p>
     <div class="out-grid">
-      <div class="out-item"><div class="out-num">8</div><div class="out-text">VR 核心页面，完整覆盖飞行前、飞行中全旅程情绪干预节点</div></div>
-      <div class="out-item"><div class="out-num">3</div><div class="out-text">端平台：iPhone / Apple Watch / VR 无缝多设备体验</div></div>
-      <div class="out-item"><div class="out-num">5+</div><div class="out-text">启发式评估识别可用性问题，均完成迭代修复</div></div>
-      <div class="out-item"><div class="out-num">全</div><div class="out-text">从 Wireframe 到 Hi-Fi Prototype 完整 VR 界面设计</div></div>
+      <div class="out-item"><div class="out-num">8</div><div class="out-text">VR 核心页面，覆盖起飞前焦虑、飞行中颠簸、注意力转移三类干预场景</div></div>
+      <div class="out-item"><div class="out-num">3</div><div class="out-text">平台分工：iPhone 管理 · Apple Watch 监测 · VR 沉浸体验</div></div>
+      <div class="out-item"><div class="out-num">5+</div><div class="out-text">启发式评估发现的可用性问题，全部完成迭代</div></div>
     </div>
   </div>
 </div>
@@ -445,7 +444,7 @@ html,body{font-family:var(--sans);background:var(--white);color:var(--black);lin
     <div class="tags"><span class="tag tag-dark">HCI</span><span class="tag">UI 设计</span><span class="tag">情感设计</span><span class="tag">前端实现</span><span class="tag">2025</span></div>
   </div>
   <div class="proj-title">守 <span style="font-style:italic;font-weight:400;color:var(--g2);font-size:.52em">MedGuard</span></div>
-  <p class="proj-sub">面向中老年慢病患者的用药管理应用 &nbsp;·&nbsp; HCI 课题设计 + 前端实现 &nbsp;·&nbsp; medguard-green.vercel.app</p>
+  <p class="proj-sub">面向中老年慢病患者的用药管理应用 &nbsp;·&nbsp; UI 设计 + 前端实现 &nbsp;·&nbsp; medguard-green.vercel.app</p>
   <hr class="proj-rule">
 
   <div class="challenge">
@@ -527,12 +526,12 @@ html,body{font-family:var(--sans);background:var(--white);color:var(--black);lin
   </div>
 
   <div class="g2" style="margin-top:10px">
-    <div><img src="assets/turboresq-02.jpg" alt="场景研究" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">场景研究 · 黄金救援时序分析</p></div>
-    <div><img src="assets/turboresq-03.jpg" alt="KJ 分析" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">KJ 分析 · 概念草图 · 纸模型迭代</p></div>
+    <div><img src="assets/turboresq-02.jpg" alt="场景研究"><p class="img-cap" style="margin-bottom:0">场景研究 · 黄金救援时序分析</p></div>
+    <div><img src="assets/turboresq-03.jpg" alt="KJ 分析"><p class="img-cap" style="margin-bottom:0">KJ 分析 · 概念草图 · 纸模型迭代</p></div>
   </div>
   <div class="g2" style="margin-top:8px">
-    <div><img src="assets/turboresq-04.jpg" alt="三维模型" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">Blender 三维模型 · 三种救援模式</p></div>
-    <div><img src="assets/turboresq-05.jpg" alt="场景演示" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">7 步使用流程 · App 联动场景模拟</p></div>
+    <div><img src="assets/turboresq-04.jpg" alt="三维模型"><p class="img-cap" style="margin-bottom:0">Blender 三维模型 · 三种救援模式</p></div>
+    <div><img src="assets/turboresq-05.jpg" alt="场景演示"><p class="img-cap" style="margin-bottom:0">7 步使用流程 · App 联动场景模拟</p></div>
   </div>
 
   <div class="insight-row" style="margin-top:14px">
@@ -544,9 +543,9 @@ html,body{font-family:var(--sans);background:var(--white);color:var(--black);lin
   <div class="outcomes">
     <p class="label">设计成果</p>
     <div class="out-grid">
-      <div class="out-item"><div class="out-num">3</div><div class="out-text">救援模式：预警 / 监测 / 急救，覆盖事故现场全干预需求</div></div>
-      <div class="out-item"><div class="out-num">7</div><div class="out-text">完整使用步骤，App 远程呼叫到现场救援全链路闭环</div></div>
-      <div class="out-item"><div class="out-num">软+硬</div><div class="out-text">Arduino 硬件原型 + Blender 三维模型 + App UI</div></div>
+      <div class="out-item"><div class="out-num">3</div><div class="out-text">救援模式：预警 / 监测 / 急救，对应事故现场三个阶段</div></div>
+      <div class="out-item"><div class="out-num">7</div><div class="out-text">从 App 一键呼叫到现场救援的完整使用步骤</div></div>
+      <div class="out-item"><div class="out-num">软+硬</div><div class="out-text">Arduino 原型 + Blender 三维 + App UI，三端同时交付</div></div>
     </div>
   </div>
 </div>
@@ -563,10 +562,10 @@ html,body{font-family:var(--sans);background:var(--white);color:var(--black);lin
       <div class="exp-title">Shamanic Echoes</div>
       <p class="exp-sub">of the Raptor &nbsp;·&nbsp; 脑波驱动的萨满仪式互动装置</p>
       <div class="challenge" style="margin:10px 0"><blockquote style="font-size:12px">如何让萨满鹰神仪式中的意识状态，通过当代技术转化为观众可感知的沉浸性体验？</blockquote></div>
-      <img src="assets/shamanic-01.jpg" alt="Shamanic Echoes" style="width:100%;height:170px;object-fit:cover;display:block;margin-bottom:8px">
+      <img class="exp-main-img" src="assets/shamanic-01.jpg" alt="Shamanic Echoes">
       <div class="g2" style="margin-bottom:8px">
-        <img src="assets/shamanic-03.jpg" alt="装置素描" style="height:120px;object-fit:cover">
-        <img src="assets/shamanic-05.jpg" alt="演出效果" style="height:120px;object-fit:cover">
+        <img src="assets/shamanic-03.jpg" alt="装置素描">
+        <img src="assets/shamanic-05.jpg" alt="演出效果">
       </div>
       <p class="label" style="margin-bottom:6px">技术栈</p>
       <p style="font-size:10.5px;color:var(--g1);line-height:1.9">TGAM 脑波传感器 · Arduino 控制光带<br>Kinect2 体感追踪 · TouchDesigner 实时视觉 · 投影映射</p>
@@ -578,10 +577,10 @@ html,body{font-family:var(--sans);background:var(--white);color:var(--black);lin
       <div class="exp-title">Painted Dreamscape</div>
       <p class="exp-sub">对抗 AI 同质化的儿童创造力游戏</p>
       <div class="challenge" style="margin:10px 0"><blockquote style="font-size:12px">AI 艺术工具的普及正在削弱儿童的原创想象力——过度依赖 AI 生成图像，导致创造意愿逐步退化。</blockquote></div>
-      <img src="assets/painted-01.jpg" alt="Painted Dreamscape" style="width:100%;height:170px;object-fit:cover;display:block;margin-bottom:8px">
+      <img class="exp-main-img" src="assets/painted-01.jpg" alt="Painted Dreamscape">
       <div class="g2" style="margin-bottom:8px">
-        <img src="assets/painted-04.jpg" alt="Blender 场景" style="height:120px;object-fit:cover">
-        <img src="assets/painted-05.jpg" alt="游戏实现" style="height:120px;object-fit:cover">
+        <img src="assets/painted-04.jpg" alt="Blender 场景">
+        <img src="assets/painted-05.jpg" alt="游戏实现">
       </div>
       <p class="label" style="margin-bottom:6px">4 个关卡</p>
       <p style="font-size:10.5px;color:var(--g1);line-height:1.9">Level 1 色彩填充 · Level 2 绘画接龙<br>Level 3 场景重建 · Level 4 自由创作</p>
@@ -619,28 +618,27 @@ html,body{font-family:var(--sans);background:var(--white);color:var(--black);lin
   <p class="img-cap">Lance Lightning — 概念跑车设计</p>
 
   <div class="g2">
-    <div><img src="assets/car-02.png" alt="Racing Night" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">Stage 1 — Racing Night 主题概念</p></div>
-    <div><img src="assets/car-03.png" alt="骑士头盔" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">Stage 2 — 骑士头盔灵感转化</p></div>
+    <div><img src="assets/car-02.png" alt="Racing Night"><p class="img-cap" style="margin-bottom:0">Stage 1 — Racing Night 主题概念</p></div>
+    <div><img src="assets/car-03.png" alt="骑士头盔"><p class="img-cap" style="margin-bottom:0">Stage 2 — 骑士头盔灵感转化</p></div>
   </div>
   <div class="g2" style="margin-top:8px">
-    <div><img src="assets/car-04.png" alt="草图 1" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">Stage 3 — 多视角手绘草图</p></div>
-    <div><img src="assets/car-05.png" alt="草图 2" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">细节推敲 — 车头造型 · 曲面关系</p></div>
+    <div><img src="assets/car-04.png" alt="草图 1"><p class="img-cap" style="margin-bottom:0">Stage 3 — 多视角手绘草图</p></div>
+    <div><img src="assets/car-05.png" alt="草图 2"><p class="img-cap" style="margin-bottom:0">细节推敲 — 车头造型 · 曲面关系</p></div>
   </div>
 
   <img class="img-full" src="assets/car-06.png" alt="最终渲染" style="margin-top:8px">
   <p class="img-cap">Final Concept — 正侧面渲染 · 流线车身 · 骑士甲胄美学</p>
 
   <div class="g2">
-    <div><img src="assets/car-07.png" alt="四分之三视图" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">四分之三视图 — 车头 · 引擎盖线条</p></div>
-    <div><img src="assets/car-08.png" alt="后视图" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">后视图 — 尾部造型 · 排气布局</p></div>
+    <div><img src="assets/car-07.png" alt="四分之三视图"><p class="img-cap" style="margin-bottom:0">四分之三视图 — 车头 · 引擎盖线条</p></div>
+    <div><img src="assets/car-08.png" alt="后视图"><p class="img-cap" style="margin-bottom:0">后视图 — 尾部造型 · 排气布局</p></div>
   </div>
 
   <div class="outcomes" style="margin-top:14px">
     <p class="label">设计成果</p>
     <div class="out-grid">
-      <div class="out-item"><div class="out-num">4</div><div class="out-text">设计阶段：定义 → 灵感 → 草图 → 渲染，完整工业设计流程</div></div>
-      <div class="out-item"><div class="out-num">2</div><div class="out-text">核心灵感：Racing Night 夜行主题 + 骑士头盔结构美学</div></div>
-      <div class="out-item"><div class="out-num">全</div><div class="out-text">从概念方向到最终三视角渲染，完整设计方案交付</div></div>
+      <div class="out-item"><div class="out-num">4</div><div class="out-text">设计推演阶段：主题定义 → 灵感转化 → 草图推敲 → 最终渲染</div></div>
+      <div class="out-item"><div class="out-num">3</div><div class="out-text">视角渲染交付：正侧面 · 四分之三 · 后视图</div></div>
     </div>
   </div>
 </div>
@@ -662,7 +660,7 @@ html,body{font-family:var(--sans);background:var(--white);color:var(--black);lin
 
   <div class="decision-box">
     <p class="label">产品背景</p>
-    <p>作为 HCI 研究方向的学生，我在参与 scoping review 写作时发现：研究者花大量时间在机械性工作上，而这些完全可以被自动化。同时，AI 写作工具最大风险是<strong>「编造证据」</strong>——我决定把「不编造」设计为核心约束，而非一条补充说明。</p>
+    <p>在参与 scoping review 写作时发现：研究者花了大量时间在机械性工作上，这些完全可以被自动化。同时 AI 工具最大的风险是<strong>「编造文献」</strong>——所以把「不编造」做成了硬约束，而不是一条说明。</p>
   </div>
 
   <div class="process">
