@@ -65,6 +65,26 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 }
 .page-in{animation:pageIn .42s var(--ease) both}
 
+/*─ Custom cursor ─*/
+.c-dot{
+  position:fixed;pointer-events:none;z-index:9999;
+  width:8px;height:8px;border-radius:50%;background:var(--black);
+  transform:translate(-50%,-50%);mix-blend-mode:difference;
+  transition:opacity .2s,width .25s var(--ease),height .25s var(--ease);
+}
+.c-ring{
+  position:fixed;pointer-events:none;z-index:9998;
+  width:38px;height:38px;border-radius:50%;
+  border:1.5px solid rgba(13,13,13,.18);
+  transform:translate(-50%,-50%);
+  transition:width .35s var(--ease),height .35s var(--ease),border-color .35s,opacity .2s;
+}
+.c-ring.on{width:56px;height:56px;border-color:rgba(13,13,13,.32)}
+@media(pointer:coarse){.c-dot,.c-ring{display:none}}
+
+/*─ Proj-bg smooth parallax ─*/
+.proj-bg{transition:transform .55s var(--ease)}
+
 /*─ Hero ─*/
 .hero{
   min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;
@@ -1745,6 +1765,7 @@ function showPage(page, push) {
     const sec = document.getElementById(id)
     if (sec) sec.querySelectorAll('.r:not(.v)').forEach(el => io.observe(el))
   })
+  if (page === 'about') runBars()
 }
 
 // ── Boot ─────────────────────────────────────────────────────
@@ -1824,6 +1845,70 @@ document.addEventListener('click', e => {
   const btn = e.target.closest('.page-nav-btn')
   if (btn) showPage(btn.dataset.page)
 })
+
+// ── Custom cursor ─────────────────────────────────────────
+if (window.matchMedia('(pointer:fine)').matches) {
+  const cDot  = Object.assign(document.createElement('div'), {className:'c-dot'})
+  const cRing = Object.assign(document.createElement('div'), {className:'c-ring'})
+  document.body.append(cDot, cRing)
+  let mx = -200, my = -200, rx = -200, ry = -200
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY })
+  ;(function raf() {
+    rx += (mx - rx) * .11; ry += (my - ry) * .11
+    cDot.style.cssText  += `;left:${mx}px;top:${my}px`
+    cRing.style.cssText += `;left:${rx}px;top:${ry}px`
+    requestAnimationFrame(raf)
+  })()
+  document.addEventListener('mouseleave', () => { cDot.style.opacity='0'; cRing.style.opacity='0' })
+  document.addEventListener('mouseenter', () => { cDot.style.opacity='1'; cRing.style.opacity='1' })
+  document.addEventListener('mouseover', e => {
+    cRing.classList.toggle('on', !!e.target.closest('a,button,.card'))
+  })
+}
+
+// ── Card 3D tilt ──────────────────────────────────────────
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect()
+    const x = ((e.clientX - r.left) / r.width  - .5) * 16
+    const y = ((e.clientY - r.top)  / r.height - .5) * 16
+    card.style.transition = 'border-color .25s,box-shadow .12s'
+    card.style.transform  = `perspective(700px) translateY(-4px) rotateX(${-y}deg) rotateY(${x}deg)`
+    card.style.boxShadow  = `${-x * .6}px ${y * .6}px 32px rgba(0,0,0,.1)`
+  })
+  card.addEventListener('mouseleave', () => {
+    card.style.transition = 'border-color .25s,transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s'
+    card.style.transform  = ''
+    card.style.boxShadow  = ''
+  })
+})
+
+// ── Proj-bg parallax ─────────────────────────────────────
+document.querySelectorAll('.proj').forEach(proj => {
+  const bg = proj.querySelector('.proj-bg')
+  if (!bg) return
+  proj.addEventListener('mousemove', e => {
+    const x = (e.clientX / window.innerWidth - .5) * -28
+    const r = proj.getBoundingClientRect()
+    const y = ((e.clientY - r.top) / r.height - .5) * -18
+    bg.style.transform = `translate(${x}px,${y}px)`
+  })
+  proj.addEventListener('mouseleave', () => { bg.style.transform = '' })
+})
+
+// ── Skill bars animate in ─────────────────────────────────
+const barFills = [...document.querySelectorAll('.bar-fill')]
+barFills.forEach(f => { f._w = f.style.width; f.style.width = '0'; f.style.transition = 'none' })
+let barsPlayed = false
+function runBars() {
+  if (barsPlayed) return; barsPlayed = true
+  barFills.forEach((f, i) => {
+    setTimeout(() => {
+      f.style.transition = 'width 1.1s cubic-bezier(.16,1,.3,1)'
+      f.style.width = f._w
+    }, i * 100 + 200)
+  })
+}
 </script>
 </body>
 </html>
