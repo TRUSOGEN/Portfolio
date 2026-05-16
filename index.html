@@ -42,7 +42,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   background:rgba(255,255,255,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   border-bottom:1px solid var(--g4);
 }
-.nav-name{font-family:var(--serif);font-size:16px;font-style:italic;letter-spacing:.01em}
+.nav-name{font-family:var(--serif);font-size:16px;font-style:italic;letter-spacing:.01em;white-space:nowrap;flex-shrink:0}
 .nav-links{display:flex;gap:22px}
 .nav-links a{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:var(--black)}
@@ -53,6 +53,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   padding-bottom:3px;
   border-bottom:2px solid transparent;
   transition:color .2s,border-color .28s var(--ease);
+  white-space:nowrap;flex-shrink:0;
 }
 .nav-links .nav-tab:hover{color:var(--black)}
 .nav-links .nav-tab.active{color:var(--black);border-bottom-color:var(--black)}
@@ -324,6 +325,22 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 .footer-col a:hover{border-color:var(--black)}
 .footer-copy{font-size:11px;color:var(--g3);letter-spacing:.06em;border-top:1px solid var(--g4);padding-top:24px}
 
+/*─ Home project index ─*/
+.proj-index{margin-top:80px;padding-top:48px;border-top:1px solid var(--g4)}
+.proj-index-label{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--g2);margin-bottom:28px}
+.proj-index-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--g4);border:1px solid var(--g4)}
+.proj-index-item{
+  background:var(--white);border:none;cursor:pointer;
+  display:flex;align-items:center;gap:14px;padding:18px 20px;
+  font-family:var(--sans);text-align:left;transition:background .2s;width:100%;
+}
+.proj-index-item:hover{background:var(--g6)}
+.proj-index-num{font-size:10px;letter-spacing:.2em;color:var(--g3);flex-shrink:0;font-variant-numeric:tabular-nums;min-width:22px}
+.proj-index-name{font-size:13.5px;color:var(--g1);flex:1;transition:color .2s;line-height:1.35}
+.proj-index-item:hover .proj-index-name{color:var(--black)}
+.proj-index-arrow{font-size:12px;color:var(--g4);transition:color .2s,transform .2s;flex-shrink:0}
+.proj-index-item:hover .proj-index-arrow{color:var(--g2);transform:translateX(2px)}
+
 /*─ Responsive ─*/
 @media(max-width:960px){
   .about-grid{grid-template-columns:1fr;gap:40px}
@@ -335,6 +352,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   .feat-grid{grid-template-columns:1fr}
   .tech-row{grid-template-columns:1fr}
   .footer-cols{grid-template-columns:1fr 1fr}
+  .nav{padding:0 16px}
   .nav-links{display:flex;overflow-x:auto;gap:16px;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-right:12px}
   .nav-links::-webkit-scrollbar{display:none}
   .card-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
@@ -346,6 +364,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   .footer-cols{grid-template-columns:1fr}
   .proj-bg{font-size:80px;top:16px}
   .card-grid{grid-template-columns:1fr 1fr}
+  .proj-index-grid{grid-template-columns:1fr 1fr}
 }
 @media print{
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -1826,6 +1845,33 @@ const PAGE_NAV_TARGET = {
 PAGE_ORDER.forEach((page, i) => {
   const prevPage = PAGE_ORDER[i - 1]
   const nextPage = PAGE_ORDER[i + 1]
+  const target = document.querySelector(PAGE_NAV_TARGET[page])
+  if (!target) return
+
+  if (page === 'home') {
+    // Project index grid instead of a single "next" arrow
+    const PROJ_LIST = [
+      {page:'ccm',       num:'01', name:'CCM 化工情报平台'},
+      {page:'greenloop', num:'02', name:'Greenloop'},
+      {page:'skysoar',   num:'03', name:'SKY SOAR'},
+      {page:'medguard',  num:'04', name:'守 MedGuard'},
+      {page:'turboresq', num:'05', name:'TurboResQ'},
+      {page:'more',      num:'06', name:'装置 / 游戏'},
+      {page:'car',       num:'08', name:'Lance Lightning'},
+      {page:'scoping',   num:'09', name:'Scoping Review'},
+      {page:'contact',   num:'·',  name:'联系 / Contact'},
+    ]
+    const idx = document.createElement('div')
+    idx.className = 'proj-index'
+    idx.innerHTML = `<p class="proj-index-label">全部作品 / All Projects</p><div class="proj-index-grid">${
+      PROJ_LIST.map(p =>
+        `<button class="proj-index-item" data-page="${p.page}"><span class="proj-index-num">${p.num}</span><span class="proj-index-name">${p.name}</span><span class="proj-index-arrow">→</span></button>`
+      ).join('')
+    }</div>`
+    target.appendChild(idx)
+    return
+  }
+
   const nav = document.createElement('div')
   nav.className = 'page-nav'
   if (prevPage) {
@@ -1844,18 +1890,15 @@ PAGE_ORDER.forEach((page, i) => {
     btn.innerHTML = `<span class="page-nav-dir">下一个 →</span><span class="page-nav-name">${PAGE_LABELS[nextPage]}</span>`
     nav.appendChild(btn)
   }
-  const target = document.querySelector(PAGE_NAV_TARGET[page])
-  if (target) {
-    if (page === 'contact') {
-      const copy = target.querySelector('.footer-copy')
-      copy ? target.insertBefore(nav, copy) : target.appendChild(nav)
-    } else {
-      target.appendChild(nav)
-    }
+  if (page === 'contact') {
+    const copy = target.querySelector('.footer-copy')
+    copy ? target.insertBefore(nav, copy) : target.appendChild(nav)
+  } else {
+    target.appendChild(nav)
   }
 })
 document.addEventListener('click', e => {
-  const btn = e.target.closest('.page-nav-btn')
+  const btn = e.target.closest('.page-nav-btn, .proj-index-item')
   if (btn) showPage(btn.dataset.page)
 })
 
