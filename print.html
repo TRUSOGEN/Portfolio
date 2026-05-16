@@ -9,14 +9,14 @@
 <style>
 @page{size:A4;margin:18mm 22mm}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-img{display:block;max-width:100%}
+img{display:block;max-width:100%;image-rendering:high-quality;image-rendering:-webkit-optimize-contrast;-ms-interpolation-mode:bicubic}
 a{color:inherit;text-decoration:none}
 :root{
   --white:#FFFFFF;--black:#0D0D0D;--g1:#555;--g2:#999;--g3:#C8C8C4;--g4:#E6E6E2;--g5:#F5F5F2;--g6:#FAFAF8;
   --serif:'Playfair Display','Noto Serif SC',Georgia,serif;
   --sans:'Inter','Noto Sans SC',-apple-system,sans-serif;
 }
-html,body{font-family:var(--sans);background:var(--white);color:var(--black);line-height:1.7;-webkit-font-smoothing:antialiased;font-size:14px}
+html,body{font-family:var(--sans);background:var(--white);color:var(--black);line-height:1.7;-webkit-font-smoothing:antialiased;font-size:14px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 
 /* Labels */
 .label{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--g2);margin-bottom:6px}
@@ -137,9 +137,9 @@ html,body{font-family:var(--sans);background:var(--white);color:var(--black);lin
 .jtbd-table td{font-size:12px;color:var(--g1);padding:9px 10px;border:1px solid var(--g4);vertical-align:top;line-height:1.6}
 
 /* Phones */
-.phones-row{display:flex;gap:8px;margin:14px 0}
+.phones-row{display:flex;gap:10px;margin:14px 0}
 .phone-item{flex:1}
-.phone-item img{width:100%;display:block;border-radius:6px;border:1px solid var(--g4)}
+.phone-item img{width:100%;display:block;border-radius:6px;border:1px solid var(--g4);height:200px;object-fit:cover;object-position:top center}
 .phone-cap{text-align:center;font-size:10px;color:var(--g2);margin-top:5px}
 
 /* Swatches */
@@ -332,15 +332,13 @@ html,body{font-family:var(--sans);background:var(--white);color:var(--black);lin
   <img class="img-full" src="assets/greenloop-04.jpg" alt="App 设计全过程">
   <p class="img-cap">App 设计全过程 — 用户流图 · 低保真线框 · 高保真原型 · 系统地图</p>
 
-  <p class="label" style="margin-bottom:8px">高保真 App 界面 — 7 个核心页面</p>
+  <p class="label" style="margin-bottom:8px">高保真 App 界面 — 核心页面</p>
   <div class="phones-row">
     <div class="phone-item"><img src="assets/nongya-app-01.png" alt="回收地图"><p class="phone-cap">回收地图</p></div>
     <div class="phone-item"><img src="assets/nongya-app-02.png" alt="附近装置"><p class="phone-cap">附近装置</p></div>
     <div class="phone-item"><img src="assets/nongya-app-03.png" alt="装置详情"><p class="phone-cap">装置详情</p></div>
     <div class="phone-item"><img src="assets/nongya-app-04.png" alt="资讯详情"><p class="phone-cap">资讯详情</p></div>
-    <div class="phone-item"><img src="assets/nongya-app-05.png" alt="消息通知"><p class="phone-cap">消息通知</p></div>
     <div class="phone-item"><img src="assets/nongya-app-06.png" alt="待回收清单"><p class="phone-cap">待回收清单</p></div>
-    <div class="phone-item"><img src="assets/nongya-app-07.png" alt="个人账户"><p class="phone-cap">个人账户</p></div>
   </div>
 
   <p class="label" style="margin-bottom:8px">一体化回收收购装置 — 五面渲染</p>
