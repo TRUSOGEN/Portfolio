@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>吴业亘 · 作品集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:16mm 20mm}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+:root{
+  --white:#FFFFFF;--black:#0D0D0D;--g1:#555;--g2:#999;--g3:#C8C8C4;--g4:#E6E6E2;--g5:#F5F5F2;--g6:#FAFAF8;
+  --serif:'Playfair Display','Noto Serif SC',Georgia,serif;
+  --sans:'Inter','Noto Sans SC',-apple-system,sans-serif;
+}
+html,body{font-family:var(--sans);background:var(--white);color:var(--black);line-height:1.65;-webkit-font-smoothing:antialiased;font-size:13px}
+
+/* Labels */
+.label{font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:var(--g2);margin-bottom:6px}
+
+/* ── Cover ── */
+.cover{min-height:100vh;display:flex;flex-direction:column;justify-content:center;break-after:page}
+.eyebrow{font-size:9.5px;letter-spacing:.4em;text-transform:uppercase;color:var(--g2);margin-bottom:24px;display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--g3)}
+.cover-name{font-family:var(--serif);font-size:80px;font-weight:600;line-height:.95;letter-spacing:-.025em;margin-bottom:10px}
+.cover-name-en{font-family:var(--serif);font-size:32px;font-style:italic;font-weight:400;color:var(--g2);margin-bottom:28px}
+.cover-rule{border:none;border-top:1px solid var(--g4);margin:24px 0}
+.contact-row{display:flex;gap:0;flex-wrap:wrap;margin-bottom:28px;border:1px solid var(--g4)}
+.contact-item{padding:10px 16px;border-right:1px solid var(--g4);font-size:11px;color:var(--g1)}
+.contact-item:last-child{border-right:none}
+.contact-item strong{color:var(--black);font-weight:500}
+.cover-bio{font-size:13.5px;font-weight:300;color:var(--g1);line-height:1.8;max-width:500px;margin-bottom:36px}
+.cover-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;margin-top:8px}
+
+/* Education */
+.edu-block{border-top:1px solid var(--g4);padding-top:16px}
+.edu-item{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--g5);gap:8px}
+.edu-l{font-size:12.5px;font-weight:500}
+.edu-r{font-size:10.5px;color:var(--g2);white-space:nowrap}
+
+/* TOC table */
+.toc{width:100%;border-collapse:collapse;margin-top:24px;font-size:11px}
+.toc td{padding:5px 0;border-bottom:1px solid var(--g5);vertical-align:middle}
+.toc .num{color:var(--g2);width:20px}
+.toc .name{padding:5px 10px;font-weight:500}
+.toc .meta{color:var(--g2);text-align:right;white-space:nowrap}
+
+/* Skills panel */
+.skills-panel{border:1px solid var(--g4);padding:18px}
+.bar-item{margin-bottom:11px}
+.bar-label{font-size:10.5px;color:var(--g1);margin-bottom:4px}
+.bar-track{height:1.5px;background:var(--g4);position:relative}
+.bar-fill{position:absolute;left:0;top:0;height:1.5px;background:var(--black)}
+.sg-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.sg h4{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--g2);margin-bottom:7px;padding-bottom:4px;border-bottom:1px solid var(--g4)}
+.sg li{list-style:none;font-size:10.5px;color:var(--g1);padding:3px 0;border-bottom:1px solid var(--g6)}
+
+/* ── Project ── */
+.proj{break-before:page;padding-top:6mm}
+.proj-meta{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.proj-seq{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--g2)}
+.tags{display:flex;gap:5px;flex-wrap:wrap}
+.tag{font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--g3);padding:2px 7px;color:var(--g1)}
+.tag-dark{background:var(--black);color:var(--white);border-color:var(--black)}
+.proj-title{font-family:var(--serif);font-size:48px;line-height:1;font-weight:600;letter-spacing:-.02em;margin-bottom:5px}
+.proj-sub{font-size:12.5px;color:var(--g1);font-weight:300;margin-bottom:20px}
+.proj-rule{border:none;border-top:1px solid var(--g4);margin-bottom:18px}
+
+/* Challenge */
+.challenge{border-left:2px solid var(--black);padding:2px 0 2px 18px;margin:16px 0;break-inside:avoid}
+.challenge blockquote{font-family:var(--serif);font-size:13px;line-height:1.7;font-style:italic;color:var(--g1)}
+
+/* Role bar */
+.role-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--g4);border:1px solid var(--g4);margin:16px 0;break-inside:avoid}
+.role-cell{background:var(--white);padding:14px}
+.role-cell p{font-size:11px;color:var(--g1);line-height:1.9}
+.role-cell strong{font-weight:500;color:var(--black);font-size:12px}
+
+/* Process */
+.process{margin:16px 0;break-inside:avoid}
+.process-steps{display:grid;grid-template-columns:repeat(5,1fr);position:relative;gap:0}
+.process-steps::before{content:'';position:absolute;top:14px;left:10%;right:10%;height:1px;background:var(--g4);z-index:0}
+.ps{text-align:center;padding:0 3px}
+.ps-dot{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--black);display:flex;align-items:center;justify-content:center;margin:0 auto 9px;background:var(--white);font-size:7.5px;font-weight:600;position:relative;z-index:1}
+.ps-dot.on{background:var(--black);color:var(--white)}
+.ps-name{font-size:9.5px;font-weight:500;margin-bottom:4px}
+.ps-text{font-size:8.5px;color:var(--g1);line-height:1.5}
+
+/* Images */
+.img-full{width:100%;max-height:300px;object-fit:cover;display:block;margin-bottom:4px}
+.img-cap{font-size:9px;color:var(--g2);letter-spacing:.05em;text-transform:uppercase;margin-bottom:16px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:4px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:4px}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:4px}
+.g2 img,.g3 img,.g5 img{width:100%;object-fit:cover;display:block}
+
+/* Insights */
+.insight-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0;break-inside:avoid}
+.insight{padding:12px;background:var(--g6);border-left:2px solid var(--black);break-inside:avoid}
+.insight-label{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--g2);margin-bottom:4px}
+.insight-text{font-size:11px;color:var(--black);line-height:1.55}
+
+/* Decision / Note */
+.decision-box{background:var(--g6);padding:14px 16px;margin:14px 0;border-top:2px solid var(--black);break-inside:avoid}
+.decision-box p{font-size:11.5px;color:var(--g1);line-height:1.7}
+.decision-box strong{color:var(--black)}
+.note-box{padding:12px 16px;border:1px solid var(--g4);margin:12px 0;break-inside:avoid}
+.note-box p{font-size:11.5px;color:var(--g1);line-height:1.7}
+.note-box strong{color:var(--black);font-weight:500}
+
+/* Outcomes */
+.outcomes{background:var(--g6);padding:14px 16px;margin:14px 0;break-inside:avoid}
+.out-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:10px}
+.out-item{padding-left:10px;border-left:2px solid var(--black)}
+.out-num{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.1;margin-bottom:3px}
+.out-text{font-size:10px;color:var(--g1);line-height:1.5}
+
+/* Feature grid */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--g4);border:1px solid var(--g4);margin:14px 0;break-inside:avoid}
+.feat{background:var(--white);padding:13px;break-inside:avoid}
+.feat h4{font-size:10.5px;font-weight:500;margin-bottom:4px}
+.feat p{font-size:10px;color:var(--g1);line-height:1.55}
+
+/* Tech */
+.tech-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;break-inside:avoid}
+.tech-block{padding:12px;border:1px solid var(--g4)}
+.tech-block h4{font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);margin-bottom:9px;padding-bottom:5px;border-bottom:1px solid var(--g4)}
+.tech-block li{list-style:none;font-size:10.5px;color:var(--g1);padding:3px 0;border-bottom:1px solid var(--g6);display:flex;gap:5px}
+.tech-block li::before{content:'›';color:var(--g3)}
+
+/* JTBD */
+.jtbd-table{width:100%;border-collapse:collapse;margin:12px 0;break-inside:avoid}
+.jtbd-table th{font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--g2);padding:7px 9px;background:var(--g6);border:1px solid var(--g4);text-align:left}
+.jtbd-table td{font-size:10.5px;color:var(--g1);padding:8px 9px;border:1px solid var(--g4);vertical-align:top;line-height:1.5}
+
+/* Phones */
+.phones-row{display:flex;gap:8px;margin:14px 0}
+.phone-item{flex:1}
+.phone-item img{width:100%;display:block;border-radius:6px;border:1px solid var(--g4)}
+.phone-cap{text-align:center;font-size:8px;color:var(--g2);margin-top:4px}
+
+/* Swatches */
+.swatches{display:flex;gap:7px;margin:10px 0}
+.swatch{flex:1;min-width:50px;height:40px;display:flex;align-items:flex-end;padding:5px 6px;border-radius:2px}
+.swatch span{font-size:7.5px;letter-spacing:.02em}
+.swatch.lt span{color:rgba(0,0,0,.4)}
+.swatch.dk span{color:rgba(255,255,255,.7)}
+
+/* Exp side-by-side */
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.exp-title{font-family:var(--serif);font-size:26px;font-weight:600;line-height:1;margin-bottom:4px}
+.exp-sub{font-size:11px;color:var(--g1);font-weight:300;margin-bottom:12px}
+
+/* End page */
+.end-page{break-before:page;display:flex;flex-direction:column;justify-content:flex-end;min-height:80vh}
+.end-name{font-family:var(--serif);font-size:60px;font-style:italic;font-weight:400;line-height:1;margin-bottom:36px}
+.end-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;border-top:1px solid var(--g4);padding-top:24px;margin-bottom:24px}
+.end-col .label{margin-bottom:10px}
+.end-col p{font-size:11.5px;color:var(--g1);line-height:2}
+</style>
+</head>
+<body>
+
+<!-- ═══ COVER ═══ -->
+<div class="cover">
+  <p class="eyebrow">产品设计 &nbsp;·&nbsp; 交互设计 &nbsp;·&nbsp; UX 研究</p>
+  <div class="cover-name">吴业亘</div>
+  <div class="cover-name-en">YEGEN Wu</div>
+  <div class="contact-row">
+    <span class="contact-item"><strong>邮件</strong> &nbsp;trusowyg@163.com</span>
+    <span class="contact-item"><strong>微信</strong> &nbsp;TRUSOGEN</span>
+    <span class="contact-item"><strong>GitHub</strong> &nbsp;TRUSOGEN</span>
+    <span class="contact-item"><strong>所在地</strong> &nbsp;Sydney, AU</span>
+  </div>
+  <hr class="cover-rule">
+  <p class="cover-bio">设计从真实问题出发——去农田访谈农户、分析论坛中的恐惧叙事、观察老人如何与手机互动。研究不是流程里的一步，而是所有决策的起点。媒介涉及 Web 应用、VR 空间界面、Arduino 硬件装置、Roblox 游戏及 AI 工具产品。</p>
+
+  <div class="cover-grid">
+    <div>
+      <p class="label" style="margin-bottom:14px">教育背景</p>
+      <div class="edu-block">
+        <div class="edu-item"><span class="edu-l">悉尼大学 · 研究生在读</span><span class="edu-r">2025 — 至今 · Sydney, AU</span></div>
+        <div class="edu-item"><span class="edu-l">重庆大学 · 艺术学院 · 产品设计</span><span class="edu-r">2020 — 2024 · Chongqing, CN</span></div>
+      </div>
+
+      <p class="label" style="margin-top:22px;margin-bottom:10px">项目一览</p>
+      <table class="toc">
+        <tr><td class="num">01</td><td class="name">CCM 化工情报平台</td><td class="meta">B2B SaaS · 全职 · 2025</td></tr>
+        <tr><td class="num">02</td><td class="name">Greenloop 农药废弃物回收</td><td class="meta">服务设计 · 毕业设计 · 2024</td></tr>
+        <tr><td class="num">03</td><td class="name">SKY SOAR · VR 飞行焦虑</td><td class="meta">Apple Vision Pro · 2025</td></tr>
+        <tr><td class="num">04</td><td class="name">守 MedGuard · 慢病用药管理</td><td class="meta">UI · Next.js · 2025</td></tr>
+        <tr><td class="num">05</td><td class="name">TurboResQ · 高速公路救援装置</td><td class="meta">硬件 · Arduino · 2023</td></tr>
+        <tr><td class="num">06</td><td class="name">Shamanic Echoes · 脑波装置</td><td class="meta">交互装置 · 2023</td></tr>
+        <tr><td class="num">07</td><td class="name">Painted Dreamscape · 儿童游戏</td><td class="meta">Roblox · UX · 2023</td></tr>
+        <tr><td class="num">08</td><td class="name">Lance Lightning · 概念跑车</td><td class="meta">工业设计 · 2023</td></tr>
+        <tr><td class="num">09</td><td class="name">Scoping Review Skill</td><td class="meta">AI 工具 · 开源 · 2025</td></tr>
+      </table>
+    </div>
+
+    <div>
+      <div class="skills-panel">
+        <p class="label">核心能力</p>
+        <div style="margin-top:10px">
+          <div class="bar-item"><div class="bar-label">前端开发 · Next.js / React / TypeScript</div><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div></div>
+          <div class="bar-item"><div class="bar-label">Figma · 高保真原型 · 设计系统</div><div class="bar-track"><div class="bar-fill" style="width:94%"></div></div></div>
+          <div class="bar-item"><div class="bar-label">AI 工具设计 · Prompt Engineering</div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+          <div class="bar-item"><div class="bar-label">服务设计 · 系统蓝图 · 用户研究</div><div class="bar-track"><div class="bar-fill" style="width:86%"></div></div></div>
+          <div class="bar-item"><div class="bar-label">VR 空间界面 · Apple Vision Pro</div><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div></div>
+          <div class="bar-item"><div class="bar-label">硬件原型 · Arduino</div><div class="bar-track"><div class="bar-fill" style="width:72%"></div></div></div>
+        </div>
+        <div class="sg-grid">
+          <div class="sg"><h4>设计工具</h4><ul><li>Figma / Framer</li><li>Blender</li><li>TouchDesigner</li><li>Adobe Creative Suite</li></ul></div>
+          <div class="sg"><h4>研究方法</h4><ul><li>实地调研 / 访谈</li><li>Persona / Journey Map</li><li>启发式评估</li><li>KJ 法 / JTBD</li></ul></div>
+          <div class="sg"><h4>实现技术</h4><ul><li>Next.js / TypeScript</li><li>Arduino / 硬件</li><li>Roblox Studio</li><li>Python</li></ul></div>
+          <div class="sg"><h4>设计领域</h4><ul><li>服务设计</li><li>VR / 空间计算</li><li>HCI / 交互研究</li><li>交互装置</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ 01 CCM ═══ -->
+<div class="proj">
+  <div class="proj-meta">
+    <span class="proj-seq">项目 01 / 09</span>
+    <div class="tags"><span class="tag tag-dark">商业产品 · 全职</span><span class="tag">B2B SaaS</span><span class="tag">UX 设计</span><span class="tag">电商系统</span><span class="tag">2025</span></div>
+  </div>
+  <div class="proj-title">CCM</div>
+  <p class="proj-sub">化工行业决策情报平台 &nbsp;·&nbsp; cnchemicals.com &nbsp;·&nbsp; 注册 → 浏览 → 决策 → 支付</p>
+  <hr class="proj-rule">
+
+  <div class="challenge">
+    <blockquote>化工、农业、食品行业的 B2B 采购决策极度依赖行业情报，但现有数据产品大多信息密集、购买路径繁琐——如何让专业买家在海量报告中快速定位所需、完成从发现到付款的完整旅程？</blockquote>
+  </div>
+
+  <div class="role-bar">
+    <div class="role-cell"><p class="label">我的角色</p><p><strong>全职产品 / UX 设计师</strong><br>负责全链路用户体验设计</p></div>
+    <div class="role-cell"><p class="label">覆盖链路</p><p>注册 / 登录 · 账户体系<br>浏览 · 搜索 · 筛选<br>产品详情 · 决策支持<br>购物车 · 结算 · 支付</p></div>
+    <div class="role-cell"><p class="label">产品规模</p><p>15,918 条行业情报<br>化工 / 农业 / 食品 / 医药<br>全球 B2B 专业用户<br>线上真实部署</p></div>
+  </div>
+
+  <div class="process">
+    <p class="label" style="margin-bottom:14px">设计过程</p>
+    <div class="process-steps">
+      <div class="ps"><div class="ps-dot on">01</div><div class="ps-name">用户研究</div><div class="ps-text">分析 B2B 买家决策链路，确立「搜索即决策」核心方向</div></div>
+      <div class="ps"><div class="ps-dot">02</div><div class="ps-name">注册 / 账户</div><div class="ps-text">分步注册流程，支持试用 / 订阅 / 购买三种权限切换</div></div>
+      <div class="ps"><div class="ps-dot">03</div><div class="ps-name">浏览 · 搜索</div><div class="ps-text">E-shop 分类体系重设计，三维筛选系统</div></div>
+      <div class="ps"><div class="ps-dot">04</div><div class="ps-name">决策 · 支付</div><div class="ps-text">产品详情页决策支持，购物车与支付端到端重构</div></div>
+      <div class="ps"><div class="ps-dot">05</div><div class="ps-name">迭代上线</div><div class="ps-text">与研发协作，收集数据持续优化转化漏斗</div></div>
+    </div>
+  </div>
+
+  <img class="img-full" src="assets/cnchem-home.png" alt="CCM 主页">
+  <p class="img-cap">CCM 主页 — Decision Intelligence for Vertical Markets · 化工 / 农业 / 食品 / 医药</p>
+
+  <img class="img-full" src="assets/cnchem-eshop.png" alt="CCM E-shop">
+  <p class="img-cap">E-shop — 四维 Tab 分类 · 行业树形筛选 · 时间范围过滤 · 1778 条报告可购</p>
+
+  <img class="img-full" src="assets/cnchem-databases.png" alt="CCM Databases">
+  <p class="img-cap">Databases — 数据库订阅 · 行业报告 · 实时市场数据</p>
+
+  <p class="label" style="margin-top:16px;margin-bottom:10px">核心设计决策</p>
+  <div class="insight-row">
+    <div class="insight"><div class="insight-label">搜索即决策</div><div class="insight-text">B2B 用户目标明确——搜索框设计为全局最高优先级，支持标题 + 内容双维度检索，首屏即可完成意图输入</div></div>
+    <div class="insight"><div class="insight-label">权限分层 UX</div><div class="insight-text">试用 / 订阅 / 单次购买用户信息访问权限不同——将「权限边界」转化为「激励转化触点」</div></div>
+    <div class="insight"><div class="insight-label">筛选 × 分类双轨</div><div class="insight-text">左侧行业树形导航 + 顶部 Tab 内容分类，双轨并行满足不同专业背景买家的浏览习惯</div></div>
+    <div class="insight"><div class="insight-label">全链路一致性</div><div class="insight-text">从注册到支付，设计语言与状态反馈保持一致，确保用户始终知道「我在哪 / 下一步是什么」</div></div>
+  </div>
+
+  <div class="outcomes">
+    <p class="label">设计成果</p>
+    <div class="out-grid">
+      <div class="out-item"><div class="out-num">全</div><div class="out-text">注册 → 浏览 → 决策 → 支付完整链路，已正式对外发布运营</div></div>
+      <div class="out-item"><div class="out-num">15K+</div><div class="out-text">行业情报条目可被高效检索，三套系统协同覆盖</div></div>
+      <div class="out-item"><div class="out-num">B2B</div><div class="out-text">化工 / 农业 / 食品 / 医药四大垂直行业，全球专业买家</div></div>
+      <div class="out-item"><div class="out-num">真实</div><div class="out-text">商业产品全职工作，设计决策在真实业务压力下完成验证</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ 02 GREENLOOP ═══ -->
+<div class="proj">
+  <div class="proj-meta">
+    <span class="proj-seq">项目 02 / 09</span>
+    <div class="tags"><span class="tag tag-dark">毕业设计</span><span class="tag">服务设计</span><span class="tag">产品设计</span><span class="tag">用户研究</span><span class="tag">2023 — 2024</span></div>
+  </div>
+  <div class="proj-title">Greenloop</div>
+  <p class="proj-sub">农药包装废弃物回收服务系统 &nbsp;·&nbsp; 重庆大学本科毕业设计</p>
+  <hr class="proj-rule">
+
+  <div class="challenge">
+    <blockquote>2019 年中国农药使用量达 139.1 万吨，废弃物大多随意丢弃——回收率不足 30%，土壤与地下水污染持续加剧。一个完整的系统性缺口，正在等待被设计来解决。</blockquote>
+  </div>
+
+  <img class="img-full" src="assets/greenloop-01.jpg" alt="Greenloop 总览">
+  <p class="img-cap">项目概览 — 服务设计 · 交互设计 · 包装设计三位一体</p>
+
+  <div class="process">
+    <p class="label" style="margin-bottom:14px">设计过程</p>
+    <div class="process-steps">
+      <div class="ps"><div class="ps-dot on">01</div><div class="ps-name">发现问题</div><div class="ps-text">识别农业环保领域关键系统缺口，确立设计方向</div></div>
+      <div class="ps"><div class="ps-dot">02</div><div class="ps-name">田野调研</div><div class="ps-text">赴桃李村实地勘探，访谈农户与农资店主</div></div>
+      <div class="ps"><div class="ps-dot">03</div><div class="ps-name">用户洞察</div><div class="ps-text">3 类用户画像 · 利益相关者地图 · 旅程图</div></div>
+      <div class="ps"><div class="ps-dot">04</div><div class="ps-name">系统设计</div><div class="ps-text">规划涵盖 6 类利益方的回收服务蓝图</div></div>
+      <div class="ps"><div class="ps-dot">05</div><div class="ps-name">产品输出</div><div class="ps-text">三条产品线：回收装置 + App + 包装重设计</div></div>
+    </div>
+  </div>
+
+  <div class="g2" style="margin-top:12px">
+    <div><img src="assets/greenloop-02.jpg" alt="田野调研" style="height:200px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">田野调研 — 桃李村实地勘探 · 农户访谈</p></div>
+    <div><img src="assets/greenloop-03.jpg" alt="用户研究产出" style="height:200px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">用户画像 · 旅程图 · 利益相关者地图</p></div>
+  </div>
+
+  <div class="insight-row">
+    <div class="insight"><div class="insight-label">农户痛点</div><div class="insight-text">废弃物携带不便，无法记录农药信息，回收动机全靠罚款约束而非正向激励</div></div>
+    <div class="insight"><div class="insight-label">农资店痛点</div><div class="insight-text">需要 QR 码追溯系统、高效回收机制、新型设备、科学分类标准四项支持</div></div>
+    <div class="insight"><div class="insight-label">系统层面</div><div class="insight-text">回收站分布不合理，运输成本高；企业缺乏数据，无法建立有效激励闭环</div></div>
+    <div class="insight"><div class="insight-label">机会点</div><div class="insight-text">「身份追溯 + 经济激励 + 宣教优化」三管齐下，系统性提升各方参与意愿</div></div>
+  </div>
+
+  <div class="decision-box">
+    <p class="label">关键设计决策</p>
+    <p>旅程图揭示关键矛盾：农户<strong>知道应该回收</strong>，却<strong>没有便捷路径</strong>。产品方向从「教育引导」转向「降低行动门槛」——将回收站整合进购药场景，让回收与购药在同一设备完成。</p>
+  </div>
+
+  <img class="img-full" src="assets/greenloop-04.jpg" alt="App 设计全过程">
+  <p class="img-cap">App 设计全过程 — 用户流图 · 低保真线框 · 高保真原型 · 系统地图</p>
+
+  <p class="label" style="margin-bottom:8px">高保真 App 界面 — 7 个核心页面</p>
+  <div class="phones-row">
+    <div class="phone-item"><img src="assets/nongya-app-01.png" alt="回收地图"><p class="phone-cap">回收地图</p></div>
+    <div class="phone-item"><img src="assets/nongya-app-02.png" alt="附近装置"><p class="phone-cap">附近装置</p></div>
+    <div class="phone-item"><img src="assets/nongya-app-03.png" alt="装置详情"><p class="phone-cap">装置详情</p></div>
+    <div class="phone-item"><img src="assets/nongya-app-04.png" alt="资讯详情"><p class="phone-cap">资讯详情</p></div>
+    <div class="phone-item"><img src="assets/nongya-app-05.png" alt="消息通知"><p class="phone-cap">消息通知</p></div>
+    <div class="phone-item"><img src="assets/nongya-app-06.png" alt="待回收清单"><p class="phone-cap">待回收清单</p></div>
+    <div class="phone-item"><img src="assets/nongya-app-07.png" alt="个人账户"><p class="phone-cap">个人账户</p></div>
+  </div>
+
+  <p class="label" style="margin-bottom:8px">一体化回收收购装置 — 五面渲染</p>
+  <div class="g5">
+    <img src="assets/nongya-product-front.png" alt="正面" style="height:150px">
+    <img src="assets/nongya-product-left.png" alt="左侧" style="height:150px">
+    <img src="assets/nongya-product-right.png" alt="右侧" style="height:150px">
+    <img src="assets/nongya-product-back.png" alt="后侧" style="height:150px">
+    <img src="assets/nongya-product-top.png" alt="顶视" style="height:150px">
+  </div>
+  <p class="img-cap">正面 · 左侧 · 右侧 · 后侧 · 顶视 — 将回收行为嵌入购药场景</p>
+
+  <img class="img-full" src="assets/greenloop-05.jpg" alt="包装重设计">
+  <p class="img-cap">包装重设计 · 外观实验 · 回收装置实景</p>
+
+  <div class="outcomes">
+    <p class="label">设计成果</p>
+    <div class="out-grid">
+      <div class="out-item"><div class="out-num">3</div><div class="out-text">产品线：回收装置 + App + 包装重设计，完整回收闭环</div></div>
+      <div class="out-item"><div class="out-num">6+</div><div class="out-text">利益相关方：农户、农资店、回收站、企业、运输商、政府</div></div>
+      <div class="out-item"><div class="out-num">7</div><div class="out-text">App 核心页面，回收全流程数字化可追溯</div></div>
+      <div class="out-item"><div class="out-num">优秀</div><div class="out-text">重庆大学 2024 届本科毕业论文（设计）优秀作品</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ 03 SKY SOAR ═══ -->
+<div class="proj">
+  <div class="proj-meta">
+    <span class="proj-seq">项目 03 / 09</span>
+    <div class="tags"><span class="tag tag-dark">VR 界面设计</span><span class="tag">Apple Vision Pro</span><span class="tag">HCI</span><span class="tag">空间计算</span><span class="tag">2025</span></div>
+  </div>
+  <div class="proj-title">SKY SOAR</div>
+  <p class="proj-sub">飞行焦虑缓解系统 &nbsp;·&nbsp; Apple Vision Pro VR 界面设计</p>
+  <hr class="proj-rule">
+
+  <div class="challenge">
+    <blockquote>飞行恐惧症（Aviophobia）影响全球约 25% 的旅客，而现有机舱几乎不提供任何情绪支持——乘客在封闭空间、失控感与高空焦虑中独自应对，没有实时的状态反馈，没有有效的干预手段。</blockquote>
+  </div>
+
+  <div class="insight-row">
+    <div class="insight"><div class="insight-label">为何选择网络民族志</div><div class="insight-text">实验室环境会压制真实恐惧情绪。Reddit、小红书的匿名帖子呈现未经修饰的真实体验，无法在访谈中复现。</div></div>
+    <div class="insight"><div class="insight-label">为何选择 VR</div><div class="insight-text">暴露疗法是焦虑干预的循证方法，VR 能以可控、沉浸的方式重现恐惧场景，Vision Pro 空间音频是关键能力。</div></div>
+    <div class="insight"><div class="insight-label">体感错觉研究</div><div class="insight-text">Somatogravic Illusion 是飞行焦虑的重要生理来源，显示真实飞行参数可用视觉修正本体感觉，减少恐惧。</div></div>
+    <div class="insight"><div class="insight-label">三端分工逻辑</div><div class="insight-text">iPhone 管理信息 · Apple Watch 采集 HRV · VR 提供沉浸体验。功能边界清晰，降低焦虑状态下的认知负荷。</div></div>
+  </div>
+
+  <table class="jtbd-table">
+    <thead><tr><th>用户类型</th><th>Situation（情境）</th><th>Motivation（动机）</th><th>Expected Outcome</th></tr></thead>
+    <tbody>
+      <tr><td><strong>知情控制型</strong></td><td>起飞后感到失控，不知道飞机状态</td><td>通过掌握信息减少未知感</td><td>随时查看飞行状态，感觉「参与」飞行</td></tr>
+      <tr><td><strong>注意力转移型</strong></td><td>颠簸或长途飞行，无法集中</td><td>用沉浸内容打断焦虑思维链</td><td>体验目的地或冥想，时间过得更快</td></tr>
+      <tr><td><strong>生理干预型</strong></td><td>心跳加速、出汗，控制不住身体</td><td>通过呼吸冥想直接干预生理焦虑</td><td>呼吸后心率下降，重获对身体的掌控感</td></tr>
+    </tbody>
+  </table>
+
+  <div class="role-bar">
+    <div class="role-cell"><p class="label">我的角色</p><p><strong>VR 模块界面设计</strong><br>Apple Vision Pro 全部界面</p></div>
+    <div class="role-cell"><p class="label">系统三端</p><p>iPhone — 音频引导 · 航班追踪<br>Apple Watch — HRV 监测 · 冥想<br>VR — 沉浸式体验（我负责）</p></div>
+    <div class="role-cell"><p class="label">课程背景</p><p>悉尼大学界面设计课程<br>A3 最终提案</p></div>
+  </div>
+
+  <img class="img-full" src="assets/vr-overview.png" alt="VR 高保真原型总览">
+  <p class="img-cap">高保真原型全览 — 8 个核心页面 · 设计迭代记录 · 启发式评估文档</p>
+
+  <img class="img-full" src="assets/vr-mockup.png" alt="VR 情境 Mockup">
+  <p class="img-cap">情境 Mock-up — 以人为中心的情感设计策略</p>
+
+  <div class="g2" style="margin-top:10px">
+    <div><img src="assets/vr-wireflow.png" alt="Wireflow" style="height:170px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">完整 Wireflow</p></div>
+    <div><img src="assets/vr-design-system.png" alt="Design System" style="height:170px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">设计系统 — 蓝色渐变体系</p></div>
+  </div>
+
+  <p class="label" style="margin-top:16px;margin-bottom:10px">VR 八大核心界面</p>
+  <div class="feat-grid">
+    <div class="feat"><h4>语言选择 · 主页（起飞前/飞行中）</h4><p>双状态首页，根据飞行阶段切换内容，卡片式布局避免焦虑状态下认知负荷。</p></div>
+    <div class="feat"><h4>航班信息页（地图 + 旅行卡片）</h4><p>实时航班状态、路线地图、当前速度与高度，让乘客保持「知情感」，对抗失控焦虑。</p></div>
+    <div class="feat"><h4>目的地实景视图</h4><p>目的地全景图像沉浸展示，将注意力从「当下恐惧」转移至「即将到达的美好」。</p></div>
+    <div class="feat"><h4>飞行模拟页（浅色/深色）</h4><p>真实飞行视角模拟，HUD 风格界面显示飞行参数，双色模式适配不同偏好。</p></div>
+    <div class="feat"><h4>环境信息 · 更多飞行数据</h4><p>实时展示飞机三维位置、引擎状态、燃油、高度、气流预报等详细数据。</p></div>
+    <div class="feat"><h4>冥想治疗视频</h4><p>情境化冥想视频库，「Go Breathe」进入引导呼吸；修复：增加操作说明 tooltip。</p></div>
+    <div class="feat"><h4>呼吸冥想（瀑布/海洋/山脉）</h4><p>三套自然场景配合 Inhale/Exhale 动画引导，进度条显示呼吸节奏。</p></div>
+    <div class="feat"><h4>更多周边信息页</h4><p>飞行途经地区的文化、地理、天气信息，用好奇心替代恐惧情绪。</p></div>
+  </div>
+
+  <div class="outcomes">
+    <p class="label">设计成果</p>
+    <div class="out-grid">
+      <div class="out-item"><div class="out-num">8</div><div class="out-text">VR 核心页面，完整覆盖飞行前、飞行中全旅程情绪干预节点</div></div>
+      <div class="out-item"><div class="out-num">3</div><div class="out-text">端平台：iPhone / Apple Watch / VR 无缝多设备体验</div></div>
+      <div class="out-item"><div class="out-num">5+</div><div class="out-text">启发式评估识别可用性问题，均完成迭代修复</div></div>
+      <div class="out-item"><div class="out-num">全</div><div class="out-text">从 Wireframe 到 Hi-Fi Prototype 完整 VR 界面设计</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ 04 MEDGUARD ═══ -->
+<div class="proj">
+  <div class="proj-meta">
+    <span class="proj-seq">项目 04 / 09</span>
+    <div class="tags"><span class="tag tag-dark">HCI</span><span class="tag">UI 设计</span><span class="tag">情感设计</span><span class="tag">前端实现</span><span class="tag">2025</span></div>
+  </div>
+  <div class="proj-title">守 <span style="font-style:italic;font-weight:400;color:var(--g2);font-size:.52em">MedGuard</span></div>
+  <p class="proj-sub">面向中老年慢病患者的用药管理应用 &nbsp;·&nbsp; HCI 课题设计 + 前端实现 &nbsp;·&nbsp; medguard-green.vercel.app</p>
+  <hr class="proj-rule">
+
+  <div class="challenge">
+    <blockquote>慢病患者用药依从率长期低于 50%，现有工具大多设计冷漠、信息密集，对中老年用户形成认知障碍——「按时吃药」应该是件简单、温暖、不焦虑的事。</blockquote>
+  </div>
+
+  <div class="process">
+    <p class="label" style="margin-bottom:14px">设计过程</p>
+    <div class="process-steps">
+      <div class="ps"><div class="ps-dot on">01</div><div class="ps-name">问题定义</div><div class="ps-text">提炼核心目标：「按时」+「不焦虑」，决定所有后续决策</div></div>
+      <div class="ps"><div class="ps-dot">02</div><div class="ps-name">信息架构</div><div class="ps-text">三大核心场景，每页只做一件事，最小化认知负担</div></div>
+      <div class="ps"><div class="ps-dot">03</div><div class="ps-name">设计语言</div><div class="ps-text">赤陶橙·艾草绿·老铜金，衬线字体，无圆角无阴影</div></div>
+      <div class="ps"><div class="ps-dot">04</div><div class="ps-name">细节打磨</div><div class="ps-text">全部按钮 ≥44px；完成后 30 秒呼吸放松；家人隐私保护</div></div>
+      <div class="ps"><div class="ps-dot">05</div><div class="ps-name">技术实现</div><div class="ps-text">Next.js 15 + TypeScript + Tailwind CSS v4，Vercel 部署</div></div>
+    </div>
+  </div>
+
+  <p class="label" style="margin-bottom:8px">设计语言 · 色彩系统</p>
+  <div class="swatches">
+    <div class="swatch dk" style="background:#C4552A"><span>赤陶橙 — 完成态</span></div>
+    <div class="swatch dk" style="background:#6B7E5A"><span>艾草绿 — 进行态</span></div>
+    <div class="swatch dk" style="background:#8B7355"><span>老铜金 — 日历</span></div>
+    <div class="swatch dk" style="background:#0D0D0D"><span>墨黑 — 主文字</span></div>
+    <div class="swatch lt" style="background:#F7F4EF;border:1px solid #E8E4DD"><span>米白 — 背景</span></div>
+  </div>
+
+  <p class="label" style="margin-top:14px;margin-bottom:8px">三大核心页面 · 实机截图（Next.js 实现）</p>
+  <div class="phones-row" style="max-width:440px">
+    <div class="phone-item"><img src="assets/medguard-today.png" alt="今日"><p class="phone-cap">01 今日</p></div>
+    <div class="phone-item"><img src="assets/medguard-meds.png" alt="我的药"><p class="phone-cap">02 我的药</p></div>
+    <div class="phone-item"><img src="assets/medguard-more.png" alt="更多"><p class="phone-cap">03 更多</p></div>
+  </div>
+
+  <div class="feat-grid">
+    <div class="feat"><h4>今日 — 服药打卡</h4><p>Hero 区显示下次用药时间；时间线展示 4 个服药时段；一键打卡自动减少库存；全部完成后进入 30 秒沉浸呼吸放松（配音乐）。</p></div>
+    <div class="feat"><h4>我的药 — 药品管理</h4><p>添加药品（真实表单）；库存随打卡自动减少；续方复诊月历；「加入日历」下载 .ics 文件（iOS / Outlook / Google 全兼容）。</p></div>
+    <div class="feat"><h4>家人守护</h4><p>邀请链接一键生成；家人可查看打卡进度、库存风险、漏服提醒；隐私保护——家人看不到具体药品名称和处方内容。</p></div>
+    <div class="feat"><h4>健康洞察</h4><p>7 天依从率趋势图；个性化建议（如「把午餐后用药提前 8 分钟」）；一键采纳建议，时间线立刻更新；数据仅存本地。</p></div>
+  </div>
+
+  <div class="outcomes">
+    <p class="label">设计成果</p>
+    <div class="out-grid">
+      <div class="out-item"><div class="out-num">3</div><div class="out-text">核心页面，每页只做一件事，最小化老年用户认知负担</div></div>
+      <div class="out-item"><div class="out-num">44px</div><div class="out-text">最小按钮尺寸，贯穿全产品，确保老年用户手指可操作</div></div>
+      <div class="out-item"><div class="out-num">完整</div><div class="out-text">UX 设计到前端实现全栈交付，Next.js 15 + TypeScript</div></div>
+      <div class="out-item"><div class="out-num">0</div><div class="out-text">后端依赖为零，数据存于本地，完全保护用户医疗隐私</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ 05 TURBORESQ ═══ -->
+<div class="proj">
+  <div class="proj-meta">
+    <span class="proj-seq">项目 05 / 09</span>
+    <div class="tags"><span class="tag tag-dark">产品设计</span><span class="tag">硬件原型</span><span class="tag">Arduino</span><span class="tag">Blender</span><span class="tag">2023</span></div>
+  </div>
+  <div class="proj-title">TurboResQ</div>
+  <p class="proj-sub">高速公路智能救援装置 &nbsp;·&nbsp; 产品设计 + 硬件原型</p>
+  <hr class="proj-rule">
+
+  <div class="challenge">
+    <blockquote>高速公路事故黄金救援时间约 1 小时，但专业救援平均到达需要 20 分钟以上——这段空白期，没有任何有效的现场早期干预手段，每分钟都在消耗生存概率。</blockquote>
+  </div>
+
+  <img class="img-full" src="assets/turboresq-01.jpg" alt="TurboResQ 总览">
+  <p class="img-cap">TurboResQ — 项目总览与概念说明</p>
+
+  <div class="process">
+    <p class="label" style="margin-bottom:14px">设计过程</p>
+    <div class="process-steps">
+      <div class="ps"><div class="ps-dot on">01</div><div class="ps-name">场景研究</div><div class="ps-text">可视化黄金救援步骤，分析不同事故类型差异化需求</div></div>
+      <div class="ps"><div class="ps-dot">02</div><div class="ps-name">KJ 分析</div><div class="ps-text">聚焦 4 大矛盾：固定 / 预警 / 模块化 / 急救药品</div></div>
+      <div class="ps"><div class="ps-dot">03</div><div class="ps-name">草模迭代</div><div class="ps-text">纸模型快速验证 + Blender 数字模型精化</div></div>
+      <div class="ps"><div class="ps-dot">04</div><div class="ps-name">硬件原型</div><div class="ps-text">Arduino 实现三种模式：预警 / 监测 / 急救</div></div>
+      <div class="ps"><div class="ps-dot">05</div><div class="ps-name">场景演示</div><div class="ps-text">App 一键呼叫 → 装置移动 → 救援 7 步流程</div></div>
+    </div>
+  </div>
+
+  <div class="g2" style="margin-top:10px">
+    <div><img src="assets/turboresq-02.jpg" alt="场景研究" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">场景研究 · 黄金救援时序分析</p></div>
+    <div><img src="assets/turboresq-03.jpg" alt="KJ 分析" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">KJ 分析 · 概念草图 · 纸模型迭代</p></div>
+  </div>
+  <div class="g2" style="margin-top:8px">
+    <div><img src="assets/turboresq-04.jpg" alt="三维模型" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">Blender 三维模型 · 三种救援模式</p></div>
+    <div><img src="assets/turboresq-05.jpg" alt="场景演示" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">7 步使用流程 · App 联动场景模拟</p></div>
+  </div>
+
+  <div class="insight-row" style="margin-top:14px">
+    <div class="insight"><div class="insight-label">设计洞察 01</div><div class="insight-text">护栏是高速公路唯一固定基础设施——装置挂靠护栏，解决倒置与二次事故风险</div></div>
+    <div class="insight"><div class="insight-label">设计洞察 02</div><div class="insight-text">模块化结构让装置按事故严重程度灵活配置，避免携带过多无用设备</div></div>
+    <div class="insight"><div class="insight-label">设计洞察 03</div><div class="insight-text">App 端一键呼叫将普通驾驶员变为急救系统的触发者，弥补专业人员到达前的「真空期」</div></div>
+  </div>
+
+  <div class="outcomes">
+    <p class="label">设计成果</p>
+    <div class="out-grid">
+      <div class="out-item"><div class="out-num">3</div><div class="out-text">救援模式：预警 / 监测 / 急救，覆盖事故现场全干预需求</div></div>
+      <div class="out-item"><div class="out-num">7</div><div class="out-text">完整使用步骤，App 远程呼叫到现场救援全链路闭环</div></div>
+      <div class="out-item"><div class="out-num">软+硬</div><div class="out-text">Arduino 硬件原型 + Blender 三维模型 + App UI</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ 06 & 07 实验性项目 ═══ -->
+<div class="proj">
+  <p class="label" style="margin-bottom:6px">实验性项目 / Experimental Work</p>
+  <p style="font-size:12px;color:var(--g1);font-weight:300;margin-bottom:32px;max-width:540px">以下两个项目探索技术与艺术的边界——一个让脑电波成为艺术语言，一个用游戏对抗 AI 同质化。</p>
+
+  <div class="exp-grid">
+    <div>
+      <div class="proj-meta" style="margin-bottom:8px"><span class="proj-seq">项目 06 / 09</span><div class="tags"><span class="tag tag-dark">交互装置</span><span class="tag">Arduino</span><span class="tag">TouchDesigner</span><span class="tag">2023</span></div></div>
+      <div class="exp-title">Shamanic Echoes</div>
+      <p class="exp-sub">of the Raptor &nbsp;·&nbsp; 脑波驱动的萨满仪式互动装置</p>
+      <div class="challenge" style="margin:10px 0"><blockquote style="font-size:12px">如何让萨满鹰神仪式中的意识状态，通过当代技术转化为观众可感知的沉浸性体验？</blockquote></div>
+      <img src="assets/shamanic-01.jpg" alt="Shamanic Echoes" style="width:100%;height:170px;object-fit:cover;display:block;margin-bottom:8px">
+      <div class="g2" style="margin-bottom:8px">
+        <img src="assets/shamanic-03.jpg" alt="装置素描" style="height:120px;object-fit:cover">
+        <img src="assets/shamanic-05.jpg" alt="演出效果" style="height:120px;object-fit:cover">
+      </div>
+      <p class="label" style="margin-bottom:6px">技术栈</p>
+      <p style="font-size:10.5px;color:var(--g1);line-height:1.9">TGAM 脑波传感器 · Arduino 控制光带<br>Kinect2 体感追踪 · TouchDesigner 实时视觉 · 投影映射</p>
+      <p style="font-size:10px;color:var(--g2);margin-top:8px">youtube.com/watch?v=PuXZ34HF0gI</p>
+    </div>
+
+    <div>
+      <div class="proj-meta" style="margin-bottom:8px"><span class="proj-seq">项目 07 / 09</span><div class="tags"><span class="tag tag-dark">游戏设计</span><span class="tag">Roblox</span><span class="tag">Blender</span><span class="tag">2023</span></div></div>
+      <div class="exp-title">Painted Dreamscape</div>
+      <p class="exp-sub">对抗 AI 同质化的儿童创造力游戏</p>
+      <div class="challenge" style="margin:10px 0"><blockquote style="font-size:12px">AI 艺术工具的普及正在削弱儿童的原创想象力——过度依赖 AI 生成图像，导致创造意愿逐步退化。</blockquote></div>
+      <img src="assets/painted-01.jpg" alt="Painted Dreamscape" style="width:100%;height:170px;object-fit:cover;display:block;margin-bottom:8px">
+      <div class="g2" style="margin-bottom:8px">
+        <img src="assets/painted-04.jpg" alt="Blender 场景" style="height:120px;object-fit:cover">
+        <img src="assets/painted-05.jpg" alt="游戏实现" style="height:120px;object-fit:cover">
+      </div>
+      <p class="label" style="margin-bottom:6px">4 个关卡</p>
+      <p style="font-size:10.5px;color:var(--g1);line-height:1.9">Level 1 色彩填充 · Level 2 绘画接龙<br>Level 3 场景重建 · Level 4 自由创作</p>
+      <p style="font-size:10px;color:var(--g2);margin-top:8px">Roblox 公开发布 · youtu.be/dbro_c27Tdw</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ 08 LANCE LIGHTNING ═══ -->
+<div class="proj">
+  <div class="proj-meta">
+    <span class="proj-seq">项目 08 / 09</span>
+    <div class="tags"><span class="tag tag-dark">汽车设计</span><span class="tag">工业设计</span><span class="tag">概念设计</span><span class="tag">草图推演</span><span class="tag">2023</span></div>
+  </div>
+  <div class="proj-title">Lance Lightning</div>
+  <p class="proj-sub">夜行者概念跑车设计 &nbsp;·&nbsp; 从草图推演到最终渲染</p>
+  <hr class="proj-rule">
+
+  <div class="challenge">
+    <blockquote>为夜间独行者设计一台跑车——不是张扬的速度象征，而是流线型的追逐工具：夜色中的猎影，骑士护甲下的力量感，沉默而凌厉。</blockquote>
+  </div>
+
+  <div class="process">
+    <p class="label" style="margin-bottom:14px">设计推演过程</p>
+    <div class="process-steps" style="grid-template-columns:repeat(4,1fr)">
+      <div class="ps"><div class="ps-dot on">01</div><div class="ps-name">目标定义</div><div class="ps-text">夜行独行者 · 流线型外观 · 拒绝多余装饰</div></div>
+      <div class="ps"><div class="ps-dot">02</div><div class="ps-name">概念阶段</div><div class="ps-text">Racing Night 主题：夜色流线 · 高速追逐感</div></div>
+      <div class="ps"><div class="ps-dot">03</div><div class="ps-name">灵感转化</div><div class="ps-text">骑士头盔 + 马鬃造型 · 甲胄结构美学</div></div>
+      <div class="ps"><div class="ps-dot">04</div><div class="ps-name">草图 · 渲染</div><div class="ps-text">多视角手绘草图 · 三视图概念渲染</div></div>
+    </div>
+  </div>
+
+  <img class="img-full" src="assets/car-01.png" alt="Lance Lightning 封面">
+  <p class="img-cap">Lance Lightning — 概念跑车设计</p>
+
+  <div class="g2">
+    <div><img src="assets/car-02.png" alt="Racing Night" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">Stage 1 — Racing Night 主题概念</p></div>
+    <div><img src="assets/car-03.png" alt="骑士头盔" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">Stage 2 — 骑士头盔灵感转化</p></div>
+  </div>
+  <div class="g2" style="margin-top:8px">
+    <div><img src="assets/car-04.png" alt="草图 1" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">Stage 3 — 多视角手绘草图</p></div>
+    <div><img src="assets/car-05.png" alt="草图 2" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">细节推敲 — 车头造型 · 曲面关系</p></div>
+  </div>
+
+  <img class="img-full" src="assets/car-06.png" alt="最终渲染" style="margin-top:8px">
+  <p class="img-cap">Final Concept — 正侧面渲染 · 流线车身 · 骑士甲胄美学</p>
+
+  <div class="g2">
+    <div><img src="assets/car-07.png" alt="四分之三视图" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">四分之三视图 — 车头 · 引擎盖线条</p></div>
+    <div><img src="assets/car-08.png" alt="后视图" style="height:190px;object-fit:cover"><p class="img-cap" style="margin-bottom:0">后视图 — 尾部造型 · 排气布局</p></div>
+  </div>
+
+  <div class="outcomes" style="margin-top:14px">
+    <p class="label">设计成果</p>
+    <div class="out-grid">
+      <div class="out-item"><div class="out-num">4</div><div class="out-text">设计阶段：定义 → 灵感 → 草图 → 渲染，完整工业设计流程</div></div>
+      <div class="out-item"><div class="out-num">2</div><div class="out-text">核心灵感：Racing Night 夜行主题 + 骑士头盔结构美学</div></div>
+      <div class="out-item"><div class="out-num">全</div><div class="out-text">从概念方向到最终三视角渲染，完整设计方案交付</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ 09 SCOPING REVIEW ═══ -->
+<div class="proj">
+  <div class="proj-meta">
+    <span class="proj-seq">项目 09 / 09</span>
+    <div class="tags"><span class="tag tag-dark">AI 工具产品</span><span class="tag">HCI 研究</span><span class="tag">Python</span><span class="tag">开源 v2.2.0</span><span class="tag">2025</span></div>
+  </div>
+  <div class="proj-title">Scoping Review Skill</div>
+  <p class="proj-sub">为 HCI 研究者构建的 AI 学术辅助工具 &nbsp;·&nbsp; github.com/TRUSOGEN/scoping-review-skill</p>
+  <hr class="proj-rule">
+
+  <div class="challenge">
+    <blockquote>学术 scoping review 的写作流程繁琐且容易出错——多数据库手动去重、PRISMA 数字对不上、research questions 无法落地到 data charting。这不是研究者的问题，是工具链的缺失。</blockquote>
+  </div>
+
+  <div class="decision-box">
+    <p class="label">产品背景</p>
+    <p>作为 HCI 研究方向的学生，我在参与 scoping review 写作时发现：研究者花大量时间在机械性工作上，而这些完全可以被自动化。同时，AI 写作工具最大风险是<strong>「编造证据」</strong>——我决定把「不编造」设计为核心约束，而非一条补充说明。</p>
+  </div>
+
+  <div class="process">
+    <p class="label" style="margin-bottom:14px">产品设计过程</p>
+    <div class="process-steps">
+      <div class="ps"><div class="ps-dot on">01</div><div class="ps-name">需求挖掘</div><div class="ps-text">识别 scoping review 全流程 9 个核心痛点</div></div>
+      <div class="ps"><div class="ps-dot">02</div><div class="ps-name">产品架构</div><div class="ps-text">SKILL.md 主入口 + 10 个专项参考文档模块化架构</div></div>
+      <div class="ps"><div class="ps-dot">03</div><div class="ps-name">约束设计</div><div class="ps-text">「不编造」为硬约束：不生成 citation、不估算数字</div></div>
+      <div class="ps"><div class="ps-dot">04</div><div class="ps-name">工具开发</div><div class="ps-text">Python 两个自动化脚本：多库去重 + PRISMA 校验</div></div>
+      <div class="ps"><div class="ps-dot">05</div><div class="ps-name">迭代验证</div><div class="ps-text">7 个 eval 测试用例，发布 v2.2.0</div></div>
+    </div>
+  </div>
+
+  <div class="tech-row">
+    <div class="tech-block">
+      <h4>核心功能</h4>
+      <ul>
+        <li>Research Questions (RQ) 设计与优化引导</li>
+        <li>搜索策略 + 数据库选择建议</li>
+        <li>三阶段筛选流程（Round 1 → Snowballing → Round 2）</li>
+        <li>Data charting 表格 schema 设计</li>
+        <li>RQ-based synthesis 写作模板</li>
+        <li>CHI / IMWUT 投稿逐项检查清单</li>
+        <li>Inclusion / Exclusion criteria 撰写</li>
+        <li>根据导师 / reviewer 反馈修改策略</li>
+      </ul>
+    </div>
+    <div class="tech-block">
+      <h4>自动化脚本</h4>
+      <ul>
+        <li>多数据库去重（CSV/Excel，任意来源）</li>
+        <li>PRISMA 数字自动校验</li>
+        <li>LaTeX tikz PRISMA 流程图生成</li>
+        <li>ACM / Overleaf 格式输出</li>
+        <li>自动识别列名变体（Title/DOI/Year 等）</li>
+        <li>去重报告（各库数量 · 重复数 · 剩余唯一）</li>
+        <li>命令行直接调用支持</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight-row">
+    <div class="insight"><div class="insight-label">适用方向</div><div class="insight-text">HCI · eVTOL/UAM · 空间音频 · 多模态界面 · Automation Transparency · 可配置到任意研究领域</div></div>
+    <div class="insight"><div class="insight-label">核心约束</div><div class="insight-text">不编造 citation / 不估算 PRISMA 数字 / 不做无据 causal claim / Results 与 Discussion 严格分离</div></div>
+    <div class="insight"><div class="insight-label">版本迭代</div><div class="insight-text">v2.2.0 — 新增 evals 测试集 · RQ-charting 对照表 · CHI/IMWUT 投稿清单 · GitHub Actions 自动更新</div></div>
+    <div class="insight"><div class="insight-label">产品思维</div><div class="insight-text">把研究者的机械劳动自动化；把 AI 最危险的行为（编造）设计为系统约束而非警告语句</div></div>
+  </div>
+
+  <div class="note-box">
+    <p class="label">文件架构（产品结构设计）</p>
+    <p>
+      <strong>SKILL.md</strong> — 主入口，完整工作流与触发逻辑（2000+ 行）<br>
+      <strong>review-framework.md</strong> — RQ 设计、搜索策略、三阶段筛选、charting schema<br>
+      <strong>evidence-discipline.md</strong> — 证据约束规则，防止 overclaim<br>
+      <strong>acm-latex-rules.md</strong> — ACM/Overleaf LaTeX 格式规范<br>
+      <strong>deduplicate.py</strong> / <strong>prisma_flow.py</strong> — 自动化脚本，支持 Claude Code 直接调用
+    </p>
+  </div>
+
+  <div class="outcomes">
+    <p class="label">设计成果</p>
+    <div class="out-grid">
+      <div class="out-item"><div class="out-num">v2.2</div><div class="out-text">开源发布，持续迭代，7 个 eval 测试用例验证触发准确率</div></div>
+      <div class="out-item"><div class="out-num">10</div><div class="out-text">专项参考文档，覆盖从 RQ 设计到投稿检查的全研究流程</div></div>
+      <div class="out-item"><div class="out-num">2</div><div class="out-text">自动化脚本，将去重和 PRISMA 校验从小时级压缩到秒级</div></div>
+      <div class="out-item"><div class="out-num">0</div><div class="out-text">编造证据 — 核心设计原则，所有输出可追溯至真实 data charting</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ END PAGE ═══ -->
+<div class="end-page">
+  <div class="end-name">吴业亘<br><span style="font-size:.42em;color:var(--g2)">YEGEN Wu</span></div>
+  <div class="end-grid">
+    <div class="end-col">
+      <p class="label">联系方式</p>
+      <p>邮件 &nbsp;trusowyg@163.com</p>
+      <p>微信 &nbsp;TRUSOGEN</p>
+      <p>GitHub &nbsp;github.com/TRUSOGEN</p>
+    </div>
+    <div class="end-col">
+      <p class="label">设计方向</p>
+      <p>产品设计 · UX 研究<br>交互设计 · 界面设计<br>VR / 空间计算 · HCI<br>服务设计 · 系统设计</p>
+    </div>
+    <div class="end-col">
+      <p class="label">当前状态</p>
+      <p>悉尼大学 研究生在读<br>开放实习 / 全职机会<br>产品设计 · 交互设计方向<br>2025 — 2026</p>
+    </div>
+  </div>
+  <p style="font-size:10px;color:var(--g3);border-top:1px solid var(--g4);padding-top:14px">© 2025 &nbsp;吴业亘 YEGEN Wu</p>
+</div>
+
+</body>
+</html>

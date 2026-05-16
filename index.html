@@ -247,6 +247,24 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 .jtbd-table th{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--g2);padding:10px 14px;background:var(--g6);border:1px solid var(--g4);text-align:left}
 .jtbd-table td{font-size:12.5px;color:var(--g1);padding:12px 14px;border:1px solid var(--g4);vertical-align:top;line-height:1.6}
 
+/*─ Page navigation ─*/
+.page-nav{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:56px;padding-top:24px;border-top:1px solid var(--g4);
+}
+.footer-inner .page-nav{margin-top:32px}
+.page-nav-btn{
+  background:none;border:none;cursor:pointer;font-family:var(--sans);
+  font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--g2);transition:color .2s;padding:10px 0;
+  display:flex;align-items:center;gap:10px;
+}
+.page-nav-btn:hover{color:var(--black)}
+.page-nav-prev .arrow{display:inline-block;transition:transform .2s}
+.page-nav-prev:hover .arrow{transform:translateX(-4px)}
+.page-nav-next .arrow{display:inline-block;transition:transform .2s}
+.page-nav-next:hover .arrow{transform:translateX(4px)}
+
 /*─ Reveal ─*/
 .r{opacity:0;transform:translateY(24px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
 .r.v{opacity:1;transform:none}
@@ -288,7 +306,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 }
 @media print{
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .nav,.hero-scroll,.proj-bg{display:none}
+  .nav,.hero-scroll,.proj-bg,.page-nav{display:none}
   .r{opacity:1;transform:none}
   /* 显示所有标签页 */
   .page-hidden{display:block!important}
@@ -1731,6 +1749,57 @@ document.addEventListener('click', e => {
 // ── Browser back/forward ─────────────────────────────────────
 window.addEventListener('popstate', e => {
   showPage((e.state && e.state.page) || 'home', false)
+})
+
+// ── Bottom page navigation ────────────────────────────────────
+const PAGE_ORDER = ['home','about','ccm','greenloop','skysoar','medguard','turboresq','more','car','scoping','contact']
+const PAGE_LABELS = {
+  home:'首页', about:'关于', ccm:'CCM', greenloop:'Greenloop',
+  skysoar:'Sky Soar', medguard:'MedGuard', turboresq:'TurboResQ',
+  more:'装置 / 游戏', car:'Lance', scoping:'Scoping', contact:'联系'
+}
+const PAGE_NAV_TARGET = {
+  home:'.overview-inner', about:'#about .sec-inner',
+  ccm:'#ccm .proj-inner', greenloop:'#greenloop .proj-inner',
+  skysoar:'#skysoar .proj-inner', medguard:'#medguard .proj-inner',
+  turboresq:'#turboresq .proj-inner', more:'#more .proj-inner',
+  car:'#car .proj-inner', scoping:'#scoping .proj-inner',
+  contact:'.footer-inner'
+}
+PAGE_ORDER.forEach((page, i) => {
+  const prevPage = PAGE_ORDER[i - 1]
+  const nextPage = PAGE_ORDER[i + 1]
+  const nav = document.createElement('div')
+  nav.className = 'page-nav'
+  if (prevPage) {
+    const btn = document.createElement('button')
+    btn.className = 'page-nav-btn page-nav-prev'
+    btn.dataset.page = prevPage
+    btn.innerHTML = `<span class="arrow">←</span><span>${PAGE_LABELS[prevPage]}</span>`
+    nav.appendChild(btn)
+  } else {
+    nav.appendChild(document.createElement('span'))
+  }
+  if (nextPage) {
+    const btn = document.createElement('button')
+    btn.className = 'page-nav-btn page-nav-next'
+    btn.dataset.page = nextPage
+    btn.innerHTML = `<span>${PAGE_LABELS[nextPage]}</span><span class="arrow">→</span>`
+    nav.appendChild(btn)
+  }
+  const target = document.querySelector(PAGE_NAV_TARGET[page])
+  if (target) {
+    if (page === 'contact') {
+      const copy = target.querySelector('.footer-copy')
+      copy ? target.insertBefore(nav, copy) : target.appendChild(nav)
+    } else {
+      target.appendChild(nav)
+    }
+  }
+})
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.page-nav-btn')
+  if (btn) showPage(btn.dataset.page)
 })
 </script>
 </body>
