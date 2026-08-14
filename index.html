@@ -65,7 +65,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 .nav-menu.open .nav-menu-panel{display:grid}
 .nav-menu-panel .nav-tab{width:100%;padding:10px 11px!important;border-bottom:none!important;text-align:left;letter-spacing:.04em!important;text-transform:none!important;color:var(--g1)!important}
 .nav-menu-panel .nav-tab:hover,.nav-menu-panel .nav-tab.active{background:var(--g6);color:var(--black)!important}
-.nav-menu-panel small{display:block;margin-top:2px;color:var(--g2);font-size:9px;letter-spacing:.04em}
+.nav-menu-panel small{display:block;margin-top:2px;color:var(--g1);font-size:10px;letter-spacing:.04em}
 .page-hidden{display:none!important}
 
 /*─ Page transition ─*/
@@ -142,30 +142,6 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   display:flex;flex-direction:column;align-items:center;gap:8px;
 }
 .hero-scroll::after{content:'';width:1px;height:32px;background:var(--g3)}
-
-/*─ AI Product Manager positioning ─*/
-.ai-fit{padding:clamp(64px,9vw,112px) var(--pad);background:#111916;color:#f3f8f6}
-.ai-fit-inner{max-width:var(--maxw);margin:0 auto}
-.ai-fit-head{display:grid;grid-template-columns:.72fr 1.28fr;gap:clamp(36px,7vw,96px);align-items:end;margin-bottom:42px}
-.ai-fit-title{font-family:var(--serif);font-size:clamp(42px,7vw,92px);line-height:.92;letter-spacing:-.035em;font-weight:600}
-.ai-fit-copy{font-size:clamp(15px,1.7vw,19px);line-height:1.75;color:rgba(243,248,246,.74);max-width:620px}
-.ai-fit-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(215,240,226,.2);background:rgba(215,240,226,.2);gap:1px}
-.ai-fit-item{background:#111916;padding:24px 20px;min-height:190px}
-.ai-fit-num{font-size:9px;letter-spacing:.2em;color:rgba(243,248,246,.52)}
-.ai-fit-item h3{font-family:var(--serif);font-size:21px;line-height:1.1;margin:28px 0 10px;font-weight:500}
-.ai-fit-item p{font-size:12px;line-height:1.65;color:rgba(243,248,246,.68)}
-.ai-fit-proof{margin-top:24px;padding-top:18px;border-top:1px solid rgba(215,240,226,.18);display:grid;grid-template-columns:1fr 1fr;gap:24px;font-size:10px;line-height:1.65;letter-spacing:.06em;color:rgba(243,248,246,.54)}
-.ai-fit-proof strong{display:block;color:#d7f0e2;font-weight:500;text-transform:uppercase;letter-spacing:.16em;margin-bottom:5px}
-.ai-game-bridge{margin-top:42px;padding-top:30px;border-top:1px solid rgba(215,240,226,.24)}
-.ai-game-head{display:grid;grid-template-columns:.72fr 1.28fr;gap:clamp(28px,6vw,82px);align-items:end;margin-bottom:22px}
-.ai-game-head h3{font-family:var(--serif);font-size:clamp(26px,3.4vw,46px);line-height:1.08;font-weight:500}
-.ai-game-head p{font-size:11px;line-height:1.7;color:rgba(243,248,246,.58)}
-.ai-game-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(215,240,226,.2);border:1px solid rgba(215,240,226,.2)}
-.ai-game-step{background:#111916;padding:19px 18px}
-.ai-game-step span{font-size:9px;letter-spacing:.18em;color:#d7f0e2}
-.ai-game-step strong{display:block;font-size:13px;font-weight:500;margin:11px 0 7px}
-.ai-game-step p{font-size:11px;line-height:1.6;color:rgba(243,248,246,.62)}
-.ai-game-evidence{margin-top:14px;font-size:9px;letter-spacing:.08em;line-height:1.65;color:rgba(243,248,246,.52)}
 
 /*─ Project cards overview ─*/
 .overview{padding:clamp(60px,9vw,120px) var(--pad);background:var(--g6);border-top:1px solid var(--g4)}
@@ -468,9 +444,6 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   .card-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
   .lookup-flow{grid-template-columns:1fr 1fr}
   .architecture-strip{grid-template-columns:1fr 1fr}
-  .ai-fit-head{grid-template-columns:1fr}
-  .ai-game-head{grid-template-columns:1fr}
-  .ai-fit-grid{grid-template-columns:1fr 1fr}
   .nav-menu-panel{position:fixed;top:62px;left:16px;right:16px;width:auto;grid-template-columns:1fr 1fr;box-shadow:0 16px 32px rgba(0,0,0,.12)}
 }
 @media(max-width:640px){
@@ -481,6 +454,8 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   .proj-bg{font-size:80px;top:16px}
   .card-grid{grid-template-columns:1fr 1fr}
   .experience-item{grid-template-columns:1fr;gap:6px;padding:18px 0}
+  .nav-menu-panel{grid-template-columns:1fr}
+  .nav-menu-panel .nav-tab{white-space:normal}
   .proj-index-grid{grid-template-columns:1fr 1fr}
   .stage-head{align-items:flex-start;flex-direction:column;gap:8px}
   .stage-meta{white-space:normal}
@@ -495,9 +470,6 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   .lookup-sheet{overflow-x:auto}
   .lookup-sheet-grid{min-width:560px}
   .architecture-strip{grid-template-columns:1fr}
-  .ai-fit-grid,.ai-fit-proof{grid-template-columns:1fr}
-  .ai-game-grid{grid-template-columns:1fr}
-  .ai-fit-item{min-height:0}
   .tm-ui-gallery{grid-template-columns:1fr}
   .tm-ui-shot-frame{height:auto;padding:12px}
   .tm-ui-shot img{width:100%;max-height:none;box-shadow:none}
@@ -572,7 +544,6 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
   /* 技能条完整显示 */
   .skills-panel{break-inside:avoid}
-  .ai-fit{break-inside:avoid}
   .tm-ui-gallery{break-inside:avoid}
 
   /* 过程时间轴不断 */
@@ -650,39 +621,11 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
       <a href="#more"      class="hero-index-item"><span class="hero-index-num">07</span>Shamanic Echoes · 脑波装置</a>
       <a href="#more"      class="hero-index-item"><span class="hero-index-num">08</span>Painted Dreamscape · 游戏</a>
       <a href="#car"       class="hero-index-item"><span class="hero-index-num">09</span>Lance Lightning · 汽车设计</a>
-      <a href="#scoping"   class="hero-index-item"><span class="hero-index-num">10</span>Scoping Review Skill</a>
-      <a href="#starling"  class="hero-index-item"><span class="hero-index-num">11</span>Starling Lookup Helper</a>
+      <a href="#scoping"   class="hero-index-item"><span class="hero-index-num">10</span>AI 研究工作流助手</a>
+      <a href="#starling"  class="hero-index-item"><span class="hero-index-num">11</span>多语言内容查询助手</a>
     </div>
   </div>
   <div class="hero-scroll">Scroll</div>
-</section>
-
-<!-- ═══════════════════════ AI PRODUCT MANAGER FIT ═══════════════════════ -->
-<section id="ai-fit" class="ai-fit">
-  <div class="ai-fit-inner">
-    <div class="ai-fit-head">
-      <div><p class="label" style="color:rgba(243,248,246,.48)">Target Role / 目标岗位</p><h2 class="ai-fit-title">AI 产品经理<br>产品经理</h2></div>
-      <p class="ai-fit-copy">我把用户问题、产品方案和交付结果放在同一条链路里：先确认用户真正需要什么，再把 AI 能力做成清晰、可控、可验证的产品体验。</p>
-    </div>
-    <div class="ai-fit-grid">
-      <article class="ai-fit-item"><span class="ai-fit-num">01 · DISCOVER</span><h3>发现问题</h3><p>从用户任务、使用阻力和业务目标中找到最值得解决的问题，明确产品机会。</p></article>
-      <article class="ai-fit-item"><span class="ai-fit-num">02 · DESIGN</span><h3>设计方案</h3><p>把需求转化为用户流程、交互原型和可执行方案，让 AI 能力真正服务用户。</p></article>
-      <article class="ai-fit-item"><span class="ai-fit-num">03 · DELIVER</span><h3>协作落地</h3><p>与设计、研发协作推进功能上线，提前处理使用风险与异常情况。</p></article>
-      <article class="ai-fit-item"><span class="ai-fit-num">04 · IMPROVE</span><h3>验证迭代</h3><p>通过用户反馈、使用数据和任务完成情况判断效果，持续优化产品。</p></article>
-    </div>
-    <div class="ai-game-bridge">
-      <div class="ai-game-head">
-        <div><p class="label" style="color:rgba(243,248,246,.52)">AI + Gaming / 关注方向</p><h3>让 AI 更好地服务玩家</h3></div>
-        <p>我关注玩家从发现游戏、进入游戏到社交互动的完整体验，并探索 AI 如何提供更及时、更自然的帮助与陪伴。</p>
-      </div>
-      <div class="ai-game-grid">
-        <div class="ai-game-step"><span>01 · 找 / DISCOVER</span><strong>更懂玩家的推荐</strong><p>根据玩家偏好和当前需求，帮助更快发现适合的游戏与内容。</p></div>
-        <div class="ai-game-step"><span>02 · 玩 / PLAY</span><strong>恰当的游戏内帮助</strong><p>在需要的时候提供任务提示和操作辅助，减少打扰，保留探索乐趣。</p></div>
-        <div class="ai-game-step"><span>03 · 社 / SOCIAL</span><strong>更自然的互动体验</strong><p>探索有连续性的角色互动与社交体验，同时保持安全、可控的表达。</p></div>
-      </div>
-      <p class="ai-game-evidence">相关实践：Roblox UGC 游戏玩法与玩家体验设计 · AI 内容协作工具 · 交互原型与用户流程设计。</p>
-    </div>
-  </div>
 </section>
 
 <!-- ═══════════════════════ PROJECT CARDS ═══════════════════════ -->
@@ -825,12 +768,12 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
       <a href="#scoping" class="card">
         <div class="card-img" style="background:var(--black);display:flex;align-items:center;justify-content:center;aspect-ratio:16/9">
-          <span style="font-family:var(--serif);font-size:28px;font-style:italic;color:var(--g4);letter-spacing:-.02em">Scoping Review</span>
+          <span style="font-family:var(--serif);font-size:28px;font-style:italic;color:var(--g4);letter-spacing:-.02em">AI Research Workflow</span>
         </div>
         <div class="card-body">
           <p class="card-num">10 &nbsp;·&nbsp; AI 工具产品</p>
-          <p class="card-name">Scoping Review Skill</p>
-          <p class="card-desc">为 HCI 研究者构建的学术辅助 AI 工具——自动去重 + PRISMA 校验 + LaTeX 生成</p>
+          <p class="card-name">AI 研究工作流助手</p>
+          <p class="card-desc">帮助研究者梳理文献综述流程，完成去重、数字校验和论文材料整理</p>
           <div class="card-tags">
             <span class="card-tag">产品设计</span>
             <span class="card-tag">Python</span>
@@ -841,22 +784,22 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
       <a href="#starling" class="card">
         <div class="card-cover starling-cover">
-          <span class="card-cover-label">Agent Skill · v7.1</span>
-          <span class="card-cover-title">Starling<br>Lookup Helper</span>
+          <span class="card-cover-label">AI 产品 · 多语言查询</span>
+          <span class="card-cover-title">多语言内容<br>查询助手</span>
           <div class="card-cover-row">
-            <span class="card-cover-pill">57 locales</span>
-            <span class="card-cover-pill">1 command</span>
-            <span class="card-cover-pill">Feishu</span>
+            <span class="card-cover-pill">多语言</span>
+            <span class="card-cover-pill">一键任务</span>
+            <span class="card-cover-pill">表格交付</span>
           </div>
         </div>
         <div class="card-body">
           <p class="card-num">11 &nbsp;·&nbsp; AI 工作流</p>
-          <p class="card-name">Starling Lookup Helper</p>
-          <p class="card-desc">把源文案、Key 与译文反查编排成可验证的 57 语种查询与飞书交付工作流</p>
+          <p class="card-name">多语言内容查询助手</p>
+          <p class="card-desc">帮助团队查询不同语言的内容、整理结果并交付到表格</p>
           <div class="card-tags">
-            <span class="card-tag">Agent Skill</span>
+            <span class="card-tag">AI 工作流</span>
             <span class="card-tag">Python</span>
-            <span class="card-tag">Localization</span>
+            <span class="card-tag">多语言</span>
           </div>
         </div>
       </a>
@@ -1804,8 +1747,8 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
         <span class="tag">2025</span>
       </div>
     </div>
-    <h2 class="proj-title r d1">Scoping Review Skill</h2>
-    <p class="proj-sub r d2">为 HCI 研究者构建的 AI 学术辅助工具 &nbsp;/&nbsp; <a href="https://github.com/TRUSOGEN/scoping-review-skill" target="_blank" style="color:var(--g2);border-bottom:1px solid var(--g4);transition:border-color .2s" onmouseover="this.style.borderColor='#0D0D0D'" onmouseout="this.style.borderColor='var(--g4)'">github.com/TRUSOGEN/scoping-review-skill</a></p>
+    <h2 class="proj-title r d1">AI 研究工作流助手</h2>
+    <p class="proj-sub r d2">帮助研究者更有条理地完成文献综述任务 &nbsp;/&nbsp; <a href="https://github.com/TRUSOGEN/scoping-review-skill" target="_blank" style="color:var(--g2);border-bottom:1px solid var(--g4);transition:border-color .2s" onmouseover="this.style.borderColor='#0D0D0D'" onmouseout="this.style.borderColor='var(--g4)'">GitHub repository</a></p>
 
     <div class="challenge r">
       <blockquote>学术 scoping review 的写作流程繁琐且容易出错——多数据库手动去重、PRISMA 数字对不上、research questions 无法落地到 data charting、Results 与 Discussion 边界模糊。这不是研究者的问题，是工具链的缺失。</blockquote>
@@ -1901,7 +1844,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 </div>
 
 
-<!-- ═══════════════════════ 11 STARLING LOOKUP SKILL ═══════════════════════ -->
+<!-- ═══════════════════════ 11 MULTILINGUAL CONTENT LOOKUP ═══════════════════════ -->
 <div id="starling" class="proj">
   <span class="proj-bg">11</span>
   <div class="proj-inner">
@@ -1917,14 +1860,14 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
         <span class="tag">2026</span>
       </div>
     </div>
-    <h2 class="proj-title r d1">Starling Lookup Helper</h2>
-    <p class="proj-sub r d2">把多语种查询从「操作手册」变成可验证的一键工作流 &nbsp;/&nbsp; <a class="project-link" href="https://github.com/TRUSOGEN/multilingual_translation_skills_prompt" target="_blank" rel="noopener">GitHub repository</a></p>
+    <h2 class="proj-title r d1">多语言内容查询助手</h2>
+    <p class="proj-sub r d2">帮助团队查询不同语言的内容、核对结果并整理到表格 &nbsp;/&nbsp; <a class="project-link" href="https://github.com/TRUSOGEN/multilingual_translation_skills_prompt" target="_blank" rel="noopener">GitHub repository</a></p>
 
     <div class="challenge r">
       <blockquote>查询一条译文看似简单，真实工作却包含输入识别、权限项目发现、精确与模糊召回、57 个 locale 展开、链接拼装、飞书写入和结果回读。任何一步静默失败，都会把「没查到」误报成「不存在」。</blockquote>
     </div>
 
-    <div class="product-stage lookup-stage r" aria-label="Starling Lookup Helper workflow preview">
+    <div class="product-stage lookup-stage r" aria-label="多语言内容查询助手工作流示例">
       <div class="product-stage-inner">
         <div class="stage-head">
           <div><p class="stage-kicker">Script-backed agent workflow</p><h3 class="stage-title">Input to audited sheet</h3></div>
@@ -2161,7 +2104,7 @@ const io = new IntersectionObserver(entries => {
 
 // ── Tab pages ────────────────────────────────────────────────
 const PAGE_DEFS = [
-  {page:'home', ids:['hero','ai-fit','overview','about-rule','about'], label:'首页', navTarget:'#about .sec-inner'},
+  {page:'home', ids:['hero','overview','about-rule','about'], label:'首页', navTarget:'#about .sec-inner'},
   {page:'tm', ids:['tm'], label:'多语言 AI 文案协作助手', navTarget:'#tm .proj-inner', project:{num:'01', name:'多语言 AI 文案协作助手'}},
   {page:'ccm', ids:['ccm'], label:'CCM', navTarget:'#ccm .proj-inner', project:{num:'02', name:'CCM 化工情报平台'}},
   {page:'greenloop', ids:['greenloop'], label:'Greenloop', navTarget:'#greenloop .proj-inner', project:{num:'03', name:'Greenloop'}},
