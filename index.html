@@ -2110,6 +2110,12 @@ const PAGE_DEFS = [
   {page:'starling', ids:['starling'], label:'Starling Lookup', navTarget:'#starling .proj-inner', project:{num:'11', name:'Starling Lookup Helper'}},
   {page:'contact', ids:['contact'], label:'联系', navTarget:'.footer-inner', project:{num:'·', name:'联系 / Contact'}},
 ]
+// 让屏幕、辅助技术与打印版共用同一项目顺序。
+const projectOrderAnchor = document.getElementById('contact')
+PAGE_DEFS.forEach(({page}) => {
+  const project = document.getElementById(page)
+  if (project?.classList.contains('proj')) projectOrderAnchor.before(project)
+})
 const PAGES = Object.fromEntries(PAGE_DEFS.map(({page, ids}) => [page, ids]))
 const ALL_IDS = [...new Set(Object.values(PAGES).flat())]
 
