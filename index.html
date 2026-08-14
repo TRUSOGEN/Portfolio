@@ -136,7 +136,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 .overview{padding:clamp(60px,9vw,120px) var(--pad);background:var(--g6);border-top:1px solid var(--g4)}
 .overview-inner{max-width:var(--maxw);margin:0 auto}
 .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin-top:40px}
-.card{display:block;background:var(--white);border:1px solid var(--g4);transition:border-color .25s,transform .25s,box-shadow .25s;color:inherit}
+.card{display:block;min-width:0;background:var(--white);border:1px solid var(--g4);transition:border-color .25s,transform .25s,box-shadow .25s;color:inherit}
 .card:hover{border-color:var(--black);transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,.08)}
 .card-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--g5)}
 .card-body{padding:14px 16px 18px}
@@ -276,6 +276,67 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 .tech-block li{list-style:none;font-size:13px;color:var(--g1);padding:5px 0;border-bottom:1px solid var(--g6);display:flex;gap:8px}
 .tech-block li::before{content:'›';color:var(--g3)}
 
+/*─ AI workflow project visuals ─*/
+.project-link{color:var(--g2);border-bottom:1px solid var(--g4);transition:color .2s,border-color .2s}
+.project-link:hover{color:var(--black);border-color:var(--black)}
+.card-cover{position:relative;aspect-ratio:16/9;overflow:hidden;padding:20px;display:flex;flex-direction:column;justify-content:space-between}
+.card-cover::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,transparent 35%,rgba(255,255,255,.08),transparent 65%);transform:translateX(-100%);transition:transform .65s var(--ease)}
+.card:hover .card-cover::after{transform:translateX(100%)}
+.card-cover-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;opacity:.6}
+.card-cover-title{font-family:var(--serif);font-size:clamp(20px,2.2vw,30px);line-height:1.08;letter-spacing:-.02em}
+.card-cover-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.card-cover-pill{border:1px solid currentColor;border-radius:999px;padding:3px 7px;font-size:8px;letter-spacing:.08em;opacity:.72}
+.starling-cover{color:#edf3ff;background:#132651}
+.starling-cover::before{content:'';position:absolute;inset:0;background:linear-gradient(rgba(143,176,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(143,176,255,.1) 1px,transparent 1px);background-size:24px 24px;mask-image:linear-gradient(to bottom,black,transparent)}
+.tm-cover{color:#f3f8f6;background:#14241f}
+.tm-cover .card-cover-row{gap:8px}
+.tm-cover-step{width:29px;height:29px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(199,238,216,.45);font:600 10px var(--sans)}
+.tm-cover-arrow{font-size:10px;opacity:.45}
+
+.product-stage{margin:42px 0;padding:clamp(22px,4vw,48px);border-radius:2px;overflow:hidden;position:relative}
+.product-stage::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.35;background:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:34px 34px}
+.product-stage-inner{position:relative;z-index:1}
+.stage-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px}
+.stage-kicker{font-size:9px;letter-spacing:.24em;text-transform:uppercase;opacity:.62;margin-bottom:7px}
+.stage-title{font-family:var(--serif);font-size:clamp(25px,4vw,48px);line-height:1.03;letter-spacing:-.025em}
+.stage-meta{font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.55;white-space:nowrap}
+
+.lookup-stage{background:#132651;color:#edf3ff}
+.lookup-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(219,230,255,.2);border:1px solid rgba(219,230,255,.2);margin-bottom:20px}
+.lookup-flow-step{background:#132651;padding:14px 15px;min-height:82px}
+.lookup-flow-step span{font-size:9px;letter-spacing:.18em;opacity:.55}
+.lookup-flow-step strong{display:block;font-size:12px;line-height:1.5;margin-top:8px;font-weight:500}
+.lookup-sheet{background:#f7f9ff;color:#17213a;border:1px solid rgba(255,255,255,.2);box-shadow:0 22px 70px rgba(0,0,0,.22)}
+.lookup-sheet-bar{height:34px;padding:0 13px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #dfe6f5;font-size:9px;color:#69758f}
+.sheet-dot{width:6px;height:6px;border-radius:50%;background:#a8b4ca}
+.lookup-sheet-grid{display:grid;grid-template-columns:1.1fr .72fr 1.4fr .78fr}
+.lookup-cell{padding:10px 12px;border-right:1px solid #e5eaf4;border-bottom:1px solid #e5eaf4;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lookup-cell.head{font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:#75809a;background:#eef2fa}
+.lookup-cell.link{color:#2457d6;text-decoration:underline;text-decoration-color:#c1cdf0;text-underline-offset:2px}
+.lookup-cell.ok::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:#2f9b68;margin-right:6px;vertical-align:1px}
+
+.tm-stage{background:#14241f;color:#f3f8f6}
+.tm-workflow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.tm-state{padding:18px;background:rgba(255,255,255,.055);border:1px solid rgba(209,236,222,.15);min-height:148px}
+.tm-state-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.tm-state-code{font-family:var(--serif);font-size:28px;font-style:italic}
+.tm-state-score{font-size:11px;padding:3px 8px;border:1px solid rgba(209,236,222,.26);border-radius:999px}
+.tm-state-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;opacity:.55;margin-bottom:8px}
+.tm-state-copy{font-size:12px;line-height:1.55;opacity:.9}
+.tm-state.active{background:#d7f0e2;color:#14241f;border-color:#d7f0e2}
+.tm-stage-foot{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;padding:14px 16px;background:rgba(0,0,0,.2);border:1px solid rgba(209,236,222,.12)}
+.tm-stage-foot p{font-size:10px;opacity:.72}
+.tm-stage-foot strong{font-family:var(--serif);font-size:18px;font-weight:400;white-space:nowrap}
+.architecture-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--g4);border:1px solid var(--g4);margin:30px 0}
+.arch-node{background:var(--white);padding:18px 14px;min-height:110px}
+.arch-node span{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--g3)}
+.arch-node strong{display:block;font-size:12px;font-weight:500;margin:10px 0 5px}
+.arch-node p{font-size:10.5px;color:var(--g2);line-height:1.5}
+.evidence-boundary{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;padding:22px 24px;border:1px solid var(--g4);margin:28px 0}
+.evidence-mark{font-family:var(--serif);font-size:28px;line-height:1;color:var(--g3)}
+.evidence-boundary h4{font-size:12px;font-weight:500;margin-bottom:6px}
+.evidence-boundary p{font-size:12px;color:var(--g1);line-height:1.7}
+
 /*─ JTBD table ─*/
 .jtbd-table{width:100%;border-collapse:collapse;margin:20px 0}
 .jtbd-table th{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--g2);padding:10px 14px;background:var(--g6);border:1px solid var(--g4);text-align:left}
@@ -356,6 +417,8 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   .nav-links{display:flex;overflow-x:auto;gap:16px;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-right:12px}
   .nav-links::-webkit-scrollbar{display:none}
   .card-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+  .lookup-flow{grid-template-columns:1fr 1fr}
+  .architecture-strip{grid-template-columns:1fr 1fr}
 }
 @media(max-width:640px){
   .g2,.g3,.g4,.g5-col,.g-65{grid-template-columns:1fr}
@@ -365,6 +428,20 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   .proj-bg{font-size:80px;top:16px}
   .card-grid{grid-template-columns:1fr 1fr}
   .proj-index-grid{grid-template-columns:1fr 1fr}
+  .stage-head{align-items:flex-start;flex-direction:column;gap:8px}
+  .stage-meta{white-space:normal}
+  .card-cover{aspect-ratio:4/3;padding:12px}
+  .card-cover-title{font-size:18px}
+  .card-cover-label{font-size:7px}
+  .card-cover-pill{font-size:7px;padding:2px 5px}
+  .tm-cover-step{width:24px;height:24px;font-size:9px}
+  .tm-stage-foot{grid-template-columns:1fr}
+  .tm-stage-foot strong{white-space:normal;overflow-wrap:anywhere}
+  .lookup-flow,.tm-workflow{grid-template-columns:1fr}
+  .lookup-sheet{overflow-x:auto}
+  .lookup-sheet-grid{min-width:560px}
+  .architecture-strip{grid-template-columns:1fr}
+  .evidence-boundary{grid-template-columns:1fr;gap:8px}
 }
 @media print{
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -456,6 +533,8 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
     <button class="nav-tab" data-page="more">装置/游戏</button>
     <button class="nav-tab" data-page="car">Lance</button>
     <button class="nav-tab" data-page="scoping">Scoping</button>
+    <button class="nav-tab" data-page="starling">Lookup</button>
+    <button class="nav-tab" data-page="tm">TM</button>
     <button class="nav-tab" data-page="contact">联系</button>
   </div>
 </nav>
@@ -483,6 +562,8 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
       <a href="#more"      class="hero-index-item"><span class="hero-index-num">07</span>Painted Dreamscape · 游戏</a>
       <a href="#car"       class="hero-index-item"><span class="hero-index-num">08</span>Lance Lightning · 汽车设计</a>
       <a href="#scoping"   class="hero-index-item"><span class="hero-index-num">09</span>Scoping Review Skill</a>
+      <a href="#starling"  class="hero-index-item"><span class="hero-index-num">10</span>Starling Lookup Helper</a>
+      <a href="#tm"        class="hero-index-item"><span class="hero-index-num">11</span>L10n TM Companion</a>
     </div>
   </div>
   <div class="hero-scroll">Scroll</div>
@@ -620,6 +701,50 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
         </div>
       </a>
 
+      <a href="#starling" class="card">
+        <div class="card-cover starling-cover">
+          <span class="card-cover-label">Agent Skill · v7.1</span>
+          <span class="card-cover-title">Starling<br>Lookup Helper</span>
+          <div class="card-cover-row">
+            <span class="card-cover-pill">57 locales</span>
+            <span class="card-cover-pill">1 command</span>
+            <span class="card-cover-pill">Feishu</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-num">10 &nbsp;·&nbsp; AI 工作流</p>
+          <p class="card-name">Starling Lookup Helper</p>
+          <p class="card-desc">把源文案、Key 与译文反查编排成可验证的 57 语种查询与飞书交付工作流</p>
+          <div class="card-tags">
+            <span class="card-tag">Agent Skill</span>
+            <span class="card-tag">Python</span>
+            <span class="card-tag">Localization</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#tm" class="card">
+        <div class="card-cover tm-cover">
+          <span class="card-cover-label">Product Engineering · v1.6.0</span>
+          <span class="card-cover-title">L10n TM<br>Companion</span>
+          <div class="card-cover-row" aria-label="Source A to AI candidate B to confirmed C">
+            <span class="tm-cover-step">A</span><span class="tm-cover-arrow">→</span>
+            <span class="tm-cover-step">B</span><span class="tm-cover-arrow">→</span>
+            <span class="tm-cover-step">C</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-num">11 &nbsp;·&nbsp; 本地化工具</p>
+          <p class="card-name">L10n TM Companion</p>
+          <p class="card-desc">Chrome Side Panel 中串联 TM、受控 AI 改写、人工确认、Sheet 写回与多语言 ROI 审计</p>
+          <div class="card-tags">
+            <span class="card-tag">Chrome MV3</span>
+            <span class="card-tag">Human-in-the-loop</span>
+            <span class="card-tag">ROI</span>
+          </div>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
@@ -636,7 +761,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
         <div class="bio r d1">
           <p>我是<strong>吴业亘（YEGEN Wu）</strong>，产品设计师，现就读于<strong>悉尼大学</strong>研究生课程，本科毕业于<strong>重庆大学艺术学院产品设计专业</strong>。</p>
           <p>我的设计从真实问题出发——去农田访谈农户、分析论坛里的恐惧叙事、观察老人如何与手机互动。研究不是流程里的一步，而是所有决策的起点。</p>
-          <p>设计从用户研究出发，经过概念推导、交互原型，到最终产品落地。涉及的媒介包括 Web 应用、VR 空间界面、Arduino 硬件装置、Roblox 游戏，以及 AI 工具产品。</p>
+          <p>设计从用户研究出发，经过概念推导、交互原型，到最终产品落地。涉及的媒介包括 Web 应用、VR 空间界面、Arduino 硬件装置、Roblox 游戏，以及 AI Agent workflow 与本地化工具。</p>
         </div>
 
         <div class="edu-block r d2">
@@ -658,7 +783,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
           <div class="bar-group">
             <div class="bar-item"><div class="bar-label">前端开发 · Next.js / React / TypeScript</div><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div></div>
             <div class="bar-item"><div class="bar-label">Figma · 高保真原型 · 设计系统</div><div class="bar-track"><div class="bar-fill" style="width:94%"></div></div></div>
-            <div class="bar-item"><div class="bar-label">AI 工具设计 · Prompt Engineering</div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+            <div class="bar-item"><div class="bar-label">AI 工具设计 · Agent Workflow · Prompt Engineering</div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
             <div class="bar-item"><div class="bar-label">服务设计 · 系统蓝图 · 用户研究</div><div class="bar-track"><div class="bar-fill" style="width:86%"></div></div></div>
             <div class="bar-item"><div class="bar-label">VR 空间界面 · Apple Vision Pro</div><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div></div>
             <div class="bar-item"><div class="bar-label">硬件原型 · Arduino</div><div class="bar-track"><div class="bar-fill" style="width:72%"></div></div></div>
@@ -715,7 +840,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   <div class="proj-inner">
 
     <div class="proj-meta r">
-      <span class="proj-seq">项目 01 / 09</span>
+      <span class="proj-seq">项目 01 / 11</span>
       <div class="tags">
         <span class="tag tag-dark">商业产品 · 全职</span>
         <span class="tag">B2B SaaS</span>
@@ -840,7 +965,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   <div class="proj-inner">
 
     <div class="proj-meta r">
-      <span class="proj-seq">项目 02 / 09</span>
+      <span class="proj-seq">项目 02 / 11</span>
       <div class="tags">
         <span class="tag tag-dark">毕业设计</span>
         <span class="tag">服务设计</span>
@@ -1012,7 +1137,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   <div class="proj-inner">
 
     <div class="proj-meta r">
-      <span class="proj-seq">项目 03 / 09</span>
+      <span class="proj-seq">项目 03 / 11</span>
       <div class="tags">
         <span class="tag tag-dark">VR 界面设计</span>
         <span class="tag">Apple Vision Pro</span>
@@ -1218,7 +1343,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   <div class="proj-inner">
 
     <div class="proj-meta r">
-      <span class="proj-seq">项目 04 / 09</span>
+      <span class="proj-seq">项目 04 / 11</span>
       <div class="tags">
         <span class="tag tag-dark">HCI</span>
         <span class="tag">UI 设计</span>
@@ -1338,7 +1463,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   <div class="proj-inner">
 
     <div class="proj-meta r">
-      <span class="proj-seq">项目 05 / 09</span>
+      <span class="proj-seq">项目 05 / 11</span>
       <div class="tags">
         <span class="tag tag-dark">产品设计</span>
         <span class="tag">硬件原型</span>
@@ -1408,7 +1533,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
     <!-- 05 Shamanic -->
     <div style="margin-bottom:clamp(60px,10vw,120px)">
-      <div class="proj-meta r"><span class="proj-seq">项目 06 / 09</span><div class="tags"><span class="tag tag-dark">交互装置</span><span class="tag">Arduino</span><span class="tag">TouchDesigner</span><span class="tag">脑波传感</span><span class="tag">2023</span></div></div>
+      <div class="proj-meta r"><span class="proj-seq">项目 06 / 11</span><div class="tags"><span class="tag tag-dark">交互装置</span><span class="tag">Arduino</span><span class="tag">TouchDesigner</span><span class="tag">脑波传感</span><span class="tag">2023</span></div></div>
       <h2 class="r" style="font-family:var(--serif);font-size:clamp(36px,5vw,68px);line-height:1;font-weight:600;letter-spacing:-.02em;margin-bottom:8px">Shamanic Echoes</h2>
       <p class="proj-sub r">of the Raptor &nbsp;/&nbsp; 脑波驱动的萨满仪式互动装置</p>
 
@@ -1443,7 +1568,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
     <!-- 06 Painted Dreamscape -->
     <div>
-      <div class="proj-meta r"><span class="proj-seq">项目 07 / 09</span><div class="tags"><span class="tag tag-dark">游戏设计</span><span class="tag">UX</span><span class="tag">Blender</span><span class="tag">Roblox</span><span class="tag">2023</span></div></div>
+      <div class="proj-meta r"><span class="proj-seq">项目 07 / 11</span><div class="tags"><span class="tag tag-dark">游戏设计</span><span class="tag">UX</span><span class="tag">Blender</span><span class="tag">Roblox</span><span class="tag">2023</span></div></div>
       <h2 class="r" style="font-family:var(--serif);font-size:clamp(36px,5vw,68px);line-height:1;font-weight:600;letter-spacing:-.02em;margin-bottom:8px">Painted Dreamscape</h2>
       <p class="proj-sub r">对抗 AI 同质化的儿童创造力游戏</p>
 
@@ -1483,7 +1608,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   <div class="proj-inner">
 
     <div class="proj-meta r">
-      <span class="proj-seq">项目 08 / 09</span>
+      <span class="proj-seq">项目 08 / 11</span>
       <div class="tags">
         <span class="tag tag-dark">汽车设计</span>
         <span class="tag">工业设计</span>
@@ -1610,7 +1735,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   <div class="proj-inner">
 
     <div class="proj-meta r">
-      <span class="proj-seq">项目 09 / 09</span>
+      <span class="proj-seq">项目 09 / 11</span>
       <div class="tags">
         <span class="tag tag-dark">AI 工具产品</span>
         <span class="tag">HCI 研究</span>
@@ -1717,6 +1842,229 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 </div>
 
 
+<!-- ═══════════════════════ 10 STARLING LOOKUP SKILL ═══════════════════════ -->
+<div id="starling" class="proj">
+  <span class="proj-bg">10</span>
+  <div class="proj-inner">
+
+    <div class="proj-meta r">
+      <span class="proj-seq">项目 10 / 11</span>
+      <div class="tags">
+        <span class="tag tag-dark">Agent Skill</span>
+        <span class="tag">Localization</span>
+        <span class="tag">Workflow Automation</span>
+        <span class="tag">Python</span>
+        <span class="tag">v7.1</span>
+        <span class="tag">2026</span>
+      </div>
+    </div>
+    <h2 class="proj-title r d1">Starling Lookup Helper</h2>
+    <p class="proj-sub r d2">把多语种查询从「操作手册」变成可验证的一键工作流 &nbsp;/&nbsp; <a class="project-link" href="https://github.com/TRUSOGEN/multilingual_translation_skills_prompt" target="_blank" rel="noopener">GitHub repository</a></p>
+
+    <div class="challenge r">
+      <blockquote>查询一条译文看似简单，真实工作却包含输入识别、权限项目发现、精确与模糊召回、57 个 locale 展开、链接拼装、飞书写入和结果回读。任何一步静默失败，都会把「没查到」误报成「不存在」。</blockquote>
+    </div>
+
+    <div class="product-stage lookup-stage r" aria-label="Starling Lookup Helper workflow preview">
+      <div class="product-stage-inner">
+        <div class="stage-head">
+          <div><p class="stage-kicker">Script-backed agent workflow</p><h3 class="stage-title">Input to audited sheet</h3></div>
+          <p class="stage-meta">source · translation · key · mixed</p>
+        </div>
+        <div class="lookup-flow">
+          <div class="lookup-flow-step"><span>01 · PARSE</span><strong>识别输入类型<br>规范化 locale</strong></div>
+          <div class="lookup-flow-step"><span>02 · DISCOVER</span><strong>限定权限项目<br>选择查询路径</strong></div>
+          <div class="lookup-flow-step"><span>03 · LOOKUP</span><strong>Exact → fuzzy<br>批量补全 key info</strong></div>
+          <div class="lookup-flow-step"><span>04 · DELIVER</span><strong>飞书表格写入<br>回读与数量校验</strong></div>
+        </div>
+        <div class="lookup-sheet">
+          <div class="lookup-sheet-bar"><span class="sheet-dot"></span><span class="sheet-dot"></span><span class="sheet-dot"></span>&nbsp; Illustrative preview · not live data</div>
+          <div class="lookup-sheet-grid">
+            <div class="lookup-cell head">Original input</div><div class="lookup-cell head">Language</div><div class="lookup-cell head">Translation</div><div class="lookup-cell head">Match type</div>
+            <div class="lookup-cell">Send Gift</div><div class="lookup-cell">日本語 / Japanese</div><div class="lookup-cell link">ギフトを送る</div><div class="lookup-cell ok">exact</div>
+            <div class="lookup-cell">gift_send_button</div><div class="lookup-cell">한국어 / Korean</div><div class="lookup-cell link">선물 보내기</div><div class="lookup-cell ok">exact</div>
+            <div class="lookup-cell">Gold-Medal</div><div class="lookup-cell">العربية / Arabic</div><div class="lookup-cell link">الميدالية الذهبية</div><div class="lookup-cell ok">normalized</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="process r">
+      <p class="label" style="margin-bottom:28px">从 v6 手册到 v7.1 工作流</p>
+      <div class="process-steps">
+        <div class="ps"><div class="ps-dot on">01</div><div class="ps-name">识别失效模式</div><div class="ps-text">复盘 Agent 临场拼命令、漏查项目、伪装 no-match 与建表失败等高频断点</div></div>
+        <div class="ps"><div class="ps-dot">02</div><div class="ps-name">冻结数据契约</div><div class="ps-text">定义唯一输入源、10 列稳定交付 schema、locale 映射与每条输入的覆盖要求</div></div>
+        <div class="ps"><div class="ps-dot">03</div><div class="ps-name">脚本化执行</div><div class="ps-text">把解析、查询、payload、飞书写入和 Excel fallback 固化为 8 个 Python 脚本</div></div>
+        <div class="ps"><div class="ps-dot">04</div><div class="ps-name">统一入口</div><div class="ps-text">v7.1 用一个 orchestrator 串联所有阶段，并记录每阶段耗时和失败位置</div></div>
+        <div class="ps"><div class="ps-dot">05</div><div class="ps-name">机械验证</div><div class="ps-text">交付前检查行数、locale 覆盖、超链接、no-match 语义与表格回读结果</div></div>
+      </div>
+    </div>
+
+    <div class="feat-grid r">
+      <div class="feat"><h4>四种查询方向</h4><p>支持 source 正查、translation 反查、Key 查询和 mixed 自动识别；同一批输入可走不同路径并合并交付。</p></div>
+      <div class="feat"><h4>权限即搜索边界</h4><p>使用当前凭证可访问项目作为查询范围，权限不足与无命中分别记录，避免把访问问题解释成内容不存在。</p></div>
+      <div class="feat"><h4>分规模性能策略</h4><p>1–100 条并发搜索；101–1000 条先采样定位；更大规模优先导出索引后本地匹配，减少无约束逐条调用。</p></div>
+      <div class="feat"><h4>可恢复交付</h4><p>飞书写入失败会重试，之后生成带超链接的 Excel；每个阶段在 metadata 中留下真实状态，失败可定位、可续接。</p></div>
+    </div>
+
+    <div class="tech-row r">
+      <div class="tech-block">
+        <h4>业务硬约束</h4>
+        <ul>
+          <li>每个输入必须覆盖每个请求 locale</li>
+          <li>未命中也必须进入结果表并标记 no_match</li>
+          <li>Exact、normalized 与 fuzzy 不混为同一可信度</li>
+          <li>Key 和译文附带可点击的 Starling 审计链接</li>
+          <li>只读查询，任何写操作必须重新取得授权</li>
+        </ul>
+      </div>
+      <div class="tech-block">
+        <h4>工程实现</h4>
+        <ul>
+          <li>单命令 orchestrator + 分阶段 metadata</li>
+          <li>CSV / XLSX / TSV / JSON / TXT / Markdown 输入</li>
+          <li>57 locale 中英文名称与代码归一化</li>
+          <li>飞书 10 列 payload、超链接写入与回读</li>
+          <li>自动 Excel fallback 与回归守卫</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="outcomes r">
+      <p class="label">设计成果</p>
+      <div class="out-grid">
+        <div class="out-item"><div class="out-num">57</div><div class="out-text">内置目标 locale，接受中文名、英文名和 locale code 三类输入</div></div>
+        <div class="out-item"><div class="out-num">1</div><div class="out-text">条总控命令完成输入准备、查询、两次校验、建表与异常 fallback</div></div>
+        <div class="out-item"><div class="out-num">10</div><div class="out-text">列双语稳定输出，让查询结果可读、可筛选、可追溯</div></div>
+        <div class="out-item"><div class="out-num">8</div><div class="out-text">个职责清晰的 Python 脚本，把临场 Agent 行为收敛为确定流程</div></div>
+      </div>
+    </div>
+
+    <div class="evidence-boundary r">
+      <div class="evidence-mark">i</div>
+      <div><h4>证据边界</h4><p>该 skill 提供只读检索与交付编排，真实结果取决于调用者在 Starling 中的项目权限和源数据状态；normalized / fuzzy 命中会保留可信度说明，不会伪装成 exact match。</p></div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════ 11 L10N TM COMPANION ═══════════════════════ -->
+<div id="tm" class="proj">
+  <span class="proj-bg">11</span>
+  <div class="proj-inner">
+
+    <div class="proj-meta r">
+      <span class="proj-seq">项目 11 / 11</span>
+      <div class="tags">
+        <span class="tag tag-dark">Product Engineering</span>
+        <span class="tag">Chrome MV3</span>
+        <span class="tag">Human-in-the-loop AI</span>
+        <span class="tag">Localization</span>
+        <span class="tag">JS + Python</span>
+        <span class="tag">v1.6.0</span>
+        <span class="tag">2026</span>
+      </div>
+    </div>
+    <h2 class="proj-title r d1">L10n TM Companion</h2>
+    <p class="proj-sub r d2">在一个 Side Panel 里完成 TM 查询、受控 AI 改写、人工确认、Sheet 写回与 ROI 审计 &nbsp;/&nbsp; <a class="project-link" href="https://github.com/TRUSOGEN/l10n-tm-companion" target="_blank" rel="noopener">GitHub repository</a></p>
+
+    <div class="challenge r">
+      <blockquote>Content Designer 需要在原文、Translation Memory、AI、Spreadsheet 与 ROI 表之间反复复制和核对。产品机会是建立一条可审计的 A → B → C 决策链，让 AI 提速，同时让最终文案、金额和失败原因都保留人类责任边界。</blockquote>
+    </div>
+
+    <div class="product-stage tm-stage r" aria-label="L10n TM Companion review workflow preview">
+      <div class="product-stage-inner">
+        <div class="stage-head">
+          <div><p class="stage-kicker">Human-in-the-loop review</p><h3 class="stage-title">A → B → C evidence chain</h3></div>
+          <p class="stage-meta">Illustrative review state · sample scores</p>
+        </div>
+        <div class="tm-workflow">
+          <div class="tm-state">
+            <div class="tm-state-head"><span class="tm-state-code">A</span><span class="tm-state-score">72% TM</span></div>
+            <p class="tm-state-label">Original source</p><p class="tm-state-copy">读取真实 source 并查询 Top-3 TM，保存原始分数与命中证据。</p>
+          </div>
+          <div class="tm-state">
+            <div class="tm-state-head"><span class="tm-state-code">B</span><span class="tm-state-score">86% Post-TM</span></div>
+            <p class="tm-state-label">AI candidate</p><p class="tm-state-copy">仅在 50 ≤ A &lt; 85 时生成候选；安全校验和真实 Post-TM 完成后才可审阅。</p>
+          </div>
+          <div class="tm-state active">
+            <div class="tm-state-head"><span class="tm-state-code">C</span><span class="tm-state-score">93% Final TM</span></div>
+            <p class="tm-state-label">CD confirmed</p><p class="tm-state-copy">人工选择或编辑最终文案；Final TM 与 Sheet 六列写入成功后才确认。</p>
+          </div>
+        </div>
+        <div class="tm-stage-foot"><p>Formal ROI uses confirmed evidence only · incomplete scopes stay visible</p><strong>ROI = TM Cost(A) − TM Cost(C)</strong></div>
+      </div>
+    </div>
+
+    <div class="process r">
+      <p class="label" style="margin-bottom:28px">核心用户路径</p>
+      <div class="process-steps">
+        <div class="ps"><div class="ps-dot on">01</div><div class="ps-name">Configure</div><div class="ps-text">选择权限项目和 Spreadsheet，自动识别来源列、行号与六列输出区域</div></div>
+        <div class="ps"><div class="ps-dot">02</div><div class="ps-name">Query TM</div><div class="ps-text">每批最多 40 条 source，经 Native Messaging 查询 Starling Top-3 TM</div></div>
+        <div class="ps"><div class="ps-dot">03</div><div class="ps-name">Controlled AI</div><div class="ps-text">只处理中间分数区间；候选逐项通过 token、URL、数字、术语和风险门禁</div></div>
+        <div class="ps"><div class="ps-dot">04</div><div class="ps-name">Review & confirm</div><div class="ps-text">CD 在唯一审阅入口选择或编辑 C；真实 Final TM 和 Sheet 写入成功后确认</div></div>
+        <div class="ps"><div class="ps-dot">05</div><div class="ps-name">Audit ROI</div><div class="ps-text">按需补算多语言 A/C，保存 coverage、失败原因、Operator 与 A−C 金额</div></div>
+      </div>
+    </div>
+
+    <div class="architecture-strip r" aria-label="Product architecture">
+      <div class="arch-node"><span>01</span><strong>Chrome Side Panel</strong><p>四步配置、运行、Review 与 ROI 入口</p></div>
+      <div class="arch-node"><span>02</span><strong>MV3 Service Worker</strong><p>消息路由、状态与错误边界</p></div>
+      <div class="arch-node"><span>03</span><strong>Native Host</strong><p>本机 Python / Node 桥接与凭证隔离</p></div>
+      <div class="arch-node"><span>04</span><strong>TM + AI services</strong><p>批量 TM、Inspire 候选与真实复查</p></div>
+      <div class="arch-node"><span>05</span><strong>Sheet + ROI audit</strong><p>按真实行号写回与三层归档记录</p></div>
+    </div>
+
+    <div class="tech-row r">
+      <div class="tech-block">
+        <h4>产品与交互决策</h4>
+        <ul>
+          <li>普通 TM 快速路径默认关闭 ROI，减少首屏等待</li>
+          <li>Review & edit 是唯一编辑入口，避免重复决策</li>
+          <li>AI 候选 B 只作审阅证据，不进入正式 ROI</li>
+          <li>修改已确认 C 会失效旧 Final TM，要求重新确认</li>
+          <li>错误提供真实原因与恢复动作，不把失败渲染成空结果</li>
+        </ul>
+      </div>
+      <div class="tech-block">
+        <h4>工程与交付</h4>
+        <ul>
+          <li>Vanilla JS Chrome MV3 + Python Native Messaging</li>
+          <li>Top-3 TM、AI 门禁、Post-TM 与 Final TM 状态机</li>
+          <li>按真实 Sheet 行号进行连续六列写回</li>
+          <li>Runs / Scopes / Items 三级 ROI 审计结构</li>
+          <li>自包含 macOS Installer 与固定扩展 ID</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="feat-grid r">
+      <div class="feat"><h4>Fail-closed 业务语义</h4><p>TM、费率、确认或写回失败时保留 incomplete 与具体原因；有效 scope 仍给出 subtotal，不填零、不静默降级。</p></div>
+      <div class="feat"><h4>人类确认是事务边界</h4><p>本地校验、Final TM 和 Sheet 写回全部成功后才进入 confirmed；AI 永远不替代 CD 的最终决策。</p></div>
+      <div class="feat"><h4>可解释的多语言 ROI</h4><p>正式金额固定为 A−C；RWS 与 Pactera 复用同一套 TM snapshot，并保留语言 coverage 与费率缺口。</p></div>
+      <div class="feat"><h4>面向非技术用户的分发</h4><p>离线安装包内置固定运行时并自动注册 Native Host，减少 Python、Node、CLI 与路径配置摩擦。</p></div>
+    </div>
+
+    <div class="outcomes r">
+      <p class="label">v1.6.0 发布校验</p>
+      <div class="out-grid">
+        <div class="out-item"><div class="out-num">64</div><div class="out-text">个 JavaScript 测试文件通过，覆盖工作流、UI、协议与失败恢复</div></div>
+        <div class="out-item"><div class="out-num">9</div><div class="out-text">个顶层 Python 测试文件通过，覆盖 Native Host 与工具脚本</div></div>
+        <div class="out-item"><div class="out-num">53/53</div><div class="out-text">Installer contract 检查通过，覆盖交付结构与安装器约束</div></div>
+        <div class="out-item"><div class="out-num">ZIP</div><div class="out-text">制品通过完整性、必需文件与敏感信息扫描，并锁定 manifest 1.6.0</div></div>
+      </div>
+    </div>
+
+    <div class="evidence-boundary r">
+      <div class="evidence-mark">i</div>
+      <div><h4>当前边界</h4><p>v1.6.0 已形成仓库测试与安装包完整性证据；实际安装器、真实 Starling / Feishu / Inspire / Broker 以及 100 行 × 56 语言 E2E 尚未执行，Backend pytest 也因发布环境缺少依赖而未运行。当前 App 仅为 ad-hoc 签名，生产 feature flags 保持关闭，因此这里不宣称已完成 Pilot 或生产上线。</p></div>
+    </div>
+
+  </div>
+</div>
+
+
 <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
 <footer id="contact" class="footer">
   <div class="footer-inner">
@@ -1737,7 +2085,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
         <p>悉尼大学 研究生在读<br>开放实习 / 全职机会<br>产品设计 · 交互设计方向<br>2025 — 2026</p>
       </div>
     </div>
-    <p class="footer-copy r d2">© 2025 &nbsp;吴业亘 YEGEN Wu</p>
+    <p class="footer-copy r d2">© 2026 &nbsp;吴业亘 YEGEN Wu</p>
   </div>
 </footer>
 
@@ -1758,6 +2106,8 @@ const PAGES = {
   more:      ['more'],
   car:       ['car'],
   scoping:   ['scoping'],
+  starling:  ['starling'],
+  tm:        ['tm'],
   contact:   ['contact'],
 }
 const ALL_IDS = [...new Set(Object.values(PAGES).flat())]
@@ -1828,11 +2178,12 @@ window.addEventListener('popstate', e => {
 })
 
 // ── Bottom page navigation ────────────────────────────────────
-const PAGE_ORDER = ['home','ccm','greenloop','skysoar','medguard','turboresq','more','car','scoping','contact']
+const PAGE_ORDER = ['home','ccm','greenloop','skysoar','medguard','turboresq','more','car','scoping','starling','tm','contact']
 const PAGE_LABELS = {
   home:'首页', ccm:'CCM', greenloop:'Greenloop',
   skysoar:'Sky Soar', medguard:'MedGuard', turboresq:'TurboResQ',
-  more:'装置 / 游戏', car:'Lance', scoping:'Scoping', contact:'联系'
+  more:'装置 / 游戏', car:'Lance', scoping:'Scoping',
+  starling:'Starling Lookup', tm:'L10n TM Companion', contact:'联系'
 }
 const PAGE_NAV_TARGET = {
   home:'#about .sec-inner',
@@ -1840,6 +2191,7 @@ const PAGE_NAV_TARGET = {
   skysoar:'#skysoar .proj-inner', medguard:'#medguard .proj-inner',
   turboresq:'#turboresq .proj-inner', more:'#more .proj-inner',
   car:'#car .proj-inner', scoping:'#scoping .proj-inner',
+  starling:'#starling .proj-inner', tm:'#tm .proj-inner',
   contact:'.footer-inner'
 }
 PAGE_ORDER.forEach((page, i) => {
@@ -1859,6 +2211,8 @@ PAGE_ORDER.forEach((page, i) => {
       {page:'more',      num:'06', name:'装置 / 游戏'},
       {page:'car',       num:'08', name:'Lance Lightning'},
       {page:'scoping',   num:'09', name:'Scoping Review'},
+      {page:'starling',  num:'10', name:'Starling Lookup Helper'},
+      {page:'tm',        num:'11', name:'L10n TM Companion'},
       {page:'contact',   num:'·',  name:'联系 / Contact'},
     ]
     const idx = document.createElement('div')
