@@ -117,6 +117,8 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 .hero-rule{width:100%;height:1px;background:var(--g4);margin:36px 0}
 .hero-bottom{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
 .hero-desc{font-size:clamp(15px,1.8vw,19px);font-weight:300;color:var(--g1);line-height:1.75;max-width:520px}
+.hero-targets{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}
+.hero-target{font-size:9px;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--g3);padding:5px 9px;color:var(--g1)}
 .hero-index{text-align:right}
 .hero-index-item{
   display:flex;align-items:center;justify-content:flex-end;gap:12px;
@@ -131,6 +133,20 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   display:flex;flex-direction:column;align-items:center;gap:8px;
 }
 .hero-scroll::after{content:'';width:1px;height:32px;background:var(--g3)}
+
+/*─ AI Product Manager positioning ─*/
+.ai-fit{padding:clamp(64px,9vw,112px) var(--pad);background:#111916;color:#f3f8f6}
+.ai-fit-inner{max-width:var(--maxw);margin:0 auto}
+.ai-fit-head{display:grid;grid-template-columns:.72fr 1.28fr;gap:clamp(36px,7vw,96px);align-items:end;margin-bottom:42px}
+.ai-fit-title{font-family:var(--serif);font-size:clamp(42px,7vw,92px);line-height:.92;letter-spacing:-.035em;font-weight:600}
+.ai-fit-copy{font-size:clamp(15px,1.7vw,19px);line-height:1.75;color:rgba(243,248,246,.74);max-width:620px}
+.ai-fit-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(215,240,226,.2);background:rgba(215,240,226,.2);gap:1px}
+.ai-fit-item{background:#111916;padding:24px 20px;min-height:190px}
+.ai-fit-num{font-size:9px;letter-spacing:.2em;color:rgba(243,248,246,.38)}
+.ai-fit-item h3{font-family:var(--serif);font-size:21px;line-height:1.1;margin:28px 0 10px;font-weight:500}
+.ai-fit-item p{font-size:12px;line-height:1.65;color:rgba(243,248,246,.68)}
+.ai-fit-proof{margin-top:24px;padding-top:18px;border-top:1px solid rgba(215,240,226,.18);display:grid;grid-template-columns:1fr 1fr;gap:24px;font-size:10px;line-height:1.65;letter-spacing:.06em;color:rgba(243,248,246,.54)}
+.ai-fit-proof strong{display:block;color:#d7f0e2;font-weight:500;text-transform:uppercase;letter-spacing:.16em;margin-bottom:5px}
 
 /*─ Project cards overview ─*/
 .overview{padding:clamp(60px,9vw,120px) var(--pad);background:var(--g6);border-top:1px solid var(--g4)}
@@ -327,6 +343,13 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 .tm-stage-foot{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;padding:14px 16px;background:rgba(0,0,0,.2);border:1px solid rgba(209,236,222,.12)}
 .tm-stage-foot p{font-size:10px;opacity:.72}
 .tm-stage-foot strong{font-family:var(--serif);font-size:18px;font-weight:400;white-space:nowrap}
+.tm-ui-gallery{display:grid;grid-template-columns:.72fr 1.28fr;gap:16px;margin:42px 0 12px}
+.tm-ui-shot{min-width:0}
+.tm-ui-shot-frame{height:540px;display:flex;align-items:center;justify-content:center;padding:18px;background:#eef2f8;border:1px solid #d8dfeb;overflow:hidden}
+.tm-ui-shot img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;box-shadow:0 18px 48px rgba(20,31,49,.14)}
+.tm-ui-shot figcaption{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:12px 2px 0;font-size:11px;color:var(--g1);line-height:1.55}
+.tm-ui-shot figcaption span{font-size:9px;letter-spacing:.18em;color:var(--g3)}
+.tm-ui-note{font-size:10px;color:var(--g2);line-height:1.65;margin-bottom:44px}
 .architecture-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--g4);border:1px solid var(--g4);margin:30px 0}
 .arch-node{background:var(--white);padding:18px 14px;min-height:110px}
 .arch-node span{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--g3)}
@@ -419,6 +442,8 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   .card-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
   .lookup-flow{grid-template-columns:1fr 1fr}
   .architecture-strip{grid-template-columns:1fr 1fr}
+  .ai-fit-head{grid-template-columns:1fr}
+  .ai-fit-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:640px){
   .g2,.g3,.g4,.g5-col,.g-65{grid-template-columns:1fr}
@@ -441,6 +466,11 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   .lookup-sheet{overflow-x:auto}
   .lookup-sheet-grid{min-width:560px}
   .architecture-strip{grid-template-columns:1fr}
+  .ai-fit-grid,.ai-fit-proof{grid-template-columns:1fr}
+  .ai-fit-item{min-height:0}
+  .tm-ui-gallery{grid-template-columns:1fr}
+  .tm-ui-shot-frame{height:auto;padding:12px}
+  .tm-ui-shot img{width:100%;max-height:none;box-shadow:none}
   .evidence-boundary{grid-template-columns:1fr;gap:8px}
 }
 @media print{
@@ -512,6 +542,8 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
   /* 技能条完整显示 */
   .skills-panel{break-inside:avoid}
+  .ai-fit{break-inside:avoid}
+  .tm-ui-gallery{break-inside:avoid}
 
   /* 过程时间轴不断 */
   .process-steps{grid-template-columns:repeat(5,1fr)}
@@ -542,16 +574,22 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 <!-- ═══════════════════════ HERO ═══════════════════════ -->
 <section id="hero" class="hero">
   <div class="hero-avatar"><img src="assets/avatar.jpg" alt="吴业亘"></div>
-  <p class="hero-eyebrow">产品设计 &nbsp;·&nbsp; 交互设计 &nbsp;·&nbsp; UX 研究</p>
+  <p class="hero-eyebrow">AI 产品经理 &nbsp;·&nbsp; Agent Product &nbsp;·&nbsp; AI UX</p>
   <h1 class="hero-name">吴业亘</h1>
   <p class="hero-name-en">YEGEN Wu</p>
   <div class="hero-rule"></div>
   <div class="hero-bottom">
-    <p class="hero-desc">
-      从 B2B 商业平台到重庆的农田、悉尼的研究室——<br>
-      我用设计连接真实的人与复杂的系统。<br>
-      全职产品设计、服务设计、VR 空间界面与交互装置。
-    </p>
+    <div>
+      <p class="hero-desc">
+        从用户场景定义 AI 价值，用 LLM / Agent 架构把概念做成可验证产品。<br>
+        关注模型边界、Human-in-the-loop 交互、效果指标与从 0 到 1 落地。
+      </p>
+      <div class="hero-targets" aria-label="Target roles">
+        <span class="hero-target">AI Product Manager</span>
+        <span class="hero-target">AI + Gaming</span>
+        <span class="hero-target">Graduate Candidate</span>
+      </div>
+    </div>
     <div class="hero-index">
       <a href="#tm"        class="hero-index-item"><span class="hero-index-num">01</span>L10n TM Companion</a>
       <a href="#ccm"       class="hero-index-item"><span class="hero-index-num">02</span>CCM · B2B 化工数据平台</a>
@@ -567,6 +605,26 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
     </div>
   </div>
   <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ═══════════════════════ AI PRODUCT MANAGER FIT ═══════════════════════ -->
+<section id="ai-fit" class="ai-fit">
+  <div class="ai-fit-inner">
+    <div class="ai-fit-head">
+      <div><p class="label" style="color:rgba(243,248,246,.48)">Target Role / 目标岗位</p><h2 class="ai-fit-title">AI Product<br>Manager</h2></div>
+      <p class="ai-fit-copy">我的优势是把用户洞察、AI 技术判断与产品交付放在同一条链路里：先定义增量价值，再选择 LLM / Agent 的介入方式，设计人机协同体验，并用模型、用户和业务三层指标验证结果。</p>
+    </div>
+    <div class="ai-fit-grid">
+      <article class="ai-fit-item"><span class="ai-fit-num">01 · VALUE</span><h3>AI 场景定义</h3><p>从用户任务与失败成本识别 AI 的价值节点，输出需求、边界、交互与验证方案，推动 0→1 闭环。</p></article>
+      <article class="ai-fit-item"><span class="ai-fit-num">02 · TECH</span><h3>LLM / Agent 边界</h3><p>理解 Prompt、结构化输出、Agent workflow 与模型门禁；能判断何时需要 AI，何时应保留确定性流程。</p></article>
+      <article class="ai-fit-item"><span class="ai-fit-num">03 · EXPERIENCE</span><h3>AI 交互与信任</h3><p>用候选证据、风险提示、人工确认和可恢复错误设计 Human-in-the-loop 体验，降低幻觉与误用风险。</p></article>
+      <article class="ai-fit-item"><span class="ai-fit-num">04 · EVALUATION</span><h3>效果与增长</h3><p>从准确率、拒绝率、采纳率、信任度到激活漏斗与留存建立指标框架；在有流量时用 A/B 测试验证策略。</p></article>
+    </div>
+    <div class="ai-fit-proof">
+      <p><strong>已实践 / Built</strong>LLM + Agent workflow、Prompt Engineering、retrieval-grounded AI、人工审阅状态机、AI eval 与失败恢复。</p>
+      <p><strong>技术理解 / Working knowledge</strong>RAG 与知识工程、MLLM / 多模态交互、主动式推荐、AI 游戏伙伴与 NPC 记忆系统的产品边界。</p>
+    </div>
+  </div>
 </section>
 
 <!-- ═══════════════════════ PROJECT CARDS ═══════════════════════ -->
@@ -685,7 +743,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
         <div class="card-body">
           <p class="card-num">08 &nbsp;·&nbsp; 游戏设计</p>
           <p class="card-name">Painted Dreamscape</p>
-          <p class="card-desc">对抗 AI 同质化的儿童创造力游戏——Roblox + Blender，公开上线</p>
+          <p class="card-desc">对抗 AI 同质化的儿童 UGC 创造力游戏——从玩法机制、玩家体验到 Roblox 上线</p>
           <div class="card-tags">
             <span class="card-tag">游戏设计</span>
             <span class="card-tag">Roblox</span>
@@ -759,9 +817,9 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
       <div>
         <p class="label r">关于我</p>
         <div class="bio r d1">
-          <p>我是<strong>吴业亘（YEGEN Wu）</strong>，产品设计师，现就读于<strong>悉尼大学</strong>研究生课程，本科毕业于<strong>重庆大学艺术学院产品设计专业</strong>。</p>
+          <p>我是<strong>吴业亘（YEGEN Wu）</strong>，目标岗位是<strong>AI 产品经理 / AI+游戏产品</strong>，现就读于<strong>悉尼大学</strong>研究生课程，本科毕业于<strong>重庆大学艺术学院产品设计专业</strong>。</p>
           <p>我的设计从真实问题出发——去农田访谈农户、分析论坛里的恐惧叙事、观察老人如何与手机互动。研究不是流程里的一步，而是所有决策的起点。</p>
-          <p>设计从用户研究出发，经过概念推导、交互原型，到最终产品落地。涉及的媒介包括 Web 应用、VR 空间界面、Arduino 硬件装置、Roblox 游戏，以及 AI Agent workflow 与本地化工具。</p>
+          <p>我能从用户研究与 JTBD 出发，完成产品定义、交互原型、技术协同和效果验证。实践覆盖 LLM / Agent workflow、检索证据链、AI eval、Web 产品、空间界面与 Roblox 游戏设计。</p>
         </div>
 
         <div class="edu-block r d2">
@@ -781,48 +839,48 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
         <div class="skills-panel">
           <p class="label">核心能力</p>
           <div class="bar-group">
-            <div class="bar-item"><div class="bar-label">前端开发 · Next.js / React / TypeScript</div><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div></div>
+            <div class="bar-item"><div class="bar-label">AI 产品定义 · 0→1 · 效果验证</div><div class="bar-track"><div class="bar-fill" style="width:94%"></div></div></div>
+            <div class="bar-item"><div class="bar-label">LLM / Agent · Prompt · Retrieval-grounded AI</div><div class="bar-track"><div class="bar-fill" style="width:92%"></div></div></div>
+            <div class="bar-item"><div class="bar-label">AI UX · Human-in-the-loop · 用户信任</div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
+            <div class="bar-item"><div class="bar-label">用户研究 · JTBD · 产品策略</div><div class="bar-track"><div class="bar-fill" style="width:89%"></div></div></div>
             <div class="bar-item"><div class="bar-label">Figma · 高保真原型 · 设计系统</div><div class="bar-track"><div class="bar-fill" style="width:94%"></div></div></div>
-            <div class="bar-item"><div class="bar-label">AI 工具设计 · Agent Workflow · Prompt Engineering</div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
-            <div class="bar-item"><div class="bar-label">服务设计 · 系统蓝图 · 用户研究</div><div class="bar-track"><div class="bar-fill" style="width:86%"></div></div></div>
-            <div class="bar-item"><div class="bar-label">VR 空间界面 · Apple Vision Pro</div><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div></div>
-            <div class="bar-item"><div class="bar-label">硬件原型 · Arduino</div><div class="bar-track"><div class="bar-fill" style="width:72%"></div></div></div>
+            <div class="bar-item"><div class="bar-label">Next.js / TypeScript / Python 原型</div><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div></div>
           </div>
           <div class="skills-grid" style="margin-top:28px">
             <div class="sg">
-              <h4>设计工具</h4>
+              <h4>AI 产品</h4>
+              <ul>
+                <li>场景洞察 / 需求定义</li>
+                <li>PRD / JTBD / Roadmap</li>
+                <li>0→1 原型与验证</li>
+                <li>跨技术 / 设计协同</li>
+              </ul>
+            </div>
+            <div class="sg">
+              <h4>AI 技术</h4>
+              <ul>
+                <li>LLM / Agent / Prompt</li>
+                <li>RAG / 知识工程</li>
+                <li>MLLM / 多模态交互</li>
+                <li>模型门禁 / 容错</li>
+              </ul>
+            </div>
+            <div class="sg">
+              <h4>评估与增长</h4>
+              <ul>
+                <li>Accuracy / Hallucination</li>
+                <li>Trust / Adoption / Edit rate</li>
+                <li>Funnel / Retention</li>
+                <li>A/B Test / User feedback</li>
+              </ul>
+            </div>
+            <div class="sg">
+              <h4>原型实现</h4>
               <ul>
                 <li>Figma / Framer</li>
-                <li>Blender</li>
-                <li>TouchDesigner</li>
-                <li>Adobe Creative Suite</li>
-              </ul>
-            </div>
-            <div class="sg">
-              <h4>研究方法</h4>
-              <ul>
-                <li>实地调研 / 访谈</li>
-                <li>Persona / Journey Map</li>
-                <li>启发式评估</li>
-                <li>KJ 法 / JTBD</li>
-              </ul>
-            </div>
-            <div class="sg">
-              <h4>实现技术</h4>
-              <ul>
                 <li>Next.js / TypeScript</li>
-                <li>Arduino / 硬件</li>
-                <li>Roblox Studio</li>
-                <li>Python</li>
-              </ul>
-            </div>
-            <div class="sg">
-              <h4>设计领域</h4>
-              <ul>
-                <li>服务设计</li>
-                <li>VR / 空间计算</li>
-                <li>HCI / 交互研究</li>
-                <li>交互装置</li>
+                <li>Python / Chrome MV3</li>
+                <li>Roblox / Blender</li>
               </ul>
             </div>
           </div>
@@ -1973,6 +2031,18 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
       <blockquote>Content Designer 需要在原文、Translation Memory、AI、Spreadsheet 与 ROI 表之间反复复制和核对。产品机会是建立一条可审计的 A → B → C 决策链，让 AI 提速，同时让最终文案、金额和失败原因都保留人类责任边界。</blockquote>
     </div>
 
+    <div class="tm-ui-gallery r" aria-label="L10n TM Companion source interface screenshots">
+      <figure class="tm-ui-shot">
+        <div class="tm-ui-shot-frame"><img src="assets/tm-side-panel-main.png" alt="L10n TM Companion Side Panel showing the four-step workflow"></div>
+        <figcaption><span>01</span><p><strong>Side Panel workflow</strong><br>Projects → Spreadsheet → Run → Review，把配置、执行与人工审阅收敛在单一任务路径中。</p></figcaption>
+      </figure>
+      <figure class="tm-ui-shot">
+        <div class="tm-ui-shot-frame"><img src="assets/tm-llm-agent-settings.png" alt="LLM provider, model and thinking level settings from L10n TM Companion"></div>
+        <figcaption><span>02</span><p><strong>LLM / Agent control surface</strong><br>显式选择 Provider、Model 与 thinking level，让模型能力、成本和延迟成为产品决策。</p></figcaption>
+      </figure>
+    </div>
+    <p class="tm-ui-note r">Source UI captured from GitHub main c094e16 · Original HTML/CSS · No live AK/SK, credentials or production permissions.</p>
+
     <div class="product-stage tm-stage r" aria-label="L10n TM Companion review workflow preview">
       <div class="product-stage-inner">
         <div class="stage-head">
@@ -2008,42 +2078,43 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
       </div>
     </div>
 
-    <div class="architecture-strip r" aria-label="Product architecture">
-      <div class="arch-node"><span>01</span><strong>Chrome Side Panel</strong><p>四步配置、运行、Review 与 ROI 入口</p></div>
-      <div class="arch-node"><span>02</span><strong>MV3 Service Worker</strong><p>消息路由、状态与错误边界</p></div>
-      <div class="arch-node"><span>03</span><strong>Native Host</strong><p>本机 Python / Node 桥接与凭证隔离</p></div>
-      <div class="arch-node"><span>04</span><strong>TM + AI services</strong><p>批量 TM、Inspire 候选与真实复查</p></div>
-      <div class="arch-node"><span>05</span><strong>Sheet + ROI audit</strong><p>按真实行号写回与三层归档记录</p></div>
+    <p class="label r" style="margin-top:48px">AI Product Technical Route</p>
+    <div class="architecture-strip r" aria-label="AI product technical route">
+      <div class="arch-node"><span>01 · VALUE</span><strong>用户价值节点</strong><p>定位人工复制、判断与追踪成本，定义 AI 只处理中间置信区间。</p></div>
+      <div class="arch-node"><span>02 · GROUNDING</span><strong>TM Retrieval</strong><p>以 Top-3 领域记忆作为生成证据，保留召回结果与原始分数。</p></div>
+      <div class="arch-node"><span>03 · AGENT</span><strong>LLM Orchestration</strong><p>Prompt + 结构化候选 + 安全门禁；最多三条结果进入真实 Post-TM。</p></div>
+      <div class="arch-node"><span>04 · TRUST</span><strong>Human-in-the-loop</strong><p>用户选择、编辑和确认最终 C；模型输出始终保持可检查、可拒绝。</p></div>
+      <div class="arch-node"><span>05 · EVAL</span><strong>效果反馈闭环</strong><p>用匹配提升、采纳/编辑、失败率、完成时间与 A−C ROI 评估。</p></div>
     </div>
 
     <div class="tech-row r">
       <div class="tech-block">
-        <h4>产品与交互决策</h4>
+        <h4>AI 产品经理决策</h4>
         <ul>
-          <li>普通 TM 快速路径默认关闭 ROI，减少首屏等待</li>
-          <li>Review & edit 是唯一编辑入口，避免重复决策</li>
-          <li>AI 候选 B 只作审阅证据，不进入正式 ROI</li>
-          <li>修改已确认 C 会失效旧 Final TM，要求重新确认</li>
-          <li>错误提供真实原因与恢复动作，不把失败渲染成空结果</li>
+          <li>只在 50 ≤ A &lt; 85 时调用 LLM，把 AI 用在能够创造增量的区间</li>
+          <li>Review & edit 是唯一编辑入口，降低认知负担并建立用户责任边界</li>
+          <li>AI 候选 B 只作审阅证据，正式结果与 ROI 始终基于人工确认 C</li>
+          <li>评价体系覆盖模型质量、操作效率、用户信任和业务价值四层</li>
+          <li>错误提供真实原因与恢复动作，不把接口失败渲染成空结果</li>
         </ul>
       </div>
       <div class="tech-block">
-        <h4>工程与交付</h4>
+        <h4>技术边界与协同</h4>
         <ul>
-          <li>Vanilla JS Chrome MV3 + Python Native Messaging</li>
-          <li>Top-3 TM、AI 门禁、Post-TM 与 Final TM 状态机</li>
-          <li>按真实 Sheet 行号进行连续六列写回</li>
-          <li>Runs / Scopes / Items 三级 ROI 审计结构</li>
-          <li>自包含 macOS Installer 与固定扩展 ID</li>
+          <li>领域 TM 是可审计 grounding；不为关键词包装成通用向量 RAG</li>
+          <li>任务是 text-to-text 改写，不引入 MLLM / 多模态，控制复杂度与评估变量</li>
+          <li>LLM 负责生成候选，确定性规则负责 token、URL、数字与风险校验</li>
+          <li>Chrome MV3 + Native Host 隔离浏览器交互、服务调用与本机凭证</li>
+          <li>状态机让 Final TM、Sheet 写回与 ROI 归档具备明确事务边界</li>
         </ul>
       </div>
     </div>
 
     <div class="feat-grid r">
-      <div class="feat"><h4>Fail-closed 业务语义</h4><p>TM、费率、确认或写回失败时保留 incomplete 与具体原因；有效 scope 仍给出 subtotal，不填零、不静默降级。</p></div>
-      <div class="feat"><h4>人类确认是事务边界</h4><p>本地校验、Final TM 和 Sheet 写回全部成功后才进入 confirmed；AI 永远不替代 CD 的最终决策。</p></div>
-      <div class="feat"><h4>可解释的多语言 ROI</h4><p>正式金额固定为 A−C；RWS 与 Pactera 复用同一套 TM snapshot，并保留语言 coverage 与费率缺口。</p></div>
-      <div class="feat"><h4>面向非技术用户的分发</h4><p>离线安装包内置固定运行时并自动注册 Native Host，减少 Python、Node、CLI 与路径配置摩擦。</p></div>
+      <div class="feat"><h4>模型质量 / Model</h4><p>Orig、Post 与 Final TM 分数构成可比较证据；安全拒绝率和失败原因用于定位模型与规则边界。</p></div>
+      <div class="feat"><h4>用户信任 / User</h4><p>候选采纳率、人工编辑率、确认成功率与撤回行为衡量 AI 是否真正减少判断成本。</p></div>
+      <div class="feat"><h4>使用漏斗 / Product</h4><p>从授权、选项目、读取 source、生成候选到完成 Review 追踪激活与任务完成漏斗。</p></div>
+      <div class="feat"><h4>业务价值 / Business</h4><p>批处理耗时、Final TM 提升与正式 A−C ROI 连接产品体验和可量化业务收益。</p></div>
     </div>
 
     <div class="outcomes r">
@@ -2058,7 +2129,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
     <div class="evidence-boundary r">
       <div class="evidence-mark">i</div>
-      <div><h4>当前边界</h4><p>内容基于 GitHub main 的 c094e16 提交与 v1.6.0 文档；实际安装器、真实 Starling / Feishu / Inspire / Broker 以及 100 行 × 56 语言 E2E 尚未执行，Backend pytest 也因发布环境缺少依赖而未运行。当前 App 仅为 ad-hoc 签名，生产 feature flags 保持关闭，因此这里不宣称已完成 Pilot 或生产上线。</p></div>
+      <div><h4>当前边界</h4><p>界面截图由 GitHub main c094e16 的原始 HTML/CSS 无凭证渲染，不包含 AK/SK、个人权限或真实业务数据；实际安装器、真实 Starling / Feishu / Inspire / Broker 以及 100 行 × 56 语言 E2E 尚未执行，Backend pytest 也因发布环境缺少依赖而未运行。当前 App 仅为 ad-hoc 签名，生产 feature flags 保持关闭，因此这里不宣称已完成 Pilot 或生产上线。</p></div>
     </div>
 
   </div>
@@ -2077,12 +2148,12 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
         <p>GitHub &nbsp;<a href="https://github.com/TRUSOGEN" target="_blank">TRUSOGEN</a></p>
       </div>
       <div class="footer-col">
-        <p class="label">设计方向</p>
-        <p>产品设计 · UX 研究<br>交互设计 · 界面设计<br>VR / 空间计算 · HCI<br>服务设计 · 系统设计</p>
+        <p class="label">目标方向</p>
+        <p>AI 产品经理 · Agent Product<br>AI+游戏 · 智能交互<br>LLM / RAG / MLLM 产品化<br>AI UX · 效果评估 · 增长</p>
       </div>
       <div class="footer-col">
         <p class="label">当前状态</p>
-        <p>悉尼大学 研究生在读<br>开放实习 / 全职机会<br>产品设计 · 交互设计方向<br>2025 — 2026</p>
+        <p>悉尼大学 研究生在读<br>开放校招 / 实习 / 全职机会<br>AI 产品经理 · AI+游戏方向<br>Graduate Candidate</p>
       </div>
     </div>
     <p class="footer-copy r d2">© 2026 &nbsp;吴业亘 YEGEN Wu</p>
@@ -2097,7 +2168,7 @@ const io = new IntersectionObserver(entries => {
 
 // ── Tab pages ────────────────────────────────────────────────
 const PAGE_DEFS = [
-  {page:'home', ids:['hero','overview','about-rule','about'], label:'首页', navTarget:'#about .sec-inner'},
+  {page:'home', ids:['hero','ai-fit','overview','about-rule','about'], label:'首页', navTarget:'#about .sec-inner'},
   {page:'tm', ids:['tm'], label:'L10n TM Companion', navTarget:'#tm .proj-inner', project:{num:'01', name:'L10n TM Companion'}},
   {page:'ccm', ids:['ccm'], label:'CCM', navTarget:'#ccm .proj-inner', project:{num:'02', name:'CCM 化工情报平台'}},
   {page:'greenloop', ids:['greenloop'], label:'Greenloop', navTarget:'#greenloop .proj-inner', project:{num:'03', name:'Greenloop'}},
