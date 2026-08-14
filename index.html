@@ -6,7 +6,7 @@
 <title>吴业亘 · 作品集</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 /*─ Reset ─*/
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -23,7 +23,7 @@ a{color:inherit;text-decoration:none}
   --g4:#E6E6E2;
   --g5:#F5F5F2;
   --g6:#FAFAF8;
-  --serif:'Playfair Display','Noto Serif SC',Georgia,serif;
+  --serif:'Playfair Display','Songti SC','STSong','SimSun',Georgia,serif;
   --sans:'Inter','Noto Sans SC',-apple-system,sans-serif;
   --pad:clamp(20px,5.5vw,88px);
   --maxw:1280px;
@@ -147,6 +147,16 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 .ai-fit-item p{font-size:12px;line-height:1.65;color:rgba(243,248,246,.68)}
 .ai-fit-proof{margin-top:24px;padding-top:18px;border-top:1px solid rgba(215,240,226,.18);display:grid;grid-template-columns:1fr 1fr;gap:24px;font-size:10px;line-height:1.65;letter-spacing:.06em;color:rgba(243,248,246,.54)}
 .ai-fit-proof strong{display:block;color:#d7f0e2;font-weight:500;text-transform:uppercase;letter-spacing:.16em;margin-bottom:5px}
+.ai-game-bridge{margin-top:42px;padding-top:30px;border-top:1px solid rgba(215,240,226,.24)}
+.ai-game-head{display:grid;grid-template-columns:.72fr 1.28fr;gap:clamp(28px,6vw,82px);align-items:end;margin-bottom:22px}
+.ai-game-head h3{font-family:var(--serif);font-size:clamp(26px,3.4vw,46px);line-height:1.08;font-weight:500}
+.ai-game-head p{font-size:11px;line-height:1.7;color:rgba(243,248,246,.58)}
+.ai-game-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(215,240,226,.2);border:1px solid rgba(215,240,226,.2)}
+.ai-game-step{background:#111916;padding:19px 18px}
+.ai-game-step span{font-size:9px;letter-spacing:.18em;color:#d7f0e2}
+.ai-game-step strong{display:block;font-size:13px;font-weight:500;margin:11px 0 7px}
+.ai-game-step p{font-size:11px;line-height:1.6;color:rgba(243,248,246,.62)}
+.ai-game-evidence{margin-top:14px;font-size:9px;letter-spacing:.08em;line-height:1.65;color:rgba(243,248,246,.42)}
 
 /*─ Project cards overview ─*/
 .overview{padding:clamp(60px,9vw,120px) var(--pad);background:var(--g6);border-top:1px solid var(--g4)}
@@ -443,6 +453,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   .lookup-flow{grid-template-columns:1fr 1fr}
   .architecture-strip{grid-template-columns:1fr 1fr}
   .ai-fit-head{grid-template-columns:1fr}
+  .ai-game-head{grid-template-columns:1fr}
   .ai-fit-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:640px){
@@ -467,6 +478,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   .lookup-sheet-grid{min-width:560px}
   .architecture-strip{grid-template-columns:1fr}
   .ai-fit-grid,.ai-fit-proof{grid-template-columns:1fr}
+  .ai-game-grid{grid-template-columns:1fr}
   .ai-fit-item{min-height:0}
   .tm-ui-gallery{grid-template-columns:1fr}
   .tm-ui-shot-frame{height:auto;padding:12px}
@@ -623,6 +635,18 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
     <div class="ai-fit-proof">
       <p><strong>已实践 / Built</strong>LLM + Agent workflow、Prompt Engineering、retrieval-grounded AI、人工审阅状态机、AI eval 与失败恢复。</p>
       <p><strong>技术理解 / Working knowledge</strong>RAG 与知识工程、MLLM / 多模态交互、主动式推荐、AI 游戏伙伴与 NPC 记忆系统的产品边界。</p>
+    </div>
+    <div class="ai-game-bridge">
+      <div class="ai-game-head">
+        <div><p class="label" style="color:rgba(243,248,246,.44)">AI + Gaming / 可迁移产品框架</p><h3>从玩家旅程到 Agent 游戏伙伴</h3></div>
+        <p>把 Roblox UGC 游戏中的玩法与玩家体验设计，和 TM Companion 的 Agent 编排、检索证据、人工控制与评估机制组合成产品假设；该框架用于说明迁移能力，不代表已上线 AI 游戏伙伴。</p>
+      </div>
+      <div class="ai-game-grid">
+        <div class="ai-game-step"><span>01 · 找 / DISCOVER</span><strong>意图理解 + 检索推荐</strong><p>用玩家偏好、游戏库与知识检索形成可解释推荐；关注点击、启动转化与推荐满意度。</p></div>
+        <div class="ai-game-step"><span>02 · 玩 / PLAY</span><strong>上下文 Agent + 多模态辅助</strong><p>基于当前游戏状态提供任务提示与主动帮助；关注任务成功率、打扰率、信任度与单局留存。</p></div>
+        <div class="ai-game-step"><span>03 · 社 / SOCIAL</span><strong>NPC 长期记忆 + 安全边界</strong><p>用知识工程管理角色关系、世界状态与可追溯记忆；关注一致性、幻觉风险、互动深度与长期留存。</p></div>
+      </div>
+      <p class="ai-game-evidence">TRANSFER EVIDENCE · Painted Dreamscape: UGC 玩法与玩家体验 · L10n TM Companion: LLM / Agent / HITL / Eval · Next step: prototype and user-test the companion loop.</p>
     </div>
   </div>
 </section>
