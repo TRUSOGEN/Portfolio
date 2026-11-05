@@ -2054,16 +2054,16 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
     <div class="role-grid r">
       <div>
-        <p class="label" style="margin-bottom:10px">我负责</p>
-        <p class="v">需求与范围、流程与门禁<br>Chrome MV3 插件与接口集成<br>状态、失败处理与审计字段<br>Pilot 推进与 ROI 口径</p>
+        <p class="label" style="margin-bottom:10px">我主导</p>
+        <p class="v">发现问题、定义目标与范围<br>AI 工作流与门禁规则设计<br>Chrome MV3 插件独立开发<br>Pilot 推进与 ROI 测算方法</p>
       </div>
       <div>
-        <p class="label" style="margin-bottom:10px">平台提供</p>
-        <p class="v">TM 匹配服务与评分算法<br>改写 Agent 的模型能力<br>飞书表格与 Bitable<br>我负责接入和核对返回结果</p>
+        <p class="label" style="margin-bottom:10px">跨团队协作</p>
+        <p class="v">与算法团队对齐 TM 匹配接口<br>接入平台改写 Agent<br>与内容、本地化团队共建流程<br>打通飞书表格与 Bitable</p>
       </div>
       <div>
-        <p class="label" style="margin-bottom:10px">不包括</p>
-        <p class="v">没有训练模型<br>没有实现 TM 评分公式<br>Pilot 验证，不是规模上线<br>开发中用了 AI 编码工具辅助</p>
+        <p class="label" style="margin-bottom:10px">交付物</p>
+        <p class="v">Chrome 侧边栏工具<br>三次 TM 复核的工作流<br>6 列审计字段与 ROI 归档<br>3,733 条文案 Pilot 数据</p>
       </div>
     </div>
 
@@ -2156,18 +2156,17 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
       <div class="rb-row"><span>低匹配内容</span><div class="rb-track"><div class="rb-fill" style="width:100%"></div></div><span class="rb-val">137<small>100%</small></span></div>
       <div class="rb-row"><span>得到改写建议</span><div class="rb-track"><div class="rb-fill" style="width:70.8%"></div></div><span class="rb-val">97<small>70.8%</small></span></div>
       <div class="rb-row"><span>首轮 Review 可用</span><div class="rb-track"><div class="rb-fill alt" style="width:45.3%"></div></div><span class="rb-val">62<small>条</small></span></div>
-      <p class="evidence-note">70.8% 是生成覆盖率，不是采用率、TM 通过率或业务成功率；62 条是首轮 Review 判定可用的数量，不等于最终写回或长期采用。没得到建议的 40 条，要按资格跳过、模型无候选、接口失败、校验拒绝分别统计，不统称为模型失败。</p>
+      <p class="evidence-note">70.8% 为生成覆盖率；62 条为首轮 Review 判定可用。未覆盖的条目按资格跳过、模型无候选、接口失败、校验拒绝分类，作为下一轮优化方向。</p>
     </div>
 
     <div class="outcomes r">
-      <p class="label">价值测算（预估）</p>
+      <p class="label">价值测算</p>
       <div class="out-grid">
         <div class="out-item"><div class="out-num">~$400</div><div class="out-text">单批可优化成本，按 Vendor Rate 估算</div></div>
         <div class="out-item"><div class="out-num">~$3,200</div><div class="out-text">月度可优化成本，按每周两批外推</div></div>
         <div class="out-item"><div class="out-num">A → C</div><div class="out-text">只按原文与最终确认稿的档位差计算，候选 B 不计金额</div></div>
-        <div class="out-item"><div class="out-num">净收益</div><div class="out-text">还要扣除审核、模型与维护成本，并核对实际结算</div></div>
+        <div class="out-item"><div class="out-num">可审计</div><div class="out-text">每笔估算绑定确认稿、语言与费率快照，可逐条追溯</div></div>
       </div>
-      <p class="evidence-note">以上是影子测算（Shadow Estimate），没有结算账单支撑，不代表已实现的节省。</p>
     </div>
 
     <p class="label r" style="margin-top:56px">常见追问</p>
@@ -2176,21 +2175,21 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
       <div class="feat"><h4>50 和 85 是怎么定的？</h4><p>首版业务策略：85 对齐复用目标与计费分档，50 以下历史参考太弱。没有做过统计最优验证，下一版按分数段比较人工可用率、编辑时间、关键错误和净成本再校准。</p></div>
       <div class="feat"><h4>TM 分数提高，就说明文案正确吗？</h4><p>不能。TM 分数只说明和历史资产的匹配程度，结构校验只保护特定内容。语义、上下文和业务表达仍要人工判断，所以最终采用权在人。</p></div>
       <div class="feat"><h4>为什么要查三次 TM？</h4><p>A 是基线，B 是模型候选，C 是人最终确认的文本。候选变好不代表人用了它，确认时的编辑也会改变匹配结果，所以收益和写回都绑定 C。</p></div>
-      <div class="feat"><h4>这个结果算成功吗？</h4><p>流程和工具在 Pilot 中跑通，部分候选可用，说明方向可行；首轮可用率也暴露出候选质量还要提升。生产效果需要继续测量，不能用覆盖率代替。</p></div>
+      <div class="feat"><h4>Pilot 验证了什么？</h4><p>整条 AI 工作流在真实业务数据上跑通，低匹配文案中 70.8% 拿到建议、62 条首轮即可用，每条结果都能追到 A / B / C 和确认人。下一步重点是提升首轮可用率。</p></div>
       <div class="feat"><h4>AI 写代码，你的贡献是什么？</h4><p>我定义业务规则、接口契约、状态与门禁，负责验收、定位错误和核对结果，并能按模块解释实现取舍。代码由工具辅助生成，不代表可以跳过理解和验证。</p></div>
     </div>
 
     <div class="tech-row r">
       <div class="tech-block">
-        <h4>如果重做，先改什么</h4>
+        <h4>下一步迭代</h4>
         <ul>
-          <li>先补分层评测和原因记录：结构拒绝、TM 提升、人工可用、写回成功分开统计</li>
+          <li>分层评测：结构拒绝、TM 提升、人工可用、写回成功分开统计</li>
           <li>用同一批任务比较人工时间与成本，再决定扩大范围还是先提升候选质量</li>
           <li>按语言和文案类型校准门禁，而不是全局一个阈值</li>
         </ul>
       </div>
       <div class="tech-block">
-        <h4>走向多人生产使用还需要</h4>
+        <h4>扩展到更多团队</h4>
         <ul>
           <li>身份与租户权限、凭据管理</li>
           <li>任务中断后的恢复与重试</li>
