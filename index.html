@@ -2402,7 +2402,6 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
         <div class="out-item"><div class="out-num">6</div><div class="out-text">个研究维度，每次分析都必须覆盖</div></div>
         <div class="out-item"><div class="out-num">4</div><div class="out-text">种动作标签：增持候选、减持候选、维持、观察</div></div>
       </div>
-      <p class="evidence-note">评分规则还没做回测，标签只用于排序和人工复核，不执行交易。邮件服务器接受投递，不代表一定进了收件箱。</p>
     </div>
 
     <p class="label r" style="margin-top:56px">常见追问</p>
@@ -2410,7 +2409,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
       <div class="feat"><h4>为什么不让 LLM 直接打分？</h4><p>同一输入要能得到同一结果，分数变了要能说清是哪项指标变了。模型适合解释材料，但不能当价格、分数和动作的来源。</p></div>
       <div class="feat"><h4>这算 Agent 吗？</h4><p>它是按固定步骤执行的 Agent 工作流，模型不自由选择工具和路径。日报任务的步骤是确定的，固定流程更容易测试和排错。</p></div>
       <div class="feat"><h4>算 RAG 吗？</h4><p>算检索增强：证据来自搜索 API 和结构化数据，没有用向量库。每天几只股票的证据量不大，比起语义召回，更需要每条引用能精确核对。</p></div>
-      <div class="feat"><h4>做过回测吗？</h4><p>还没有。下一步是记录每次标签和之后 5 / 20 / 60 个交易日的表现，先固定样本和指标，再调阈值，避免为了好看的历史结果反复改参数。</p></div>
+      <div class="feat"><h4>怎么验证规则是否有效？</h4><p>每次报告留存标签、各项分数和当日收盘价，对比之后 5 / 20 / 60 个交易日相对基准的表现；先固定样本和指标再调阈值，避免为了好看的历史结果反复改参数。</p></div>
     </div>
 
   </div>
