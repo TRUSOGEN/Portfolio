@@ -549,6 +549,34 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   /* 过程时间轴不断 */
   .process-steps{grid-template-columns:repeat(5,1fr)}
 }
+/* 首页能力区、结果条与口径说明 */
+.feat-grid.three{grid-template-columns:repeat(3,1fr)}
+.method-line{margin-top:18px;font-size:13px;color:var(--g1);line-height:1.7}
+.method-line strong{color:var(--black);font-weight:500}
+.evidence-note{font-size:12px;color:var(--g1);line-height:1.75;border-top:1px solid var(--g4);padding-top:12px;margin-top:22px}
+.result-bars{margin:36px 0;border:1px solid var(--g4);padding:22px}
+.rb-row{display:grid;grid-template-columns:128px 1fr 92px;gap:14px;align-items:center;padding:9px 0;font-size:13px;color:var(--g1)}
+.rb-track{height:10px;background:var(--g5)}
+.rb-fill{height:100%;background:var(--black)}
+.rb-fill.alt{background:var(--g2)}
+.rb-val{text-align:right;font-variant-numeric:tabular-nums;color:var(--black)}
+.rb-val small{color:var(--g2);font-size:11px;margin-left:4px}
+.role-grid{margin:40px 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--g4);border:1px solid var(--g4)}
+.role-grid>div{background:var(--white);padding:22px}
+.role-grid p.v{font-size:13px;color:var(--g1);line-height:2}
+@media(max-width:760px){
+  .feat-grid.three{grid-template-columns:1fr}
+  .role-grid{grid-template-columns:1fr}
+  .rb-row{grid-template-columns:92px 1fr 74px;gap:10px;font-size:12px}
+  /* 手机端导航：隐藏重复的名字，菜单可横向滑动，下拉固定在导航下方 */
+  .nav-name{display:none}
+  .nav{justify-content:flex-start}
+  .nav-links{overflow-x:auto;scrollbar-width:none;gap:6px;width:100%;height:54px}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links>*{flex-shrink:0}
+  .nav-menu{position:static}
+  .nav-menu-panel{position:fixed;top:54px;left:16px;right:16px;width:auto}
+}
 </style>
 </head>
 <body>
@@ -566,10 +594,11 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
         <button class="nav-tab" data-page="starling">多语言内容查询助手<small>效率工具</small></button>
       </div>
     </div>
+    <button class="nav-tab" data-page="thesis">毕业研究</button>
     <div class="nav-menu" data-group="pm">
       <button class="nav-menu-toggle nav-tab" type="button" aria-expanded="false" aria-controls="nav-pm">产品经理</button>
       <div class="nav-menu-panel" id="nav-pm">
-        <button class="nav-tab" data-page="ccm">B2B 化工数据平台<small>搜索、转化与支付</small></button>
+        <button class="nav-tab" data-page="ccm">B2B 农化数据平台<small>搜索、转化与支付</small></button>
         <button class="nav-tab" data-page="medguard">慢病用药管理产品<small>用户任务与服务流程</small></button>
       </div>
     </div>
@@ -602,30 +631,44 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   <div class="hero-bottom">
     <div>
       <p class="hero-desc">
-        从真实用户问题出发，完成产品定义、方案设计、跨团队协作与效果验证。<br>
-        聚焦 AI 应用、企业效率工具与智能交互体验。
+        把模糊的业务问题拆成流程、规则和可验收的结果，再用原型和数据验证它值不值得做。<br>
+        做过 AI 工作流、B 端数据平台，以及 VR 仿真环境中的用户实验。
       </p>
       <div class="hero-targets" aria-label="Target roles">
         <span class="hero-target">AI 产品经理 / 产品经理</span>
-        <span class="hero-target">企业效率工具</span>
-        <span class="hero-target">AI + 游戏</span>
+        <span class="hero-target">AI 工作流 · B 端平台</span>
+        <span class="hero-target">原型验证 · 用户实验</span>
       </div>
     </div>
     <div class="hero-index">
-      <a href="#tm"        class="hero-index-item"><span class="hero-index-num">01</span>多语言 AI 文案协作助手</a>
-      <a href="#ccm"       class="hero-index-item"><span class="hero-index-num">02</span>CCM · B2B 化工数据平台</a>
-      <a href="#greenloop" class="hero-index-item"><span class="hero-index-num">03</span>Greenloop · 农药废弃物回收</a>
-      <a href="#skysoar"   class="hero-index-item"><span class="hero-index-num">04</span>SKY SOAR · VR 界面设计</a>
-      <a href="#medguard"  class="hero-index-item"><span class="hero-index-num">05</span>守 · MedGuard</a>
-      <a href="#turboresq" class="hero-index-item"><span class="hero-index-num">06</span>TurboResQ · 救援装置</a>
-      <a href="#more"      class="hero-index-item"><span class="hero-index-num">07</span>Shamanic Echoes · 脑波装置</a>
-      <a href="#more"      class="hero-index-item"><span class="hero-index-num">08</span>Painted Dreamscape · 游戏</a>
-      <a href="#car"       class="hero-index-item"><span class="hero-index-num">09</span>Lance Lightning · 汽车设计</a>
-      <a href="#scoping"   class="hero-index-item"><span class="hero-index-num">10</span>AI 研究工作流助手</a>
-      <a href="#starling"  class="hero-index-item"><span class="hero-index-num">11</span>多语言内容查询助手</a>
+      <a href="#tm" class="hero-index-item"><span class="hero-index-num">01</span>多语言 AI 文案协作助手</a>
+      <a href="#thesis" class="hero-index-item"><span class="hero-index-num">02</span>毕业研究 · VR 乘客声音提示</a>
+      <a href="#ccm" class="hero-index-item"><span class="hero-index-num">03</span>CCM · B2B 农化数据平台</a>
+      <a href="#scoping" class="hero-index-item"><span class="hero-index-num">04</span>AI 研究工作流助手</a>
+      <a href="#starling" class="hero-index-item"><span class="hero-index-num">05</span>多语言内容查询助手</a>
+      <a href="#medguard" class="hero-index-item"><span class="hero-index-num">06</span>守 · MedGuard</a>
+      <a href="#skysoar" class="hero-index-item"><span class="hero-index-num">07</span>SKY SOAR · VR 界面设计</a>
+      <a href="#greenloop" class="hero-index-item"><span class="hero-index-num">08</span>Greenloop · 农药废弃物回收</a>
+      <a href="#turboresq" class="hero-index-item"><span class="hero-index-num">09</span>TurboResQ · 救援装置</a>
+      <a href="#more" class="hero-index-item"><span class="hero-index-num">10</span>Shamanic Echoes · 脑波装置</a>
+      <a href="#more" class="hero-index-item"><span class="hero-index-num">11</span>Painted Dreamscape · 游戏</a>
+      <a href="#car" class="hero-index-item"><span class="hero-index-num">12</span>Lance Lightning · 汽车设计</a>
     </div>
   </div>
   <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ═══════════════════════ STRENGTHS ═══════════════════════ -->
+<section id="strengths" class="sec" style="padding-bottom:clamp(40px,6vw,72px)">
+  <div class="sec-inner">
+    <p class="label r">我能带来什么 / What I Bring</p>
+    <div class="feat-grid three r d1">
+      <div class="feat"><h4>01 · 定义问题</h4><p>从用户任务和数据找切入点：分析 159,629 条历史文案找复用机会；用访问、搜索、注册、支付 4 段漏斗定位流失环节。</p></div>
+      <div class="feat"><h4>02 · 亲手做原型</h4><p>自己把方案做到能跑：Chrome MV3 插件加 Python 本地服务，串起翻译记忆库、AI 改写与飞书表格；用 Unity 搭建 VR 实验软件。</p></div>
+      <div class="feat"><h4>03 · 用证据验证</h4><p>指标对应真实任务，分母说清楚：Pilot 分开看生成覆盖和人工可用；20 人对照实验分开看识别率、反应时和偏好。</p></div>
+    </div>
+    <p class="method-line r d2"><strong>工作方法：</strong>确定性交给规则，生成交给模型，价值用可检查的指标证明；自己负责的、平台提供的、还没验证的分开说。</p>
+  </div>
 </section>
 
 <!-- ═══════════════════════ PROJECT CARDS ═══════════════════════ -->
@@ -633,7 +676,6 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   <div class="overview-inner">
     <p class="label r">所有项目 / All Work</p>
     <div class="card-grid r d2">
-
       <a href="#tm" class="card">
         <div class="card-cover tm-cover">
           <span class="card-cover-label">AI 产品 · 多语言内容工作流</span>
@@ -656,112 +698,30 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
         </div>
       </a>
 
+      <a href="#thesis" class="card">
+        <img class="card-img" src="assets/uam-vr-card.jpg" alt="VR 实验中的提示识别界面">
+        <div class="card-body">
+          <p class="card-num">02 &nbsp;·&nbsp; 毕业研究 · 已完成</p>
+          <p class="card-name">VR 乘客声音提示研究</p>
+          <p class="card-desc">20 人 VR 对照实验：乘客看屏幕时，短提示音和语音哪种更容易听懂</p>
+          <div class="card-tags">
+            <span class="card-tag">用户实验</span>
+            <span class="card-tag">Unity / VR</span>
+            <span class="card-tag">空间音频</span>
+          </div>
+        </div>
+      </a>
+
       <a href="#ccm" class="card">
         <img class="card-img" src="assets/cnchem-home-hi.png" alt="CCM CNChemicals">
         <div class="card-body">
-          <p class="card-num">02 &nbsp;·&nbsp; 商业产品 · 全职</p>
-          <p class="card-name">CCM 化工情报平台</p>
-          <p class="card-desc">B2B 化工数据与决策智能平台，UX 链路：注册 → 浏览 → 决策 → 支付</p>
+          <p class="card-num">03 &nbsp;·&nbsp; 商业产品 · 实习</p>
+          <p class="card-name">CCM 农化数据平台</p>
+          <p class="card-desc">农化行业 B2B 数据平台：搜索策略、转化漏斗、注册会员与支付</p>
           <div class="card-tags">
             <span class="card-tag">B2B 产品</span>
             <span class="card-tag">UX 设计</span>
             <span class="card-tag">电商</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="#greenloop" class="card">
-        <img class="card-img" src="assets/gl-1.jpg" alt="Greenloop">
-        <div class="card-body">
-          <p class="card-num">03 &nbsp;·&nbsp; 毕业设计</p>
-          <p class="card-name">Greenloop</p>
-          <p class="card-desc">农药包装废弃物回收服务系统——从田野调研到三条产品线全链路设计</p>
-          <div class="card-tags">
-            <span class="card-tag">服务设计</span>
-            <span class="card-tag">用户研究</span>
-            <span class="card-tag">产品设计</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="#skysoar" class="card">
-        <img class="card-img" src="assets/vr-overview-hi.png" alt="SKY SOAR">
-        <div class="card-body">
-          <p class="card-num">04 &nbsp;·&nbsp; VR 界面</p>
-          <p class="card-name">SKY SOAR</p>
-          <p class="card-desc">飞行焦虑缓解——Apple Vision Pro VR 模块，8 个核心界面从 Wireframe 到 Hi-Fi Prototype</p>
-          <div class="card-tags">
-            <span class="card-tag">Apple Vision Pro</span>
-            <span class="card-tag">HCI</span>
-            <span class="card-tag">空间计算</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="#medguard" class="card">
-        <img class="card-img" src="assets/medguard-today-hi.png" alt="MedGuard">
-        <div class="card-body">
-          <p class="card-num">05 &nbsp;·&nbsp; 前端实现</p>
-          <p class="card-name">守 MedGuard</p>
-          <p class="card-desc">慢病用药管理——设计语言 + Next.js 15 全栈实现，Vercel 部署上线</p>
-          <div class="card-tags">
-            <span class="card-tag">UI 设计</span>
-            <span class="card-tag">Next.js</span>
-            <span class="card-tag">情感设计</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="#turboresq" class="card">
-        <img class="card-img" src="assets/tr-1.jpg" alt="TurboResQ">
-        <div class="card-body">
-          <p class="card-num">06 &nbsp;·&nbsp; 硬件原型</p>
-          <p class="card-name">TurboResQ</p>
-          <p class="card-desc">高速公路智能救援装置——Arduino 三模式硬件 + Blender 三维 + App UI</p>
-          <div class="card-tags">
-            <span class="card-tag">产品设计</span>
-            <span class="card-tag">Arduino</span>
-            <span class="card-tag">Blender</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="#more" class="card">
-        <img class="card-img" src="assets/se-1.jpg" alt="Shamanic Echoes">
-        <div class="card-body">
-          <p class="card-num">07 &nbsp;·&nbsp; 交互装置</p>
-          <p class="card-name">Shamanic Echoes</p>
-          <p class="card-desc">脑波驱动的萨满仪式沉浸装置——TouchDesigner + Arduino + Kinect2</p>
-          <div class="card-tags">
-            <span class="card-tag">脑波传感</span>
-            <span class="card-tag">装置艺术</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="#more" class="card">
-        <img class="card-img" src="assets/pd-1.jpg" alt="Painted Dreamscape">
-        <div class="card-body">
-          <p class="card-num">08 &nbsp;·&nbsp; 游戏设计</p>
-          <p class="card-name">Painted Dreamscape</p>
-          <p class="card-desc">对抗 AI 同质化的儿童 UGC 创造力游戏——从玩法机制、玩家体验到 Roblox 上线</p>
-          <div class="card-tags">
-            <span class="card-tag">游戏设计</span>
-            <span class="card-tag">Roblox</span>
-            <span class="card-tag">UX</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="#car" class="card">
-        <img class="card-img" src="assets/car-06.png" alt="Lance Lightning">
-        <div class="card-body">
-          <p class="card-num">09 &nbsp;·&nbsp; 汽车设计</p>
-          <p class="card-name">Lance Lightning</p>
-          <p class="card-desc">夜行者概念跑车——从骑士头盔汲取灵感，草图推演到最终渲染</p>
-          <div class="card-tags">
-            <span class="card-tag">工业设计</span>
-            <span class="card-tag">概念设计</span>
           </div>
         </div>
       </a>
@@ -771,7 +731,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
           <span style="font-family:var(--serif);font-size:28px;font-style:italic;color:var(--g4);letter-spacing:-.02em">AI Research Workflow</span>
         </div>
         <div class="card-body">
-          <p class="card-num">10 &nbsp;·&nbsp; AI 工具产品</p>
+          <p class="card-num">04 &nbsp;·&nbsp; AI 工具产品</p>
           <p class="card-name">AI 研究工作流助手</p>
           <p class="card-desc">帮助研究者梳理文献综述流程，完成去重、数字校验和论文材料整理</p>
           <div class="card-tags">
@@ -793,7 +753,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
           </div>
         </div>
         <div class="card-body">
-          <p class="card-num">11 &nbsp;·&nbsp; AI 工作流</p>
+          <p class="card-num">05 &nbsp;·&nbsp; AI 工作流</p>
           <p class="card-name">多语言内容查询助手</p>
           <p class="card-desc">帮助团队查询不同语言的内容、整理结果并交付到表格</p>
           <div class="card-tags">
@@ -804,6 +764,101 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
         </div>
       </a>
 
+      <a href="#medguard" class="card">
+        <img class="card-img" src="assets/medguard-today-hi.png" alt="MedGuard">
+        <div class="card-body">
+          <p class="card-num">06 &nbsp;·&nbsp; 前端实现</p>
+          <p class="card-name">守 MedGuard</p>
+          <p class="card-desc">慢病用药管理——设计语言 + Next.js 15 全栈实现，Vercel 部署上线</p>
+          <div class="card-tags">
+            <span class="card-tag">UI 设计</span>
+            <span class="card-tag">Next.js</span>
+            <span class="card-tag">情感设计</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#skysoar" class="card">
+        <img class="card-img" src="assets/vr-overview-hi.png" alt="SKY SOAR">
+        <div class="card-body">
+          <p class="card-num">07 &nbsp;·&nbsp; VR 界面</p>
+          <p class="card-name">SKY SOAR</p>
+          <p class="card-desc">飞行焦虑缓解——Apple Vision Pro VR 模块，8 个核心界面从 Wireframe 到 Hi-Fi Prototype</p>
+          <div class="card-tags">
+            <span class="card-tag">Apple Vision Pro</span>
+            <span class="card-tag">HCI</span>
+            <span class="card-tag">空间计算</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#greenloop" class="card">
+        <img class="card-img" src="assets/gl-1.jpg" alt="Greenloop">
+        <div class="card-body">
+          <p class="card-num">08 &nbsp;·&nbsp; 本科毕业设计</p>
+          <p class="card-name">Greenloop</p>
+          <p class="card-desc">农药包装废弃物回收服务系统——从田野调研到三条产品线全链路设计</p>
+          <div class="card-tags">
+            <span class="card-tag">服务设计</span>
+            <span class="card-tag">用户研究</span>
+            <span class="card-tag">产品设计</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#turboresq" class="card">
+        <img class="card-img" src="assets/tr-1.jpg" alt="TurboResQ">
+        <div class="card-body">
+          <p class="card-num">09 &nbsp;·&nbsp; 硬件原型</p>
+          <p class="card-name">TurboResQ</p>
+          <p class="card-desc">高速公路智能救援装置——Arduino 三模式硬件 + Blender 三维 + App UI</p>
+          <div class="card-tags">
+            <span class="card-tag">产品设计</span>
+            <span class="card-tag">Arduino</span>
+            <span class="card-tag">Blender</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#more" class="card">
+        <img class="card-img" src="assets/se-1.jpg" alt="Shamanic Echoes">
+        <div class="card-body">
+          <p class="card-num">10 &nbsp;·&nbsp; 交互装置</p>
+          <p class="card-name">Shamanic Echoes</p>
+          <p class="card-desc">脑波驱动的萨满仪式沉浸装置——TouchDesigner + Arduino + Kinect2</p>
+          <div class="card-tags">
+            <span class="card-tag">脑波传感</span>
+            <span class="card-tag">装置艺术</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#more" class="card">
+        <img class="card-img" src="assets/pd-1.jpg" alt="Painted Dreamscape">
+        <div class="card-body">
+          <p class="card-num">11 &nbsp;·&nbsp; 游戏设计</p>
+          <p class="card-name">Painted Dreamscape</p>
+          <p class="card-desc">对抗 AI 同质化的儿童 UGC 创造力游戏——从玩法机制、玩家体验到 Roblox 上线</p>
+          <div class="card-tags">
+            <span class="card-tag">游戏设计</span>
+            <span class="card-tag">Roblox</span>
+            <span class="card-tag">UX</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#car" class="card">
+        <img class="card-img" src="assets/car-06.png" alt="Lance Lightning">
+        <div class="card-body">
+          <p class="card-num">12 &nbsp;·&nbsp; 汽车设计</p>
+          <p class="card-name">Lance Lightning</p>
+          <p class="card-desc">夜行者概念跑车——从骑士头盔汲取灵感，草图推演到最终渲染</p>
+          <div class="card-tags">
+            <span class="card-tag">工业设计</span>
+            <span class="card-tag">概念设计</span>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -816,12 +871,12 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
     <p class="label r">工作 / 实习经历</p>
     <div class="experience-list r d1">
       <article class="experience-item">
-        <p class="experience-period">2026.06 — 至今</p>
-        <div><h3 class="experience-role">AI 产品经理实习生</h3><p class="experience-company">字节跳动 · TikTok LIVE AI 工程（内容与本地化方向）</p><p class="experience-copy">面向 Content Design 与 Localization 团队，基于 159,629 条历史文案分析和用户访谈，主导多语言内容协作工具从需求定义、方案设计到 Pilot 验证；设计“原文—AI 建议—人工确认”流程，完成 3,733 条文案 Pilot，并搭建需求优先级与数据看板。</p></div>
+        <p class="experience-period">2026.05 — 2026.08</p>
+        <div><h3 class="experience-role">AI 产品经理实习生（AI 工程）</h3><p class="experience-company">字节跳动 · TikTok LIVE（内容与本地化方向）</p><p class="experience-copy">分析 159,629 条历史文案，识别 38.0% 完全重复内容，结合用户访谈确定 AI 改写方向、需求优先级与验收指标；设计“原文 TM 基线 → 条件门禁 → AI 改写 → TM 复核 → 人工确认”流程，独立开发 Chrome MV3 工具并推进 3,733 条文案 Pilot。</p></div>
       </article>
       <article class="experience-item">
         <p class="experience-period">2025.02 — 2026.01</p>
-        <div><h3 class="experience-role">产品经理</h3><p class="experience-company">广州西美信息科技有限公司 · CCM / Tranalysis</p><p class="experience-copy">负责 B2B 行业数据平台的搜索、注册、会员与支付体验，完成埋点与转化漏斗设计，并与研发协作推动需求上线和迭代。</p></div>
+        <div><h3 class="experience-role">产品经理实习生</h3><p class="experience-company">广州西美信息科技有限公司 · 农化行业 B2B 数据平台（CCM）</p><p class="experience-copy">参与搜索、注册、会员与支付链路：设计 3 层搜索策略，搭建访问、搜索、注册、支付 4 段漏斗并定位货币切换导致的支付流失；完成 PRD、原型、异常分支与验收标准，协同研发上线与复盘。</p></div>
       </article>
       <article class="experience-item">
         <p class="experience-period">2024.05 — 2024.08</p>
@@ -842,13 +897,13 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
 <!-- ═══════════════════════ 02 CCM ═══════════════════════ -->
 <div id="ccm" class="proj">
-  <span class="proj-bg">02</span>
+  <span class="proj-bg">03</span>
   <div class="proj-inner">
 
     <div class="proj-meta r">
-      <span class="proj-seq">项目 02 / 11</span>
+      <span class="proj-seq">项目 03 / 12</span>
       <div class="tags">
-        <span class="tag tag-dark">商业产品 · 全职</span>
+        <span class="tag tag-dark">商业产品 · 实习</span>
         <span class="tag">B2B SaaS</span>
         <span class="tag">UX 设计</span>
         <span class="tag">电商系统</span>
@@ -856,23 +911,23 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
       </div>
     </div>
     <h2 class="proj-title r d1">CCM</h2>
-    <p class="proj-sub r d2">化工行业决策情报平台 &nbsp;/&nbsp; <a href="https://www.cnchemicals.com" target="_blank" style="color:var(--g2);border-bottom:1px solid var(--g4);transition:border-color .2s" onmouseover="this.style.borderColor='#0D0D0D'" onmouseout="this.style.borderColor='var(--g4)'">cnchemicals.com</a> &nbsp;·&nbsp; 注册 → 浏览 → 决策 → 支付</p>
+    <p class="proj-sub r d2">农化行业 B2B 数据与研究平台 &nbsp;/&nbsp; <a href="https://www.cnchemicals.com" target="_blank" style="color:var(--g2);border-bottom:1px solid var(--g4);transition:border-color .2s" onmouseover="this.style.borderColor='#0D0D0D'" onmouseout="this.style.borderColor='var(--g4)'">cnchemicals.com</a> &nbsp;·&nbsp; 注册 → 浏览 → 决策 → 支付</p>
 
     <div class="challenge r">
-      <blockquote>化工、农业、食品行业的 B2B 采购决策极度依赖行业情报，但现有数据产品大多信息密集、购买路径繁琐——如何让专业买家在海量报告中快速定位所需、完成从发现到付款的完整旅程？</blockquote>
+      <blockquote>农化行业的 B2B 客户靠行业数据和研究报告做采购与市场判断，但报告多、路径长。我要解决的是：专业用户怎样更快搜到需要的内容，并顺利完成注册、开会员和付款。</blockquote>
     </div>
 
     <!-- Live website screenshot -->
     <div class="r">
       <img class="img-poster" src="assets/cnchem-home-hi.png" alt="CCM 主页 — Decision Intelligence for Vertical Markets">
-      <p class="gcap">CCM 主页 — Decision Intelligence for Vertical Markets · 化工 / 农业 / 食品 / 医药跨行业情报平台</p>
+      <p class="gcap">CCM 主页 — 以农化为核心的垂直行业数据与研究平台</p>
     </div>
 
     <!-- Role + scope -->
     <div class="r" style="margin:40px 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--g4);border:1px solid var(--g4)">
       <div style="background:var(--white);padding:22px">
         <p class="label" style="margin-bottom:10px">我的角色</p>
-        <p style="font-size:14px;font-weight:500;line-height:1.6">全职产品 / UX 设计师<br><span style="color:var(--g1);font-weight:300;font-size:13px">负责全链路用户体验设计</span></p>
+        <p style="font-size:14px;font-weight:500;line-height:1.6">产品经理实习生<br><span style="color:var(--g1);font-weight:300;font-size:13px">2025.02 — 2026.01 · 需求、原型、验收，研发负责实现</span></p>
       </div>
       <div style="background:var(--white);padding:22px">
         <p class="label" style="margin-bottom:10px">覆盖链路</p>
@@ -880,38 +935,38 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
       </div>
       <div style="background:var(--white);padding:22px">
         <p class="label" style="margin-bottom:10px">产品规模</p>
-        <p style="font-size:13px;color:var(--g1);line-height:2">15,918 条行业情报<br>化工 / 农业 / 食品 / 医药<br>全球 B2B 专业用户<br>线上真实部署</p>
+        <p style="font-size:13px;color:var(--g1);line-height:2">15,918 条行业内容<br>以农化行业为核心<br>全球 B2B 专业用户<br>线上真实运营</p>
       </div>
     </div>
 
     <!-- Process -->
     <div class="process r">
-      <p class="label" style="margin-bottom:28px">设计过程</p>
+      <p class="label" style="margin-bottom:28px">工作过程</p>
       <div class="process-steps">
         <div class="ps">
           <div class="ps-dot on">01</div>
           <div class="ps-name">用户研究</div>
-          <div class="ps-text">分析化工行业 B2B 买家决策链路：从痛点（信息过载 / 购买路径模糊）到机会点，确立「搜索即决策」的核心设计方向</div>
+          <div class="ps-text">分析农化行业 B2B 买家决策链路：从痛点（信息过载 / 购买路径模糊）到机会点，确立「搜索即决策」的核心设计方向</div>
         </div>
         <div class="ps">
           <div class="ps-dot">02</div>
           <div class="ps-name">注册 / 账户</div>
-          <div class="ps-text">设计分步注册流程，降低 B2B 用户初始进入门槛；账户体系支持试用 / 订阅 / 购买三种权限模式切换</div>
+          <div class="ps-text">主导邮箱优先的 3 步注册与个人 / 企业会员分层，降低 B2B 用户进入门槛，权限覆盖试用、订阅和单次购买</div>
         </div>
         <div class="ps">
           <div class="ps-dot">03</div>
           <div class="ps-name">浏览 · 搜索</div>
-          <div class="ps-text">E-shop 分类体系重新设计：行业 / 时间 / 可用性三维筛选，搜索结果页 Tab 分类（15,918 条内容高效可达）</div>
+          <div class="ps-text">设计字段权重、时间衰减、英文词形还原 3 层搜索策略，配合行业 / 时间 / 可用性筛选与结果 Tab 分类</div>
         </div>
         <div class="ps">
           <div class="ps-dot">04</div>
           <div class="ps-name">决策 · 支付</div>
-          <div class="ps-text">产品详情页决策支持设计——关键字摘要 / 相关报告推荐 / 试阅权限；购物车与支付流程端到端重构</div>
+          <div class="ps-text">搭建访问、搜索、注册、支付 4 段漏斗，定位货币切换导致的支付流失，推动支付链路改版</div>
         </div>
         <div class="ps">
           <div class="ps-dot">05</div>
           <div class="ps-name">迭代上线</div>
-          <div class="ps-text">与研发协作完成设计落地，收集用户行为数据迭代优化转化漏斗，产品已对外正式发布运营</div>
+          <div class="ps-text">输出 PRD、Figma / Axure 原型、异常分支与验收标准，协同前后端开发、UAT 与上线复盘；Sitemap 扩展至 10,000+ URL</div>
         </div>
       </div>
     </div>
@@ -930,7 +985,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
     <!-- Key design decisions -->
     <div class="r">
-      <p class="label" style="margin-bottom:16px">核心设计决策</p>
+      <p class="label" style="margin-bottom:16px">关键产品决策</p>
       <div class="insight-row">
         <div class="insight">
           <div class="insight-label">搜索即决策</div>
@@ -952,12 +1007,12 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
     </div>
 
     <div class="outcomes r">
-      <p class="label">设计成果</p>
+      <p class="label">项目成果</p>
       <div class="out-grid">
-        <div class="out-item"><div class="out-num">全</div><div class="out-text">注册 → 浏览 → 决策 → 支付完整链路 UX 设计，已正式对外发布运营</div></div>
-        <div class="out-item"><div class="out-num">15K+</div><div class="out-text">行业情报条目可被高效检索，搜索 + 筛选 + 分类三套系统协同覆盖</div></div>
-        <div class="out-item"><div class="out-num">B2B</div><div class="out-text">化工 / 农业 / 食品 / 医药四大垂直行业，全球专业买家的决策情报平台</div></div>
-        <div class="out-item"><div class="out-num">真实</div><div class="out-text">商业产品全职工作经历，设计决策在真实用户与业务压力下完成验证</div></div>
+        <div class="out-item"><div class="out-num">3 层</div><div class="out-text">搜索策略：字段权重、时间衰减、英文词形还原</div></div>
+        <div class="out-item"><div class="out-num">4 段</div><div class="out-text">转化漏斗：访问、搜索、注册、支付，用来定位流失环节</div></div>
+        <div class="out-item"><div class="out-num">3 步</div><div class="out-text">邮箱优先注册，加个人 / 企业会员分层</div></div>
+        <div class="out-item"><div class="out-num">10K+</div><div class="out-text">Sitemap URL，配合搜索与内容收录</div></div>
       </div>
     </div>
 
@@ -967,13 +1022,13 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
 <!-- ═══════════════════════ 03 GREENLOOP ═══════════════════════ -->
 <div id="greenloop" class="proj">
-  <span class="proj-bg">03</span>
+  <span class="proj-bg">08</span>
   <div class="proj-inner">
 
     <div class="proj-meta r">
-      <span class="proj-seq">项目 03 / 11</span>
+      <span class="proj-seq">项目 08 / 12</span>
       <div class="tags">
-        <span class="tag tag-dark">毕业设计</span>
+        <span class="tag tag-dark">本科毕业设计</span>
         <span class="tag">服务设计</span>
         <span class="tag">产品设计</span>
         <span class="tag">用户研究</span>
@@ -1139,11 +1194,11 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
 <!-- ═══════════════════════ 04 SKY SOAR ═══════════════════════ -->
 <div id="skysoar" class="proj">
-  <span class="proj-bg">04</span>
+  <span class="proj-bg">07</span>
   <div class="proj-inner">
 
     <div class="proj-meta r">
-      <span class="proj-seq">项目 04 / 11</span>
+      <span class="proj-seq">项目 07 / 12</span>
       <div class="tags">
         <span class="tag tag-dark">VR 界面设计</span>
         <span class="tag">Apple Vision Pro</span>
@@ -1345,11 +1400,11 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
 <!-- ═══════════════════════ 05 MEDGUARD ═══════════════════════ -->
 <div id="medguard" class="proj">
-  <span class="proj-bg">05</span>
+  <span class="proj-bg">06</span>
   <div class="proj-inner">
 
     <div class="proj-meta r">
-      <span class="proj-seq">项目 05 / 11</span>
+      <span class="proj-seq">项目 06 / 12</span>
       <div class="tags">
         <span class="tag tag-dark">HCI</span>
         <span class="tag">UI 设计</span>
@@ -1465,11 +1520,11 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
 <!-- ═══════════════════════ 06 TURBORESQ ═══════════════════════ -->
 <div id="turboresq" class="proj">
-  <span class="proj-bg">06</span>
+  <span class="proj-bg">09</span>
   <div class="proj-inner">
 
     <div class="proj-meta r">
-      <span class="proj-seq">项目 06 / 11</span>
+      <span class="proj-seq">项目 09 / 12</span>
       <div class="tags">
         <span class="tag tag-dark">产品设计</span>
         <span class="tag">硬件原型</span>
@@ -1531,7 +1586,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
 <!-- ═══════════════════════ 07 & 08 ═══════════════════════ -->
 <div id="more" class="proj">
-  <span class="proj-bg" style="font-size:clamp(70px,12vw,170px)">07–08</span>
+  <span class="proj-bg" style="font-size:clamp(70px,12vw,170px)">10–11</span>
   <div class="proj-inner">
 
     <p class="label r" style="margin-bottom:8px">实验性项目 / Experimental Work</p>
@@ -1539,7 +1594,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
     <!-- 07 Shamanic -->
     <div style="margin-bottom:clamp(60px,10vw,120px)">
-      <div class="proj-meta r"><span class="proj-seq">项目 07 / 11</span><div class="tags"><span class="tag tag-dark">交互装置</span><span class="tag">Arduino</span><span class="tag">TouchDesigner</span><span class="tag">脑波传感</span><span class="tag">2023</span></div></div>
+      <div class="proj-meta r"><span class="proj-seq">项目 10 / 12</span><div class="tags"><span class="tag tag-dark">交互装置</span><span class="tag">Arduino</span><span class="tag">TouchDesigner</span><span class="tag">脑波传感</span><span class="tag">2023</span></div></div>
       <h2 class="r" style="font-family:var(--serif);font-size:clamp(36px,5vw,68px);line-height:1;font-weight:600;letter-spacing:-.02em;margin-bottom:8px">Shamanic Echoes</h2>
       <p class="proj-sub r">of the Raptor &nbsp;/&nbsp; 脑波驱动的萨满仪式互动装置</p>
 
@@ -1574,7 +1629,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
     <!-- 08 Painted Dreamscape -->
     <div>
-      <div class="proj-meta r"><span class="proj-seq">项目 08 / 11</span><div class="tags"><span class="tag tag-dark">游戏设计</span><span class="tag">UX</span><span class="tag">Blender</span><span class="tag">Roblox</span><span class="tag">2023</span></div></div>
+      <div class="proj-meta r"><span class="proj-seq">项目 11 / 12</span><div class="tags"><span class="tag tag-dark">游戏设计</span><span class="tag">UX</span><span class="tag">Blender</span><span class="tag">Roblox</span><span class="tag">2023</span></div></div>
       <h2 class="r" style="font-family:var(--serif);font-size:clamp(36px,5vw,68px);line-height:1;font-weight:600;letter-spacing:-.02em;margin-bottom:8px">Painted Dreamscape</h2>
       <p class="proj-sub r">对抗 AI 同质化的儿童创造力游戏</p>
 
@@ -1610,11 +1665,11 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
 <!-- ═══════════════════════ 09 LANCE LIGHTNING ═══════════════════════ -->
 <div id="car" class="proj">
-  <span class="proj-bg">09</span>
+  <span class="proj-bg">12</span>
   <div class="proj-inner">
 
     <div class="proj-meta r">
-      <span class="proj-seq">项目 09 / 11</span>
+      <span class="proj-seq">项目 12 / 12</span>
       <div class="tags">
         <span class="tag tag-dark">汽车设计</span>
         <span class="tag">工业设计</span>
@@ -1737,11 +1792,11 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
 <!-- ═══════════════════════ 10 SCOPING SKILL ═══════════════════════ -->
 <div id="scoping" class="proj">
-  <span class="proj-bg">10</span>
+  <span class="proj-bg">04</span>
   <div class="proj-inner">
 
     <div class="proj-meta r">
-      <span class="proj-seq">项目 10 / 11</span>
+      <span class="proj-seq">项目 04 / 12</span>
       <div class="tags">
         <span class="tag tag-dark">AI 工具产品</span>
         <span class="tag">HCI 研究</span>
@@ -1850,11 +1905,11 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
 
 <!-- ═══════════════════════ 11 MULTILINGUAL CONTENT LOOKUP ═══════════════════════ -->
 <div id="starling" class="proj">
-  <span class="proj-bg">11</span>
+  <span class="proj-bg">05</span>
   <div class="proj-inner">
 
     <div class="proj-meta r">
-      <span class="proj-seq">项目 11 / 11</span>
+      <span class="proj-seq">项目 05 / 12</span>
       <div class="tags">
         <span class="tag tag-dark">Agent Skill</span>
         <span class="tag">Localization</span>
@@ -1961,7 +2016,7 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
   <div class="proj-inner">
 
     <div class="proj-meta r">
-      <span class="proj-seq">项目 01 / 11</span>
+      <span class="proj-seq">项目 01 / 12</span>
       <div class="tags">
         <span class="tag tag-dark">AI 产品</span>
         <span class="tag">多语言内容</span>
@@ -1975,7 +2030,15 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
     <p class="proj-sub r d2">帮助内容团队查询已有文案、获得 AI 建议、人工确认并同步结果 &nbsp;/&nbsp; <a class="project-link" href="https://github.com/TRUSOGEN/l10n-tm-companion" target="_blank" rel="noopener">GitHub repository</a></p>
 
     <div class="challenge r">
-      <blockquote>处理多语言文案时，内容团队常常需要在原文、已有译文、AI 建议和表格之间反复切换。这个工具把查询、生成、校对和写回放进一条清晰的工作流，让人始终掌握最终决定。</blockquote>
+      <blockquote>团队已经有翻译记忆库（TM），但很多新文案和历史文案只差几个词，匹配度不够就要重新付费翻译。我想验证：能不能在不降低质量的前提下，用 AI 改写把这部分文案拉回可复用区间。</blockquote>
+    </div>
+
+    <p class="label r">案例四问</p>
+    <div class="feat-grid r">
+      <div class="feat"><h4>为什么值得做</h4><p>分析 159,629 条历史文案，38.0% 完全重复，说明已有翻译资产的复用空间很大；结合用户访谈，确定先做“提高 TM 匹配”这件事。</p></div>
+      <div class="feat"><h4>关键取舍</h4><p>首版只处理 50 ≤ 匹配度 &lt; 85 的文案：50 以下参考太弱，85 以上已可复用。选择改写源文案接入现有 TM 流程，没有直接让模型翻译，因为后者要重新定义质量与交付标准。</p></div>
+      <div class="feat"><h4>我推动了什么</h4><p>负责需求、流程设计和 Chrome MV3 工具开发，串联飞书表格、TM 匹配接口、改写 Agent 与 Bitable，并推进 3,733 条文案 Pilot。TM 匹配算法和生成模型由平台提供。</p></div>
+      <div class="feat"><h4>怎样验证</h4><p>原文、候选、确认稿三次查 TM；结构校验占位符、URL、数字；Pilot 分开统计生成覆盖、人工可用与成本估算，不把其中一个当作最终效果。</p></div>
     </div>
 
     <div class="tm-ui-gallery r" aria-label="多语言 AI 文案协作助手界面截图">
@@ -1992,23 +2055,23 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
       <div class="product-stage-inner">
         <div class="stage-head">
           <div><p class="stage-kicker">内容协作工作流</p><h3 class="stage-title">从原文到确认稿</h3></div>
-          <p class="stage-meta">示例工作流</p>
+          <p class="stage-meta">A / B / C 三次 TM 复核</p>
         </div>
         <div class="tm-workflow">
           <div class="tm-state">
-            <div class="tm-state-head"><span class="tm-state-code">01</span><span class="tm-state-score">已有参考</span></div>
-            <p class="tm-state-label">原始文案</p><p class="tm-state-copy">读取待处理文案，并检索相似的已有译文作为参考。</p>
+            <div class="tm-state-head"><span class="tm-state-code">01</span><span class="tm-state-score">A · 原文基线</span></div>
+            <p class="tm-state-label">原始文案</p><p class="tm-state-copy">先用原文查翻译记忆库得到匹配度 A，只有 50 ≤ A &lt; 85 才进入 AI 改写。</p>
           </div>
           <div class="tm-state">
-            <div class="tm-state-head"><span class="tm-state-code">02</span><span class="tm-state-score">AI 建议</span></div>
-            <p class="tm-state-label">候选文案</p><p class="tm-state-copy">基于已有内容生成多条候选，供用户快速比较与编辑。</p>
+            <div class="tm-state-head"><span class="tm-state-code">02</span><span class="tm-state-score">B · 候选复核</span></div>
+            <p class="tm-state-label">候选文案</p><p class="tm-state-copy">AI 改写源文案，检查占位符、URL 和数字，再查 TM 得到 B。</p>
           </div>
           <div class="tm-state active">
-            <div class="tm-state-head"><span class="tm-state-code">03</span><span class="tm-state-score">人工确认</span></div>
-            <p class="tm-state-label">确认稿</p><p class="tm-state-copy">用户选择或修改文案后再确认，并把结果同步回表格。</p>
+            <div class="tm-state-head"><span class="tm-state-code">03</span><span class="tm-state-score">C · 最终复核</span></div>
+            <p class="tm-state-label">确认稿</p><p class="tm-state-copy">人工选择或编辑后再查 TM 得到 C，成本估算绑定最终文本写回。</p>
           </div>
         </div>
-        <div class="tm-stage-foot"><p>只将用户确认的内容写回，保留清晰的修改记录。</p><strong>效率与质量兼顾</strong></div>
+        <div class="tm-stage-foot"><p>只写回人工确认的内容，并记录 6 列审计字段；关键查询失败时中止并提示原因。</p><strong>效率与质量兼顾</strong></div>
       </div>
     </div>
 
@@ -2063,12 +2126,109 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
     </div>
 
     <div class="outcomes r">
-      <p class="label">项目成果</p>
+      <p class="label">Pilot 结果</p>
       <div class="out-grid">
-        <div class="out-item"><div class="out-num">1</div><div class="out-text">条从任务配置到人工确认的完整内容协作路径</div></div>
-        <div class="out-item"><div class="out-num">3</div><div class="out-text">个清晰阶段：已有参考、AI 建议、人工确认</div></div>
-        <div class="out-item"><div class="out-num">2</div><div class="out-text">种核心界面：任务工作台与 AI 设置</div></div>
-        <div class="out-item"><div class="out-num">AI</div><div class="out-text">生成建议服务于用户判断，最终内容由人确认</div></div>
+        <div class="out-item"><div class="out-num">3,733</div><div class="out-text">条文案进入 Pilot，其中 137 条属于低匹配区间</div></div>
+        <div class="out-item"><div class="out-num">70.8%</div><div class="out-text">生成覆盖：137 条中 97 条得到改写建议</div></div>
+        <div class="out-item"><div class="out-num">62</div><div class="out-text">条在首轮 Review 中判定可用</div></div>
+        <div class="out-item"><div class="out-num">~$3,200</div><div class="out-text">按 Vendor Rate 预估的月度可优化成本（单批约 USD 400）</div></div>
+      </div>
+      <p class="evidence-note">口径说明：70.8% 是生成覆盖率，不是采用率；成本为预估值，未扣除审核、模型与维护成本。实际采用率和净收益需要上线后持续追踪。</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════ 02 THESIS ═══════════════════════ -->
+<div id="thesis" class="proj">
+  <span class="proj-bg">02</span>
+  <div class="proj-inner">
+
+    <div class="proj-meta r">
+      <span class="proj-seq">项目 02 / 12</span>
+      <div class="tags">
+        <span class="tag tag-dark">毕业研究 · 已完成</span>
+        <span class="tag">VR 用户实验</span>
+        <span class="tag">Unity</span>
+        <span class="tag">空间音频</span>
+        <span class="tag">2026</span>
+      </div>
+    </div>
+    <h2 class="proj-title r d1">Brief Sounds or Speech?</h2>
+    <p class="proj-sub r d2">自动驾驶空中出租车的乘客声音提示 &nbsp;/&nbsp; 悉尼大学人机交互硕士毕业研究 &nbsp;·&nbsp; 文献综述 + VR 对照实验 &nbsp;·&nbsp; 2026.11 完成</p>
+
+    <div class="challenge r">
+      <blockquote>乘客坐自动驾驶空中出租车时，多半在看手机或屏幕。飞机进入巡航、开始下降、准备降落时，怎样不抢视觉注意力也能让人听懂？用一声短提示音，还是一句话？</blockquote>
+    </div>
+
+    <div class="role-grid r">
+      <div>
+        <p class="label" style="margin-bottom:10px">我的角色</p>
+        <p style="font-size:14px;font-weight:500;line-height:1.6">学生研究者<br><span style="color:var(--g1);font-weight:300;font-size:13px">导师 Dr Tram Tran；负责研究设计、声音设计、Unity / VR 实验程序、数据整理与论文撰写</span></p>
+      </div>
+      <div>
+        <p class="label" style="margin-bottom:10px">实验设计</p>
+        <p class="v">2 × 2 被试内设计<br>提示：语音 · 非语音提示音<br>环境：安静 · 模拟舱噪<br>四套 Williams 顺序平衡</p>
+      </div>
+      <div>
+        <p class="label" style="margin-bottom:10px">研究规模</p>
+        <p class="v">综述 25 篇相关研究<br>20 名参与者 × 4 段完整航程<br>240 条通知 · 问卷 80 / 80 完整<br>20 人结束访谈</p>
+      </div>
+    </div>
+
+    <div class="r">
+      <img class="img-poster" src="assets/uam-vr-views.jpg" alt="Unity VR 实验场景：起飞、爬升、提示识别窗口与城市巡航">
+      <p class="gcap">Unity / VR 实验场景 — 乘客一边做 GO / WAIT 视觉任务，一边听提示；提示后 12 秒内选出对应的飞行阶段</p>
+    </div>
+
+    <div class="process r">
+      <p class="label" style="margin-bottom:28px">研究过程</p>
+      <div class="process-steps">
+        <div class="ps"><div class="ps-dot on">01</div><div class="ps-name">文献综述</div><div class="ps-text">综述 25 篇空中出行与自动驾驶乘客音频研究：缺少舱噪条件下的实验，且多依赖主观问卷</div></div>
+        <div class="ps"><div class="ps-dot">02</div><div class="ps-name">定义指标</div><div class="ps-text">把“哪种提示更好”拆成识别正确率、正确反应时、航后评分和访谈四类证据</div></div>
+        <div class="ps"><div class="ps-dot">03</div><div class="ps-name">搭建实验</div><div class="ps-text">Unity / VR 完整航程，每段 3 次阶段变化；声音用 Python 合成，语音与提示音分别设计</div></div>
+        <div class="ps"><div class="ps-dot">04</div><div class="ps-name">采集与数据</div><div class="ps-text">参与者 ID、会话 ID 与问卷版本分开记录，重测不覆盖旧数据；日志导出后逐项核对</div></div>
+        <div class="ps"><div class="ps-dot">05</div><div class="ps-name">分析与写作</div><div class="ps-text">描述统计、访谈主题整理，完成研究论文与学位论文</div></div>
+      </div>
+    </div>
+
+    <div class="result-bars r" aria-label="各条件正确识别率">
+      <p class="label" style="margin-bottom:12px">各条件正确识别率（每个条件 60 条通知）</p>
+      <div class="rb-row"><span>语音 · 安静</span><div class="rb-track"><div class="rb-fill" style="width:90%"></div></div><span class="rb-val">90.0%<small>54/60</small></span></div>
+      <div class="rb-row"><span>语音 · 舱噪</span><div class="rb-track"><div class="rb-fill" style="width:93.3%"></div></div><span class="rb-val">93.3%<small>56/60</small></span></div>
+      <div class="rb-row"><span>提示音 · 安静</span><div class="rb-track"><div class="rb-fill alt" style="width:66.7%"></div></div><span class="rb-val">66.7%<small>40/60</small></span></div>
+      <div class="rb-row"><span>提示音 · 舱噪</span><div class="rb-track"><div class="rb-fill alt" style="width:73.3%"></div></div><span class="rb-val">73.3%<small>44/60</small></span></div>
+    </div>
+
+    <div class="outcomes r">
+      <p class="label">主要发现</p>
+      <div class="out-grid">
+        <div class="out-item"><div class="out-num">92% vs 70%</div><div class="out-text">语音与提示音的正确识别率（110/120 vs 84/120）；加入舱噪后识别率没有下降</div></div>
+        <div class="out-item"><div class="out-num">2.7–3.2 s</div><div class="out-text">两种设计的正确反应时中位数接近，语音没有明显更慢</div></div>
+        <div class="out-item"><div class="out-num">66.7→88.3%</div><div class="out-text">从第一段到第四段航程，识别率持续上升；每段的第一条通知最难</div></div>
+        <div class="out-item"><div class="out-num">14 / 20</div><div class="out-text">参与者偏好语音，因为它直接说明阶段；偏好提示音的人看重它更短</div></div>
+      </div>
+    </div>
+
+    <div class="tech-row r">
+      <div class="tech-block">
+        <h4>设计启示</h4>
+        <ul>
+          <li>首次乘坐的乘客需要明确的阶段信息，优先用语音</li>
+          <li>5 名参与者自发提出“短提示音 + 语音”：先拉回注意力，再说内容</li>
+          <li>第二语言乘客会在脑中翻译，需要字幕或母语选项</li>
+          <li>很多人借助航线图和飞行动作理解提示音，评估要放在真实情境里</li>
+        </ul>
+      </div>
+      <div class="tech-block">
+        <h4>迁移到产品工作</h4>
+        <ul>
+          <li>把体验问题拆成可测的条件、任务和指标，再决定方案</li>
+          <li>在仿真场景里固定任务、时间窗和日志字段，结果才可复现</li>
+          <li>数据来源、版本和会话可追溯，异常可以定位</li>
+          <li>识别表现、主观体验和行为代价分开解释，结论只写证据支持的范围</li>
+        </ul>
       </div>
     </div>
 
@@ -2089,11 +2249,11 @@ body{font-family:var(--sans);background:var(--white);color:var(--black);line-hei
       </div>
       <div class="footer-col">
         <p class="label">目标方向</p>
-        <p>AI 产品经理 / 产品经理<br>企业效率工具 · 智能交互<br>AI 应用 · 用户体验 · 产品增长</p>
+        <p>AI 产品经理 / 产品经理<br>AI 工作流 · B 端平台产品<br>原型验证 · 用户实验与评测</p>
       </div>
       <div class="footer-col">
         <p class="label">当前状态</p>
-        <p>悉尼大学研究生在读<br>正在寻找 AI 产品经理 / 产品经理机会<br>可远程面试</p>
+        <p>悉尼大学人机交互硕士，毕业研究已完成<br>预计 2027.03 毕业<br>正在寻找 AI 产品经理 / 产品经理机会</p>
       </div>
     </div>
     <p class="footer-copy r d2">© 2026 &nbsp;吴业亘 YEGEN Wu</p>
@@ -2108,17 +2268,18 @@ const io = new IntersectionObserver(entries => {
 
 // ── Tab pages ────────────────────────────────────────────────
 const PAGE_DEFS = [
-  {page:'home', ids:['hero','overview','about-rule','about'], label:'首页', navTarget:'#about .sec-inner'},
+  {page:'home', ids:['hero','strengths','overview','about-rule','about'], label:'首页', navTarget:'#about .sec-inner'},
   {page:'tm', ids:['tm'], label:'多语言 AI 文案协作助手', navTarget:'#tm .proj-inner', project:{num:'01', name:'多语言 AI 文案协作助手'}},
-  {page:'ccm', ids:['ccm'], label:'CCM', navTarget:'#ccm .proj-inner', project:{num:'02', name:'CCM 化工情报平台'}},
-  {page:'greenloop', ids:['greenloop'], label:'Greenloop', navTarget:'#greenloop .proj-inner', project:{num:'03', name:'Greenloop'}},
-  {page:'skysoar', ids:['skysoar'], label:'Sky Soar', navTarget:'#skysoar .proj-inner', project:{num:'04', name:'SKY SOAR'}},
-  {page:'medguard', ids:['medguard'], label:'MedGuard', navTarget:'#medguard .proj-inner', project:{num:'05', name:'守 MedGuard'}},
-  {page:'turboresq', ids:['turboresq'], label:'TurboResQ', navTarget:'#turboresq .proj-inner', project:{num:'06', name:'TurboResQ'}},
-  {page:'more', ids:['more'], label:'装置 / 游戏', navTarget:'#more .proj-inner', project:{num:'07–08', name:'装置 / 游戏'}},
-  {page:'car', ids:['car'], label:'Lance', navTarget:'#car .proj-inner', project:{num:'09', name:'Lance Lightning'}},
-  {page:'scoping', ids:['scoping'], label:'AI 研究工作流助手', navTarget:'#scoping .proj-inner', project:{num:'10', name:'AI 研究工作流助手'}},
-  {page:'starling', ids:['starling'], label:'多语言内容查询助手', navTarget:'#starling .proj-inner', project:{num:'11', name:'多语言内容查询助手'}},
+  {page:'thesis', ids:['thesis'], label:'毕业研究', navTarget:'#thesis .proj-inner', project:{num:'02', name:'毕业研究 · VR 声音提示'}},
+  {page:'ccm', ids:['ccm'], label:'CCM', navTarget:'#ccm .proj-inner', project:{num:'03', name:'CCM 农化数据平台'}},
+  {page:'scoping', ids:['scoping'], label:'AI 研究工作流助手', navTarget:'#scoping .proj-inner', project:{num:'04', name:'AI 研究工作流助手'}},
+  {page:'starling', ids:['starling'], label:'多语言内容查询助手', navTarget:'#starling .proj-inner', project:{num:'05', name:'多语言内容查询助手'}},
+  {page:'medguard', ids:['medguard'], label:'MedGuard', navTarget:'#medguard .proj-inner', project:{num:'06', name:'守 MedGuard'}},
+  {page:'skysoar', ids:['skysoar'], label:'Sky Soar', navTarget:'#skysoar .proj-inner', project:{num:'07', name:'SKY SOAR'}},
+  {page:'greenloop', ids:['greenloop'], label:'Greenloop', navTarget:'#greenloop .proj-inner', project:{num:'08', name:'Greenloop'}},
+  {page:'turboresq', ids:['turboresq'], label:'TurboResQ', navTarget:'#turboresq .proj-inner', project:{num:'09', name:'TurboResQ'}},
+  {page:'more', ids:['more'], label:'装置 / 游戏', navTarget:'#more .proj-inner', project:{num:'10–11', name:'装置 / 游戏'}},
+  {page:'car', ids:['car'], label:'Lance', navTarget:'#car .proj-inner', project:{num:'12', name:'Lance Lightning'}},
   {page:'contact', ids:['contact'], label:'联系', navTarget:'.footer-inner', project:{num:'·', name:'联系 / Contact'}},
 ]
 // 让屏幕、辅助技术与打印版共用同一项目顺序。
